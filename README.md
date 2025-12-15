@@ -1,14 +1,14 @@
 <img src="https://coursesandconferences.wellcomeconnectingscience.org/wp-content/themes/wcc_courses_and_conferences/dist/assets/svg/logo.svg" width="300" height="50"> 
 
-# Antimicrobial Resistance in Bacterial Pathogens - Asia
+# Antimicrobial Resistance in Bacterial Pathogens - Africa
 
-## 2–7 February 2025, Bangkok, Thailand
+## 8–13 March 2026, National Institute for Communicable Diseases, Johannesburg, South Africa
 
-[Wellcome Connecting Science Course Run Website](https://coursesandconferences.wellcomeconnectingscience.org/event/antimicrobial-resistance-in-bacterial-pathogens-asia-20250202/) <br /> 
+[Wellcome Connecting Science Course Run Website](https://coursesandconferences.wellcomeconnectingscience.org/event/antimicrobial-resistance-of-bacterial-pathogens-africa-20260308/) <br /> 
 [Course Time Table](#) <br /> 
 [Course Informatics Guide](https://github.com/WCSCourses/AMR_2025/blob/main/AMR_Course_InformaticsGuide_2025.md)
 
-Learn antimicrobial susceptibility testing techniques and how whole-genome sequencing and bioinformatics can be used to understand AMR 
+Learn antimicrobial susceptibility testing techniques and how whole-genome sequencing and bioinformatics can be used to understand AMR
 
 ## Course Overview
 
@@ -16,15 +16,17 @@ Antimicrobial resistance (AMR) is a global public health emergency and threatens
 
 The importance of this has been recognised both by the United Nations, and by the World Health Organisation; the latter has published a list of priority pathogens and a global strategy for AMR surveillance.
 
-In collaboration with the [Faculty of Tropical Medicine (FTM)](http://www.tm.mahidol.ac.th/) and the [Mahidol-Oxford Tropical Medicine Research Unit (MORU), Mahidol University](http://www.tropmedres.ac/), Thailand, we are pleased to announce the 2025 Global Training course in Antimicrobial Resistance of Bacterial Pathogens. This course aims to address regionally specific AMR-associated challenges through knowledge transfer and skills development by global experts.  
+In collaboration with the [National Institute for Communicable Diseases (NICD), a division of the National Health Laboratory Services](https://www.nicd.ac.za/), Johannesburg, South Africa, we are pleased to announce our 2026 global training course in AMR of bacterial pathogens in Africa. This course aims to address regionally specific AMR-associated challenges through knowledge transfer and skills development by global experts.  
 
 ## What will this course cover?
 
-This week-long course will include an introduction to AMR with hands-on laboratory practicals for AMR detection through molecular and phenotypic testing. This will be accompanied by theoretical training on the evolution and spread of AMR and utilisation of whole-genome sequencing and bioinformatics analysis in methods for AMR surveillance and control. Additionally, participants will have the opportunity to network and potentially build a regional AMR network to support longer-term partnerships and collaborations.
+This week-long course will include an introduction to AMR with hands-on laboratory practicals for AMR detection through molecular and phenotypic testing accompanied by theoretical training on the evolution and spread of AMR and utilisation of whole-genome sequencing and bioinformatics analysis methods for AMR surveillance and control. 
 
-## Who should attend this course?
+It will also provide an opportunity for participants to network and potentially build a regional AMR community to support long-term partnerships and collaborations.
 
-This course is open to applicants based in Asia only, who are actively engaged in, or soon to commence related research or work. This may include diagnostic stewardship, antimicrobial stewardship, infection prevention and control, or generate policies related to AMR in bacteria. Applicants should be PhD students, clinical trainees, or specialists in medical microbiology or bioinformatics, postdoctoral scientists, senior technicians, or research assistants with a Master’s degree.
+## Who is this course for?
+
+This course is open to applicants based in Africa only, who are actively engaged in, or soon to commence related research or work. This may include diagnostic stewardship, antimicrobial stewardship, infection prevention and control, or generate policies related to AMR in bacteria. Applicants should be PhD students, clinical trainees, or specialists in medical microbiology or bioinformatics, postdoctoral scientists, senior technicians, or research assistants with a Master’s degree.
 
 
 ## Learning outcomes
@@ -51,32 +53,32 @@ The course will consist of a series of lectures and hands-on laboratory and comp
 - Whole genome sequencing (WGS)
 - Web-based and command line tools for pathogen genomics analysis
 - Genomic surveillance of AMR
-
-**Course Organisers**    
-- [Beth Blane](https://www.med.cam.ac.uk/staff/beth-blane/), University of Cambridge, UK
-- [Ewan Harrison](https://www.sanger.ac.uk/person/harrison-ewan/), Wellcome Sanger Institute, UK
-- [Direk Limmathurotsakul](https://www.tropmedres.ac/team/direk-limmathurotsakul), Mahidol-Oxford Tropical Medicine Research Unit
   
 **Course Instructors**      
-
-- [Pakorn Aiewsakun](https://science.mahidol.ac.th/expertise/search.php?q=Pakorn%20Aiewsakun), Mahidol University
-- [Premjit Amornchai](https://www.tropmedres.ac/team/premjit-amornchai), Mahidol-Oxford Tropical Medicine Research Unit
-- [Elizabeth Batty](https://www.globalhealth.ox.ac.uk/our-researchers/elizabeth-batty), Oxford Global Health, University of Oxford
+- [Beth Blane](https://www.med.cam.ac.uk/staff/beth-blane/), University of Cambridge, UK
+- [Ewan Harrison](https://www.sanger.ac.uk/person/harrison-ewan/), Wellcome Sanger Institute, UK
+- [Vindana  Chibabhai](https://www.womenlifthealth.org/profile/vindana-chibabhai/), Centre for Healthcare-Associated Infections, Antimicrobial Resistance and Mycoses (CHARM), National Institute for Communicable Diseases (NICD), South Africa
 - [Francesc Coll I Cerezo](https://www.ibv.csic.es/en/directory/francesc-coll/), Instituto de Biomedicina de Valencia
-- [Arun Decano](https://www.linkedin.com/in/arundecano/?originalSubdomain=ie), University of Oxford
 - [Fahad Khokhar](https://www.vet.cam.ac.uk/staff/fahad-khokhar), University of Cambridge
-- [Janjira Thaipadungpanit](https://www.tropmedres.ac/team/janjira-thaipadungpanit), Mahidol-Oxford Tropical Medicine Research Unit
-- [Polly Yap](https://research.monash.edu/en/persons/polly-yap), Monash University
+- [Collins Kigen](https://ke.linkedin.com/in/collins-kigen-67b74910a), Kenya Medical Research Institute(KEMRI)/WRAIR-Africa MicroHub Lab, Kenya
+- [Cebile Lekhuleni](https://za.linkedin.com/in/cebile-lekhuleni), National Institute for Communicable Diseases (NICD), South Africa
+- [Caroline Maluleka](https://za.linkedin.com/in/caroline-maluleka-ba3639192), Centre for Healthcare-Associated Infections, Antimicrobial Resistance and Mycoses (CHARM), National Institute for Communicable Diseases (NICD), South Africa
+- [Fahima Moosa](https://www.nicd.ac.za/communicable-diseases-researcher-directory/), National Institute for Communicable Diseases (NICD), South Africa
+- [Anthony Smith](https://za.linkedin.com/in/anthony-smith-936785b5), National Institute for Communicable Diseases (NICD), South Africa
+- [Augusto Messa Junior](https://scholar.google.com/citations?user=tOmYR7gAAAAJ&hl=pt-PT), Centro de Investigação em Saúde de Manhiça, Mozambique
+- [Stanford Kwenda](https://za.linkedin.com/in/stanford-kwenda-7bb87530), African Society of Medical Laboratory Sciences, South Africa
+- [Tsidiso Maphanga](https://scholar.google.com/citations?user=cb7A8tEAAAAJ&hl=en), African Society of Medical Laboratory Sciences, South Africa
+- [Ruth Mogokotleng](https://sciprofiles.com/profile/2553284), African Society of Medical Laboratory Sciences, South Africa
+- [Silondiwe Nzimande](https://za.linkedin.com/in/silondiwe-nzimande-620661142), African Society of Medical Laboratory Sciences, South Africa
+- [Miriam Mwamba](https://za.linkedin.com/in/miriam-mwamba-b94a77117), African Society of Medical Laboratory Sciences, South Africa
 
 **Wellcome Connecting Science Team**
-
 - [Martin Aslett](https://coursesandconferences.wellcomeconnectingscience.org/about-us/the-team/), Informatics Manager
 - [Vaishnavi Vikas Gangadhar](https://www.wellcomeconnectingscience.org/person/gangadhar-vaishnavi/), Informatics Technical Officer
 - [Cassandra Soo](https://uk.linkedin.com/in/cassandra-claire-soo-b3783277/ms?trk=people-guest_people_search-card), Laboratory Courses Manager
 - [Aaron Dean](https://uk.linkedin.com/in/aaron-dean-5b5a21163), Laboratory Technical Officer
 - [Christopher Adamson](https://www.wellcomeconnectingscience.org/person/adamson-chris/), Laboratory Operations Officer
 - [Isabela Malta](https://www.wellcomeconnectingscience.org/person/malta-isabela/), Assistant Overseas Courses Manager
-- [Amy Pass](https://www.wellcomeconnectingscience.org/person/pass-amy/), Events Manager
 
 ******
 
