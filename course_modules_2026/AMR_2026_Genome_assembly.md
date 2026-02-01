@@ -199,7 +199,7 @@ Breakdown of the command:
 | **Command tag** | **Description**                               |
 |:--------------|:------------------------------------------------|
 | --cpus    | Number of CPUs to allocate to this task |
-| --ourdir | Name of output directory   |
+| --outdir | Name of output directory   |
 | --R1        | Read 1 sequencing file  |
 | --R2        | Read 2 sequencing file  |
 | ../       | Move up one directory |
