@@ -499,7 +499,7 @@ Prokka produces several files:
 ## Extra sample for genome assembly
 
 Sequencing data for an extra bacterial isolate is available in 
-`**../reads/extra_sample/**` folder:
+`../reads/extra_sample/` folder:
 
 1. **bc01_R1.fastq.gz** = Read 1 (trimmed) Illumina
 
