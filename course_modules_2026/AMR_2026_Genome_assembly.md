@@ -40,6 +40,8 @@ graph, with *k*-mers as nodes. However, challenges arise with
 repetitive regions, which can create ambiguities in the graph
 structure.
 
+
+
 ### String graphs
 
 Long-read assemblers use string graphs, which directly represent
@@ -51,6 +53,8 @@ requires accurate overlap detection and can also require error
 correction, particularly if using older long-read sequencing datasets.
 The resulting assemblies if often more contiguous, capturing complex
 genomic regions that are challenging for short-read assemblers.
+
+
 
 ### Assembly graph vs final assembly
 
@@ -72,6 +76,7 @@ ambiguities and filtering out alternative paths.
 ![**Figure 4.4**.](https://github.com/WCSCourses/AMR_2026/blob/f69e39b100fc73b813e644e7ec1e29c9008aa1cb/course_modules_2026/GA4.png)
 
 **Figure 4.4**.
+
 
 
 ### Software check
@@ -109,6 +114,7 @@ perform all commands
 ```bash
 mkdir cp4_work && cd cp4_work
 ```
+
 
 
 ### Dataset
@@ -421,6 +427,7 @@ cpe004_hybrid.fasta \
 View the results by opening the file quast/report.html
 
 
+
 ## Genome annotation (Prokka)
 
 >*Prokka*: rapid prokaryotic genome annotation.
@@ -494,6 +501,7 @@ Prokka produces several files:
 
 4. Search if any beta-lactamase resistance genes "*bla*" are present in
     this genome
+
 
 
 ## Extra sample for genome assembly
