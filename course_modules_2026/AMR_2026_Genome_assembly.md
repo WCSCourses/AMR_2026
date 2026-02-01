@@ -15,6 +15,7 @@
 Genome assembly is a key step in genomic analysis, enabling researchers to reconstruct the complete genomic sequence of an organism from raw sequencing data. This process is particularly significant for bacterial genomes, which are typically compact, circular, and rich in essential genetic information. Understanding bacterial genome assembly is essential for applications ranging from pathogen identification and antibiotic resistance profiling to studying microbial evolution and ecology. Genome assembly can broadly be categorised into two main approaches: *de novo* assembly, relies solely on overlaps or *k-mers*, and reference-based assembly, aligning reads to a known reference genome (**Figure 4.1**).
 
 ![**Figure 4.1**. Two main methods for genome assembly from raw sequencing data.](https://github.com/WCSCourses/AMR_2026/blob/f69e39b100fc73b813e644e7ec1e29c9008aa1cb/course_modules_2026/GA1.png)
+
 **Figure 4.1**. Two main methods for genome assembly from raw sequencing data.
 
 The desired outcome is to achieve long contiguous DNA sequences
@@ -26,6 +27,7 @@ between fragments, and you will appreciate why longer reads are
 advantageous here (**Figure 4.2**).
 
 ![**Figure 4.2**. Desired outcome of genome assembly of raw sequencing data.](https://github.com/WCSCourses/AMR_2026/blob/f69e39b100fc73b813e644e7ec1e29c9008aa1cb/course_modules_2026/GA2.png)
+
 **Figure 4.2**. Desired outcome of genome assembly of raw sequencing data.
 
 
@@ -64,9 +66,11 @@ the best approximation of the bacterial genome after resolving
 ambiguities and filtering out alternative paths.
 
 ![**Figure 4.3**.](https://github.com/WCSCourses/AMR_2026/blob/f69e39b100fc73b813e644e7ec1e29c9008aa1cb/course_modules_2026/GA3.png)
+
 **Figure 4.3**.
 
 ![**Figure 4.4**.](https://github.com/WCSCourses/AMR_2026/blob/f69e39b100fc73b813e644e7ec1e29c9008aa1cb/course_modules_2026/GA4.png)
+
 **Figure 4.4**.
 
 
@@ -234,6 +238,7 @@ and select **cpe004_shovill.gfa** \> Click on Draw graph
 The result should look like the image in **Figure 4.5** below.
 
 ![**Figure 4.5**. Visualising the cpe004_shovill assembly graph in Bandage.](https://github.com/WCSCourses/AMR_2026/blob/f69e39b100fc73b813e644e7ec1e29c9008aa1cb/course_modules_2026/GA5.png)
+
 **Figure 4.5**. Visualising the cpe004_shovill assembly graph in Bandage.
 
 
@@ -369,6 +374,7 @@ accurate bacterial assembly, making it an excellent choice for
 researchers relying on long-read sequencing platforms.
 
 ![**Figure 4.6**. Autocycler illustrated pipeline overview.](https://github.com/WCSCourses/AMR_2026/blob/f69e39b100fc73b813e644e7ec1e29c9008aa1cb/course_modules_2026/GA6.png)
+
 **Figure 4.6**. Autocycler illustrated pipeline overview.
 
 
@@ -398,6 +404,7 @@ improvement and compare the performance of different assembly tools.
 | L90        | As above, but 90% of the assembly                       |
 
 ![**Figure 4.7**. Example genome of 100 bp length with contigs assembled.](https://github.com/WCSCourses/AMR_2026/blob/f69e39b100fc73b813e644e7ec1e29c9008aa1cb/course_modules_2026/GA7.png)
+
 **Figure 4.7**. Example genome of 100 bp length with contigs assembled.
 
 
@@ -421,6 +428,7 @@ View the results by opening the file quast/report.html
 >Github: [https://github.com/tseemann/prokka](https://github.com/tseemann/prokka).
 
 ![**Figure 4.8**. Simplified schematic of Prokka pipeline Obtained from <https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/annotation-with-prokka/slides-plain.html>.](https://github.com/WCSCourses/AMR_2026/blob/f69e39b100fc73b813e644e7ec1e29c9008aa1cb/course_modules_2026/GA8.png)
+
 **Figure 4.8**. Simplified schematic of Prokka pipeline Obtained from <https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/annotation-with-prokka/slides-plain.html>.
 
 
