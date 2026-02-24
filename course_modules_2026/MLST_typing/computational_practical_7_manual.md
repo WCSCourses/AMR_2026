@@ -1,20 +1,20 @@
-# Computational Practical X: Multilocus sequence typing (MLST) and cgMLST prediction from bacterial genomes
+# Computational Practical 7: Multilocus sequence typing (MLST) and cgMLST prediction from bacterial genomes
 
 
 
 ## Table of contents
 
-1.	Introduction
-2.	Expected learning outcomes
-3.	Genomes for MLST and cgMLST analysis
-4.	MLST prediction using mlst-check
-5.	cgMLST prediction using chewBBACA
-6.	MLST and cgMLST comparative visualisation
-7.	Q&A
+1.	[Introduction](#intro)
+2.	[Expected learning outcomes](#outcomes)
+3.	[Genomes for MLST and cgMLST analysis](#genomes)
+4.	[MLST prediction using mlst-check](#MLST)
+5.	[cgMLST prediction using chewBBACA](#cgMLST)
+6.	[MLST and cgMLST comparative visualisation](#comparative)
+7.	[Q&A](#q&a)
 
 
 
-## 1. Introduction
+## 1. Introduction <a name="intro"></a>
 
 The ability to distinguish among strains of clinically relevant pathogens enables: (1) identification of circulating genotypes that may differ by features of virulence or antimicrobial resistance (AMR), (2) identification of outbreaks events, and (3) ability to track the source and spread of infections. Multilocus sequence typing (MLST) is a widely used molecular typing tool that is portable, universally adapted and provides a standardised genotypic approach that examines the nucleotide sequences of typically seven loci that encode house-keeping genes ([Maiden. 2006](https://www.annualreviews.org/content/journals/10.1146/annurev.micro.59.030804.121325)). Hundreds of MLST schemes for different pathogens have been made publicly available to ensure that a uniform nomenclature for typing is accessible through sites such as [PubMLST]( https://pubmlst.org/). 
 
@@ -24,7 +24,7 @@ Several bioinformatics tools that identify MLST sequence types directly from the
 
 
 
-## 2. Expected learning outcomes
+## 2. Expected learning outcomes <a name="outcomes"></a>
 
 At the end of this practical session, one should be able to:  
   *	Use command-line tools such as mlst-check and chewBBACA to identify isolates’ MLST and cgMLST profiles or sequence types;
@@ -33,7 +33,7 @@ At the end of this practical session, one should be able to:
 
 
 
-## 3. Genomes for MLST and cgMLST analysis
+## 3. Genomes for MLST and cgMLST analysis <a name="genomes"></a>
 
 ### Data preparation
 
@@ -52,7 +52,7 @@ cp -r /home/data/mlst_genomes .
 ```
 
 
-## 4. MLST prediction using mlst-check
+## 4. MLST prediction using mlst-check <a name="MLST"></a>
 
 ## mlst-check installation using conda
 
@@ -107,7 +107,7 @@ It is important to submit unknown alleles to PubMLST for identification and alle
 The 'mlst_results.genomic.csv' spreadsheet is similar to the mlst_results.allele.csv spreadsheet, but it gives the full sequences of each allele instead of the allele number. These can then be used for submission to PubMLST in the case of unknown or novel alleles.
 
 
-## 5. cgMLST prediction using chewBBACA
+## 5. cgMLST prediction using chewBBACA <a name="cgMLST"></a>
 
 ## chewBBACA installation
 
@@ -196,12 +196,12 @@ Steps for GrapeTree visualisation:
 
 
 
-## 6. MLST and cgMLST comparative visualisation
+## 6. MLST and cgMLST comparative visualisation <a name="comparative"></a>
 
 TBC - Discussion
 
 
-## 7. Q&A
+## 7. Q&A <a name="q&a"></a>
 
 
 
