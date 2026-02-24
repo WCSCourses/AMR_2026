@@ -37,18 +37,57 @@ At the end of this practical session, one should be able to:
 
 ### Data preparation
 
-Navigate to your home directory and create a new mlst directory.
+Table 1 contains the list of strains to be analysed in this practical from the CPE outbreak we will be investigating. Table 2 contains additional strains to be analysed (optionally, if time allows) sourced from key studies on the genomic epidemiology of methicillin-resistant *Staphylococcus aureus* (MRSA) ([Holden *et al.* 2013](https://doi.org/10.1101/gr.147710.112)) and extensively drug-resistant (XDR) *Salmonella typhi* ([Klemm *et al.* 2018](https://doi.org/10.1128/mbio.00105-18)). In this practical we will analyze the same strains characterised in the previous practical, plus the one you've been assigned to in the EpiCollect practical.
 
-```
-cd
-mkdir mlst
+Table 1 CPE strains to be analysed in this practical
+| Species | Study and origin | Strain Id | Illumina accession | Assembly file name |
+| :---    | :---             | :---      | :---               | :---      |     
+| *K. pneumoniae* | Roberts *et al.* 2024, CPE strain | cpe004 | ERR4095909 | cpe004_Kpn-ST78-NDM1.fasta |
+| *E. coli* | Roberts *et al.* 2024, CPE strain | cpe069 | ERR5386320 | cpe069_Eco-NDM1.fasta |
+
+Table 2 Additional strains to be analysed (optional).
+| Species	| Study and origin | Strain Id | Genome accession | Assembly file name | 
+| :---    | :---             | :---      | :---               | :---      |     
+| *S. aureus*	| Holden *et al.* 2013, Berlin (Germany), 2007, ST22 EMRSA-15 | 07-02477 | ERR017261  | ERR017261.assembly.fa |
+| *S. aureus*	| Holden *et al.* 2013, UK, 2005, ST22 EMRSA-15	| HO50960412 | HE681097 (GenBank) | HO50960412.fa |
+| *S. typhi*	| Klemm *et al.* 2018 (ACT), Pakistan, 2016, 4.3.1 (H58) XDR | BL0006 | ERR2093245	| ERR2093245.assembly.fa |
+| *S. typhi* | Klemm *et al.* 2018, Pakistan (2016) – 4.3.1 (H58) pre-XDR	| Pak60168 | ERR2093329	|ERR2093329.assembly.fa |
+
+First of all, launch the Docker image on your machine:
+
+If you haven’t done so already, clone the course Github directory into your home directory:
+
+```bash
+docker run -it --mount type=bind,source=C:\Users\4M\Desktop\data,target=/home/data amr:Dockerfile
 ```
 
-`cd` inside the mlst directory then copy in the directory called mlst_genomes from /home/data/mlst_genomes into your current working directory (i.e. mlst):
+Navigate to directory `home/data/`, download the course data, and create a new directory for this practical named `cp7`:
 
+```bash
+cd home/data/
+git clone https://github.com/WCSCourses/AMR_2026/
+mkdir cp7
 ```
-cd mlst
-cp -r /home/data/mlst_genomes .
+
+Next, copy the genome assemblies we will use (i.e., those in Tables 1 and 2) into cp6 directory:
+```bash
+cp ./AMR_2026/course_data_2026/cp6/complete_assemblies/cpe004_Kpn-ST78-NDM1.fasta ./cp7/
+cp ./AMR_2026/course_data_2026/cp6/complete_assemblies/cpe069_Eco-NDM1.fasta ./cp7/
+```
+
+Copy the genome assemblies of the additional strains in Table 2 (the analysis of these strains is optional):
+```bash
+cp ./AMR_2026/course_data_2026/cp6/additional_genomes/HO50960412.fa ./cp7/
+cp ./AMR_2026/course_data_2026/cp6/additional_genomes/ERR017261.assembly.fa ./cp7/
+cp ./AMR_2026/course_data_2026/cp6/additional_genomes/ERR2093245.assembly.fa ./cp7/
+cp ./AMR_2026/course_data_2026/cp6/additional_genomes/ERR2093329.assembly.fa ./cp7/
+```
+
+Also, identify and copy the genome assembly of **your assigned CPE strain** (the one on your EpiCollect sheet).
+
+Finally, navigate to the module folder `cp7` where you should find the genome assemblies you just copied:
+```bash
+cd cp7
 ```
 
 
