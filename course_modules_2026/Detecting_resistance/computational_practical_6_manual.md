@@ -63,22 +63,22 @@ Navigate to directory `home/data/`, download the course data, and create a new d
 
 ```bash
 cd home/data/
-git clone https://github.com/WCSCourses/AMR_2025/
+git clone https://github.com/WCSCourses/AMR_2026/
 mkdir cp6
 ```
 
 Next, copy the genome assemblies we will use (i.e., those in Tables 1 and 2) into cp6 directory:
 ```bash
-cp ./AMR_2025/course_data_2025/cp6/complete_assemblies/cpe004_Kpn-ST78-NDM1.fasta ./cp6/
-cp ./AMR_2025/course_data_2025/cp6/complete_assemblies/cpe069_Eco-NDM1.fasta ./cp6/
+cp ./AMR_2026/course_data_2026/cp6/complete_assemblies/cpe004_Kpn-ST78-NDM1.fasta ./cp6/
+cp ./AMR_2026/course_data_2026/cp6/complete_assemblies/cpe069_Eco-NDM1.fasta ./cp6/
 ```
 
 Copy the genome assemblies of the additional strains in Table 2 (the analysis of these strains is optional):
 ```bash
-cp ./AMR_2025/course_data_2025/cp6/additional_genomes/HO50960412.fa ./cp6/
-cp ./AMR_2025/course_data_2025/cp6/additional_genomes/ERR017261.assembly.fa ./cp6/
-cp ./AMR_2025/course_data_2025/cp6/additional_genomes/ERR2093245.assembly.fa ./cp6/
-cp ./AMR_2025/course_data_2025/cp6/additional_genomes/ERR2093329.assembly.fa ./cp6/
+cp ./AMR_2026/course_data_2026/cp6/additional_genomes/HO50960412.fa ./cp6/
+cp ./AMR_2026/course_data_2026/cp6/additional_genomes/ERR017261.assembly.fa ./cp6/
+cp ./AMR_2026/course_data_2026/cp6/additional_genomes/ERR2093245.assembly.fa ./cp6/
+cp ./AMR_2026/course_data_2026/cp6/additional_genomes/ERR2093329.assembly.fa ./cp6/
 ```
 
 Also, identify and copy the genome assembly of **your assigned CPE strain** (the one on your EpiCollect sheet).
