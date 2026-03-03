@@ -71,7 +71,7 @@ b) What is the GC content?
 | 6b | 40.84% |
 
 
-# This is redundant (already in the table), ignore it.
+# This is redundant (already in the tables), ignore it.
 ## Linux file system and files manipulation
 1. `mkdir -p cp1_exercises/new`; then `touch file1.txt file2.txt file3.txt fileA.dat fileB.txt`; then `cp file* new/`.
 2. From within _cp1_exercises_, `mv new old` and from within the _old_ directory (just renamed as such) `mv file1.txt file4.txt`.
@@ -98,3 +98,4 @@ b) What is the GC content?
 6.a. `cat samplefasta.fasta | grep -vE "^>" | fold -w 1 | sort | uniq -c`. Which returns 3062 As, 2020 Cs, 2064 Gs, 13 Ns and 2841 Ts.
 
 6.b. 40.84%
+
