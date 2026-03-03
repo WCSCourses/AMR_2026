@@ -16,12 +16,39 @@ touch file1.txt file2.txt file3.txt fileA.dat fileB.txt
 
 
 # Linux text processing tools
-Begin by downloading a file from this [link]() using commands we have just dicussed in previous class.
+Begin by downloading a file from these two files from [here]() and [here]() using commands we have just dicussed in previous class.
 
-1. Explain what the following commands do
+3. After downloading the `alice.txt` file, explain what the following commands do:
 a) `head alice.txt -n 20 > alice20.txt`
 b) `grep -c -E "^>" alice.txt`
 c) `wc -L alice.txt`
 d) `cat alice20.txt | tr -d 'AEIOUaeiou'` 
 
-2. How many characters are within the `alice.txt` file
+4. Still will the `alice.txt` file, write both the command and the response:
+a) How many characters are within the `alice.txt` file?
+b) How many instances of the word "the" are within the `alice.txt` file? 
+c) What is the difference with the `grep -cw "the" alice.txt` and the command you wrote in the previous question?
+
+5. The `samplefasta.fasta` is a file with DNA sequences in FASTA format (we discussed this in the previous module).
+Reminder, this is their structure:
+```
+>Sequence1
+ACGTTCGAGATTACA
+```
+a) How many FASTA records are within the file?
+b) What is the size of the largest sequence within that file?
+
+# Answers
+## Linux file system and files manipulation
+1. as
+2. 
+## Linux text processing tools
+3.a
+3.b.
+3.c.
+3.d.
+4.a.
+4.b.
+4.c.
+5.a. `grep -c -E "^>" samplefasta.fasta`
+5.b. `wc -L samplefasta.fasta` 
