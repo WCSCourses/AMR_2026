@@ -16,7 +16,7 @@ touch file1.txt file2.txt file3.txt fileA.dat fileB.txt
 
 
 # Linux text processing tools
-Begin by downloading a file from these two files [alice.txt](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/alice.txt) and [samplefasta.fasta]() using commands we have just dicussed in previous class.
+Begin by downloading a file from these two files [alice.txt](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/alice.txt) and [samplefasta.fasta](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/samplefasta.fasta) using commands we have just dicussed in previous class.
 
 3. After downloading the `alice.txt` file, explain what the following commands do:
 a) `head alice.txt -n 100 > alice100.txt`
@@ -67,4 +67,5 @@ b) What is the size of the largest sequence within that file?
 5.a. `grep -c -E "^>" samplefasta.fasta`. There are 100 FASTA records (sequences).
 
 5.b. `wc -L samplefasta.fasta`. The largest lenght sequence has 100 characters. The file is pretty much uniform, so we can try again with another file.
+
 
