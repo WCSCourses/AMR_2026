@@ -44,6 +44,10 @@ a) How many FASTA records are within the file?
 
 b) What is the size of the largest sequence within that file?
 
+6. Bonus questions:
+a) Compute the total amount of As, C, Gs, Ts and Ns in the `samplefasta.fasta` using pipes and redirections (A.K.A a one-liner)?
+b) What is the GC content? 
+
 # Answers - for your own benefit, try completing the exercises and getting the responses by your self first, then compare them with these.
 ## Linux file system and files manipulation
 1. `mkdir -p cp1_exercises/new`; then `touch file1.txt file2.txt file3.txt fileA.dat fileB.txt`; then `cp file* new/`.
@@ -67,5 +71,9 @@ b) What is the size of the largest sequence within that file?
 5.a. `grep -c -E "^>" samplefasta.fasta`. There are 100 FASTA records (sequences).
 
 5.b. `wc -L samplefasta.fasta`. The largest lenght sequence has 100 characters. The file is pretty much uniform, so we can try again with another file.
+
+6.a. `cat samplefasta.fasta | grep -vE "^>" | fold -w 1 | sort | uniq -c`. Which returns 3062 As, 2020 Cs, 2064 Gs, 13 Ns and 2841 Ts.
+6.b. 40.84%
+
 
 
