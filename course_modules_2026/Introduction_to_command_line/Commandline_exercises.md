@@ -73,7 +73,9 @@ b) What is the GC content?
 5.b. `wc -L samplefasta.fasta`. The largest lenght sequence has 100 characters. The file is pretty much uniform, so we can try again with another file.
 
 6.a. `cat samplefasta.fasta | grep -vE "^>" | fold -w 1 | sort | uniq -c`. Which returns 3062 As, 2020 Cs, 2064 Gs, 13 Ns and 2841 Ts.
+
 6.b. 40.84%
+
 
 
 
