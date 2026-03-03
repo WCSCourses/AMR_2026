@@ -16,17 +16,22 @@ touch file1.txt file2.txt file3.txt fileA.dat fileB.txt
 
 
 # Linux text processing tools
-Begin by downloading a file from these two files [alice.txt]() and [samplefasta.fasta]() using commands we have just dicussed in previous class.
+Begin by downloading a file from these two files [alice.txt](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/alice.txt) and [samplefasta.fasta]() using commands we have just dicussed in previous class.
 
 3. After downloading the `alice.txt` file, explain what the following commands do:
 a) `head alice.txt -n 100 > alice100.txt`
+
 b) `grep -c -E "^the" alice.txt`
+
 c) `wc -l alice.txt`
+
 d) `cat alice100.txt | tr -d 'AEIOUaeiou'` 
 
 4. Still with the `alice.txt` file, write both the command and the response:
 a) How many characters are within the `alice.txt` file?
+
 b) How many instances of the word "the" are within the `alice.txt` file? 
+
 c) What is the difference with the `grep -cw "the" alice.txt` and the command you wrote in the previous question?
 
 5. The `samplefasta.fasta` is a file with DNA sequences in FASTA format (we discussed this in the previous module).
@@ -36,9 +41,10 @@ Reminder, this is their structure:
 ACGTTCGAGATTACA
 ```
 a) How many FASTA records are within the file?
+
 b) What is the size of the largest sequence within that file?
 
-# Answers
+# Answers - for your own benefit, try completing the exercises and getting the responses by your self first, then compare them with these.
 ## Linux file system and files manipulation
 1. `mkdir -p cp1_exercises/new`; then `touch file1.txt file2.txt file3.txt fileA.dat fileB.txt`; then `cp file* new/`.
 2. From within _cp1_exercises_, `mv new old` and from within the _old_ directory (just renamed as such) `mv file1.txt file4.txt`.
@@ -61,3 +67,4 @@ b) What is the size of the largest sequence within that file?
 5.a. `grep -c -E "^>" samplefasta.fasta`. There are 100 FASTA records (sequences).
 
 5.b. `wc -L samplefasta.fasta`. The largest lenght sequence has 100 characters. The file is pretty much uniform, so we can try again with another file.
+
