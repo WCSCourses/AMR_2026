@@ -21,13 +21,13 @@ Modified by: Dr. Stanford Kwenda, Augusto Messa Jr., Miriam Mwamba
     - [Cleaning the reads (if necessary)](#cleaningshort)
     - [Short Read Alignment and SNP calling with snippy](#usesnippy)
     - [Examining the output](#snippyoutput)
-    - [Post-processing and Analysis (Optional)](#postshort)
+    - [Post-processing and Analysis](#postshort)
 5. [Long reads](#longreads)
     - [Data preparation](#datapreplong)
     - [Running Medaka](#medaka)
     - [Run DeepVariant](#deepvariant)
     - [PEPPER DeepVariant for nanopore reads](#pepperdeepvariant)
-    - [Post-processing and Analysis (Optional)](#postlong)
+    - [Post-processing and Analysis](#postlong)
 6. [References](#refs)
 
 # **Learning objectives** <a name="objectives"></a>
@@ -349,7 +349,7 @@ bcftools filter -s LowQual -e '%QUAL<30 || DP<10' ERR4095885_snippy/snps.vcf > E
 bcftools filter -s LowQual -e '%QUAL<30 || DP<10' ERR4095905_snippy/snps.vcf > ERR4095905_snippy/filtered_snps_short.vcf
 ```
 
-### **Annotation of SNPs**
+### **Annotation of SNPs** - has not been tested
 The `.vcf` file can the be annotated to determine what the effect of each SNP are, i.e. are they silent, do they change something in the amino acid sequence, do they cause a stop codon to be inserted, etc and as a result that change turns a susceptible organism resistant to a specific antimicrobial agent (or an entire class). This can be achieved by using [`snpEff`](https://pcingola.github.io/SnpEff/snpeff/running/).
 
 `snpEff` requires a database to work, and since we do not have it here, we will not perform this step.
@@ -424,7 +424,7 @@ Use `Medaka` to call SNPs from the long-read BAM file.
 # medaka_variant -i longread.input.fastq.gz -r reference.fasta # Syntax
 medaka_variant -i ERR3284704.fastq.gz -r Ecoli_ref.fasta
 ```
-## **Run [DeepVariant](https://github.com/google/deepvariant) (Optional)**<a name="deepvariant"></a>
+## **Run [DeepVariant](https://github.com/google/deepvariant) (Optional)** - has not been tested<a name="deepvariant"></a>
 Use minimap2 for aligning long reads.
 ```
 minimap2 -a reference.fasta long_reads.fastq > aligned_long_reads.sam
@@ -449,7 +449,7 @@ Use DeepVariant to call SNPs from the long-read BAM file.
 run_deepvariant --model_type PACBIO --ref reference.fasta --reads sorted_long_reads.bam --output_vcf dv_output.vcf --output_gvcf dv_output.g.vcf --num_shards 4
 ```
 
-## **Use [PEPPER DeepVariant](https://github.com/kishwarshafin/pepper) for nanopore reads: (Optional)**<a name="pepperdeepvariant"></a>
+## **Use [PEPPER DeepVariant](https://github.com/kishwarshafin/pepper) for nanopore reads: (Optional)** - has not been tested<a name="pepperdeepvariant"></a> 
 ```
 ## Pull the docker image.
 sudo docker pull kishwars/pepper_deepvariant:r0.8
@@ -467,7 +467,7 @@ run_pepper_margin_deepvariant call_variant \
 -t "${THREADS}" \
 --ont_r10_q20
 ```
-## **Post-processing and Analysis (Optional)**<a name="postlong"></a>
+## **Post-processing and Analysis (Optional)** - has not been tested<a name="postlong"></a>
 ### **Filtering SNPs**
 Apply filters to the VCF files to ensure high-quality SNPs using bcftools. Remove SNPs/Indels with MQ<30 and DP<10.
 ```
