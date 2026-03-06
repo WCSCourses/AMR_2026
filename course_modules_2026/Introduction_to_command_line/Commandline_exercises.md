@@ -49,9 +49,12 @@ ACGTTCGAGATTACA
 ``` 
 
 Answer the following questions: 
-    a) How many FASTA records are within the file?
-    b) What is the size of the largest sequence within that file?
-    c) If it was a FASTQ file (see example below), how would you modify the previous commands to get the same information?
+ 
+ a) How many FASTA records are within the file?
+    
+ b) What is the size of the largest sequence within that file?
+ 
+ c) If it was a FASTQ file (see example below), how would you modify the previous commands to get the same information?
 
 ![Example FASTQ file.](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/pone.0155461.g001.png)
 
@@ -114,6 +117,7 @@ Answer the following questions:
 6.a. `cat samplefasta.fasta | grep -vE "^>" | fold -w 1 | sort | uniq -c`. Which returns 3062 As, 2020 Cs, 2064 Gs, 13 Ns and 2841 Ts.
 
 6.b. 40.84%
+
 
 
 
