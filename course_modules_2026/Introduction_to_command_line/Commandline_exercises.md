@@ -16,7 +16,7 @@ Go to your home directory, create a directory called _cp2_exercises_ and go into
 
 
 # Linux text processing tools
-Begin by downloading a file from these two files [alice.txt](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/alice.txt) and [samplefasta.fasta](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/samplefasta.fasta) using commands we have just dicussed in previous class.
+Begin by downloading a file from these two files [alice.txt](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/alice.txt) and [samplefasta.fasta](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/samplefasta.fasta) using commands we have just dicussed in previous class.
 
 4. After downloading the `alice.txt` file, explain what the following commands do:
 
@@ -48,7 +48,7 @@ b) What is the size of the largest sequence within that file?
 
 c) If it was a FASTQ file (see example below), how would you modify the previous commands to get the same information?
 
-![Example FASTQ file.](https://doi.org/10.1371/journal.pone.0155461.g001)
+![Example FASTQ file.](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/pone.0155461.g001.png)
 
 
 7. Bonus questions:
@@ -109,6 +109,7 @@ b) What is the GC content?
 6.a. `cat samplefasta.fasta | grep -vE "^>" | fold -w 1 | sort | uniq -c`. Which returns 3062 As, 2020 Cs, 2064 Gs, 13 Ns and 2841 Ts.
 
 6.b. 40.84%
+
 
 
 
