@@ -46,17 +46,15 @@ a) How many FASTA records are within the file?
 
 b) What is the size of the largest sequence within that file?
 
-c) if it was a .FASTQ file (see example below), how would you modify the previous commands?
-```
-@Sequence1
-ACGTTCGAGATTACA
-+
-AAAAAAAAAAAAAAA
-```
+c) If it was a FASTQ file (see example below), how would you modify the previous commands to get the same information?
+
+[Example FASTQ file.](https://www.researchgate.net/figure/FASTQ-file-format-example_fig8_303293093)
 
 
 6. Bonus questions:
+
 a) Compute the total amount of As, C, Gs, Ts and Ns in the `samplefasta.fasta` using pipes and redirections (A.K.A a one-liner)?
+
 b) What is the GC content? 
 
 # Answers - for your own benefit, try completing the exercises and getting the responses by your self first, then compare them with these.
@@ -109,5 +107,6 @@ b) What is the GC content?
 6.a. `cat samplefasta.fasta | grep -vE "^>" | fold -w 1 | sort | uniq -c`. Which returns 3062 As, 2020 Cs, 2064 Gs, 13 Ns and 2841 Ts.
 
 6.b. 40.84%
+
 
 
