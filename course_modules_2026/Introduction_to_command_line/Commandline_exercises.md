@@ -19,6 +19,7 @@ touch file1.txt file2.txt file3.txt fileA.dat fileB.txt
 Begin by downloading a file from these two files [alice.txt](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/alice.txt) and [samplefasta.fasta](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/samplefasta.fasta) using commands we have just dicussed in previous class.
 
 3. After downloading the `alice.txt` file, explain what the following commands do:
+
 a) `head alice.txt -n 100 > alice100.txt`
 
 b) `grep -c -E "^the" alice.txt`
@@ -28,6 +29,7 @@ c) `wc -l alice.txt`
 d) `cat alice100.txt | tr -d 'AEIOUaeiou'` 
 
 4. Still with the `alice.txt` file, write both the command and the response:
+
 a) How many characters are within the `alice.txt` file?
 
 b) How many instances of the word "the" are within the `alice.txt` file? 
@@ -43,6 +45,15 @@ ACGTTCGAGATTACA
 a) How many FASTA records are within the file?
 
 b) What is the size of the largest sequence within that file?
+
+c) if it was a .FASTQ file (see example below), how would you modify the previous commands?
+```
+@Sequence1
+ACGTTCGAGATTACA
++
+AAAAAAAAAAAAAAA
+```
+
 
 6. Bonus questions:
 a) Compute the total amount of As, C, Gs, Ts and Ns in the `samplefasta.fasta` using pipes and redirections (A.K.A a one-liner)?
@@ -98,4 +109,5 @@ b) What is the GC content?
 6.a. `cat samplefasta.fasta | grep -vE "^>" | fold -w 1 | sort | uniq -c`. Which returns 3062 As, 2020 Cs, 2064 Gs, 13 Ns and 2841 Ts.
 
 6.b. 40.84%
+
 
