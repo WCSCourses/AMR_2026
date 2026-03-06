@@ -85,7 +85,8 @@ Answer the following questions:
 | 5c | It counts just the instances where "the" is a word; i.e. it does not count instances such as "o**the**r", "ei**the**r", etc |
 | 6a | `grep -c -E "^>" samplefasta.fasta`. There are 100 FASTA records (sequences) |
 | 6b | `wc -L samplefasta.fasta`. The largest lenght sequence has 100 characters. The file is pretty much uniform, so we can try again with another file |
-| 6c | `echo $(cat samplefastq.fastq \| wc -l) / 4 | bc` |
+| 6c | `echo $(cat samplefastq.fastq \| wc -l) / 4 \| bc` |
 | 7a | `cat samplefasta.fasta \| grep -vE "^>" \| fold -w 1 \| sort \| uniq -c`. Which returns 3062 As, 2020 Cs, 2064 Gs, 13 Ns and 2841 Ts |
 | 7b | 40.84% |
+
 
