@@ -7,8 +7,8 @@ Go to your home directory, create a directory called _cp2_exercises_ and go into
 1. Create the following 5 files: `file1.txt file2.txt file3.txt fileA.dat fileB.txt`
 
 2. Write the commands necessary as to:
-  a) Create a directory named "new" within the _cp2_exercises_.
-  b) Copy all files created to the new directory at once (hint: use the wildcards we discussed earlier).
+    a) Create a directory named "new" within the _cp2_exercises_.
+    b) Copy all files created to the new directory at once (hint: use the wildcards we discussed earlier).
 
 3. Write the commands necessary to:
   a) Change the name of the _new_ directory to "old".
@@ -109,6 +109,7 @@ ACGTTCGAGATTACA
 6.a. `cat samplefasta.fasta | grep -vE "^>" | fold -w 1 | sort | uniq -c`. Which returns 3062 As, 2020 Cs, 2064 Gs, 13 Ns and 2841 Ts.
 
 6.b. 40.84%
+
 
 
 
