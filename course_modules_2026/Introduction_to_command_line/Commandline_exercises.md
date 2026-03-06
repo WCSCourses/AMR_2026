@@ -48,7 +48,7 @@ b) What is the size of the largest sequence within that file?
 
 c) If it was a FASTQ file (see example below), how would you modify the previous commands to get the same information?
 
-![Example FASTQ file.]([https://www.researchgate.net/figure/FASTQ-file-format-example_fig8_303293093](https://www.researchgate.net/profile/Jorge-Amigo/publication/303293093/figure/fig8/AS:362790863818779@1463507490957/FASTQ-file-format-example_W640.jpg))
+![Example FASTQ file.](https://www.researchgate.net/profile/Jorge-Amigo/publication/303293093/figure/fig8/AS:362790863818779@1463507490957/FASTQ-file-format-example_W640.jpg)
 
 
 7. Bonus questions:
@@ -109,6 +109,7 @@ b) What is the GC content?
 6.a. `cat samplefasta.fasta | grep -vE "^>" | fold -w 1 | sort | uniq -c`. Which returns 3062 As, 2020 Cs, 2064 Gs, 13 Ns and 2841 Ts.
 
 6.b. 40.84%
+
 
 
 
