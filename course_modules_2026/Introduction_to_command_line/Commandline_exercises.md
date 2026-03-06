@@ -85,52 +85,7 @@ Answer the following questions:
 | 5c | It counts just the instances where "the" is a word; i.e. it does not count instances such as "o**the**r", "ei**the**r", etc |
 | 6a | `grep -c -E "^>" samplefasta.fasta`. There are 100 FASTA records (sequences) |
 | 6b | `wc -L samplefasta.fasta`. The largest lenght sequence has 100 characters. The file is pretty much uniform, so we can try again with another file |
-| 6c | `echo $(cat samplefastq.fastq \| wc -l) \/ 4 | bc` |
+| 6c | `echo $(cat samplefastq.fastq \| wc -l) / 4 | bc` |
 | 7a | `cat samplefasta.fasta \| grep -vE "^>" \| fold -w 1 \| sort \| uniq -c`. Which returns 3062 As, 2020 Cs, 2064 Gs, 13 Ns and 2841 Ts |
 | 7b | 40.84% |
-
-
-# This is redundant (already in the tables), ignore it.
-## Linux file system and files manipulation
-1. `mkdir -p cp1_exercises/new`; then `touch file1.txt file2.txt file3.txt fileA.dat fileB.txt`; then `cp file* new/`.
-2. From within _cp1_exercises_, `mv new old` and from within the _old_ directory (just renamed as such) `mv file1.txt file4.txt`.
-
-## Linux text processing tools
-3.a. It takes the first 100 lines from the _alice.txt_ file, then redirects the output (instead of printing it to the screen/STDOUT) to the file _alice100.txt_ (which is created by this command).
-
-3.b. Counts the number of lines that start with the word "the". There are 88 instances.
-
-3.c. It counts the number of lines contained in the _alice.txt_ file.
-
-3.d. Removes all the vowels from the text and prints it to the screen.
-
-4.a. `wc -c alice.txt`; There are 151191 characters.
-
-4.b. `grep -c "the" alice.txt`. There are 1433 instances.
-
-4.c. It counts just the instances where "the" is a word; i.e. it does not count instances such as "o**the**r", "ei**the**r", etc.
-
-5.a. `grep -c -E "^>" samplefasta.fasta`. There are 100 FASTA records (sequences).
-
-5.b. `wc -L samplefasta.fasta`. The largest lenght sequence has 100 characters. The file is pretty much uniform, so we can try again with another file.
-
-6.a. `cat samplefasta.fasta | grep -vE "^>" | fold -w 1 | sort | uniq -c`. Which returns 3062 As, 2020 Cs, 2064 Gs, 13 Ns and 2841 Ts.
-
-6.b. 40.84%
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
