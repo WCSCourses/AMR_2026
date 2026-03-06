@@ -14,7 +14,7 @@
 
 ---
 
-## 2. Environment Management (Core Skills)
+## 2. Environment Management
 
 | Command | Description |
 |---------|-------------|
@@ -66,7 +66,7 @@ conda install -c bioconda fastqc fastp porechop filtlong nanoqc
 
 ---
 
-## 6. Channels (Very Important in Bioinformatics)
+## 6. Channels 
 
 Bioinformatics tools often come from **bioconda** and **conda-forge**.
 
@@ -85,7 +85,7 @@ conda config --set channel_priority strict
 
 ---
 
-## 7. Exporting & Reproducing Environments (For Reproducibility)
+## 7. Exporting & Reproducing Environments 
 
 | Command | Description |
 |---------|-------------|
@@ -124,7 +124,7 @@ conda env create -f amr_env.yml
 
 ---
 
-## Core Conda Commands You’ll Use Throughout this course
+## Common Core Conda Commands
 
 ```
 conda env list
@@ -136,4 +136,5 @@ conda deactivate
 ```
 
 ---
+
 
