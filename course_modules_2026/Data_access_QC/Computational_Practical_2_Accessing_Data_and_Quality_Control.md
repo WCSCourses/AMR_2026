@@ -31,27 +31,7 @@ A typical whole genome sequencing process involves genomic DNA isolation, librar
 In this practical, we will have two parts. (A) Short Read (Illumina data) and (B) Long-Read (ONT data) QC
 We will use the sequence data of one isolate _Klebsiella pneumoniae_ cpe004 which has been sequenced on both Illumina and Nanopore
 
-```mermaid
-flowchart TD
 
-A[Raw Sequencing Data<br>FASTQ / FASTQ.gz]
-
-A --> B[Initial Data Inspection<br>ls<br>zcat<br>head]
-
-B --> C[Raw Read Quality Assessment<br>FastQC<br>NanoQC]
-
-C --> D[Adapter Removal<br>fastp<br>Porechop<br>Cutadapt]
-
-D --> E[Quality Trimming<br>fastp<br>Trimmomatic]
-
-E --> F[Read Filtering<br>Minimum length / quality<br>Filtlong]
-
-F --> G[Optional Contaminant Removal<br>Kraken2<br>Bowtie2]
-
-G --> H[Post-Filtering Quality Check<br>FastQC<br>NanoQC<br>MultiQC]
-
-H --> I[Clean Reads Ready for Analysis]
-```
 
 # A) Illumina Data
 Dataset
@@ -258,3 +238,28 @@ Compare:
 1. Read count before vs after
 2. N50 before vs after
 3. Average quality before vs after
+
+
+
+
+```mermaid
+flowchart TD
+
+A[Raw Sequencing Data<br>FASTQ / FASTQ.gz]
+
+A --> B[Initial Data Inspection<br>ls<br>zcat<br>head]
+
+B --> C[Raw Read Quality Assessment<br>FastQC<br>NanoQC]
+
+C --> D[Adapter Removal<br>fastp<br>Porechop<br>Cutadapt]
+
+D --> E[Quality Trimming<br>fastp<br>Trimmomatic]
+
+E --> F[Read Filtering<br>Minimum length / quality<br>Filtlong]
+
+F --> G[Optional Contaminant Removal<br>Kraken2<br>Bowtie2]
+
+G --> H[Post-Filtering Quality Check<br>FastQC<br>NanoQC<br>MultiQC]
+
+H --> I[Clean Reads Ready for Analysis]
+```
