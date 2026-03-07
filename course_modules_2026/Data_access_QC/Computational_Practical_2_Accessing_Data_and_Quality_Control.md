@@ -214,9 +214,8 @@ In the command above we have used a number of options which are explained below:
 
 
 
-When you run `fastp` it will output some statistics like the example screenshot below:
- 
-![](images/fastpout.png) 
+When you run `fastp` it will output some statistics like the example below:
+
 
 
 <pre>
@@ -268,7 +267,7 @@ You can run `fastqc` on the filtered files (`ERR5386380_1.trimmed.fastq.gz` and 
 # Nanopore Data Access and Quality Control (ONT)
 
 ```
-cd /home/data/data/cp3/long_read
+cd /home/data/data/cp3/long_reads
 ```
 ## Step 7: Verify Download
 ```
