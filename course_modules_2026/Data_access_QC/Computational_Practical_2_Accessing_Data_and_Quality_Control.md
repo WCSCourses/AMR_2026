@@ -172,6 +172,17 @@ cd /home/data/data/cp3/multiqc
 ```
 multiqc ./
 ```
+check files
+<pre>
+ERR4095885_1_fastqc.html  ERR4095905_2_fastqc.html
+ERR4095885_1_fastqc.zip   ERR4095905_2_fastqc.zip
+ERR4095885_2_fastqc.html  ERR4095909_1_fastqc.html
+ERR4095885_2_fastqc.zip   ERR4095909_1_fastqc.zip
+ERR4095905_1_fastqc.html  ERR4095909_2_fastqc.html
+ERR4095905_1_fastqc.zip   ERR4095909_2_fastqc.zip
+ 
+</pre>
+
 
 Go to Desktop - amr25_data - data - cp3 - multiqc
 
