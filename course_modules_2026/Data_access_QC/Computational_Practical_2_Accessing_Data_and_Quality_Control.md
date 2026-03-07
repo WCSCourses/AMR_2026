@@ -61,9 +61,12 @@ ls -lh
 ```
 
 You should see
-ERR4095909_1.fastq.gz 
+<pre>
+ total 244M
+-rwxrwxrwx 1 root root 109M Mar  7 12:28 ERR4095909_1.fastq.gz
+-rwxrwxrwx 1 root root 136M Mar  7 12:32 ERR4095909_2.fastq.gz
+</pre>
 
-ERR4095909_2.fastq.gz
 
 ### Step 4: Running the FastQC tool<a name="runfastqc"></a>
 
@@ -72,6 +75,15 @@ Run the following command to run the fastqc tool on both the read files:
 ```
 fastqc ERR4095909_1.fastq.gz ERR4095909_2.fastq.gz 
 ```
+### Step : Check output 
+```
+ls -lh
+```
+you should new files have been created 
+<pre>
+ERR4095909_1.fastq.gz     ERR4095909_1_fastqc.zip  ERR4095909_2_fastqc.html
+ERR4095909_1_fastqc.html  ERR4095909_2.fastq.gz    ERR4095909_2_fastqc.zip
+</pre>
 
 Note: The program will exit with an error if the downloaded “.gz” files are truncated/not downloaded completely. If you face such an error, please download the file again using the `wget` commands and rerun `fastqc`. 
 
