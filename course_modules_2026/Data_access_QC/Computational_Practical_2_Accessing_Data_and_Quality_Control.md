@@ -297,6 +297,27 @@ Nanopore reads may contain:
 ```
 porechop -i ERR8282741.fastq.gz -o ERR8282741_trimmed.fastq.gz
 ```
+
+
+you should adapters trimmed
+
+<pre>
+Trimming adapters from read ends
+  Rapid_adapter: GTTTTCGCATTTATCGTGAAACGCTTTCGCGTTTTTCGTGCGCCGCTTCA
+       BC02_rev: ACAGACGACTACAAACGGAATCGA
+           BC02: TCGATTCCGTTTGTAGTCGTCTGT
+       BC04_rev: TAGGGAAACACGATAGAATCCGAA
+           BC04: TTCGGATTCTATCGTGTTTCCCTA
+       BC08_rev: ACGTAACTTGGTTTGTTCCCTGAA
+           BC08: TTCAGGGAACAAACCAAGTTACGT
+       BC09_rev: AACCAAGACTCGCTGTGCCTAGTT
+           BC09: AACTAGGCACAGCGAGTCTTGGTT
+           BC01: AAGAAAGTTGTCGGTGTCTTTGTG
+       BC01_rev: CACAAAGACACCGACAACTTTCTT
+           BC04: TTCGGATTCTATCGTGTTTCCCT
+ 
+</pre>
+
 ## Step 10: Filtering Reads with Filtlong
 Filtlong filters reads by:
 * Length
