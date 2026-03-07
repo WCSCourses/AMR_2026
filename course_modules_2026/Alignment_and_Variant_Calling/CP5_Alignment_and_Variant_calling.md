@@ -61,6 +61,14 @@ Choosing a reference genome is a critical step in this process, an ideal referen
 For this practical we will be analysing the sequence reads of a _S. typhi_ isolate *ERR2093239*. The sequence reads and the reference sequence
 are located in the folder `cp5`.
 
+> [!NOTE]
+> **For those in the overflow room only the files are not there**, so run the following commands to get the files into _cp5/manual_analysis_:
+
+```
+wget 
+wget
+```
+
 Now, `cd` into this directory by typing:
 ```
 cd /home/manager/course/cp5/manual_analysis
@@ -87,7 +95,7 @@ ls -l
 ```
 The next step is to carry out mapping using the BWA-MEM algorithm. A typical command looks like this:
 ```
-bwa mem reference.fa read1.fastq read2.fast > output.sam
+bwa mem reference.fa read1.fastq read2.fast > output.sam # Syntax
 # Note: Don't worry the command won't work as we have not provided the correct read files.
 ```
 In the above command, `reference.fa` is the reference genome sequence and `read1.fastq` and `read2.fastq` are the two reads. The alignment gets redirected
