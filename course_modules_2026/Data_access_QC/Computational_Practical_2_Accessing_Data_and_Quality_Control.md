@@ -299,8 +299,13 @@ Nanopore reads may contain:
 * Adapters
 * Chimeric reads
 * Barcode remnants
+
+
+porchop takes long to run, so we have already run this step
+
+this is the command without the # at the start
 ```
-porechop -i ERR8282741.fastq.gz -o ERR8282741_trimmed.fastq.gz
+#porechop -i ERR8282741.fastq.gz -o ERR8282741_trimmed.fastq.gz
 ```
 
 
