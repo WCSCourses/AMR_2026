@@ -290,11 +290,7 @@ nanoQC ERR8282741.fastq.gz -o nanoqc_output
 * Yield statistics
 * Read count
 
-### Interpretation Points 
-* What is the N50?
-* What is the median read length?
-* What is the average Q-score?
-* Is there a large number of very short reads?
+
 ## Step 9: Adapter Trimming with Porechop
 Nanopore reads may contain:
 * Adapters
@@ -315,17 +311,9 @@ filtlong --keep_percent 90 ERR8282741_trimmed.fastq.gz > ERR8282741_filtered.fas
 ```
 Filter by Minimum Length
 ```
-filtlong --min_length 1000 ERR8282741_trimmed.fastq.gz > ERR8282741_filtered.fastq
+filtlong --min_length 1000 ERR8282741_trimmed.fastq.gz > ERR8282741_filtered_min1k.fastq
 ```
-Re-run QC After Filtering
-```
-nanoqc ERR8282741_filtered.fastq -o filtered_qc
-```
-Compare:
 
-1. Read count before vs after
-2. N50 before vs after
-3. Average quality before vs after
 
 
 
