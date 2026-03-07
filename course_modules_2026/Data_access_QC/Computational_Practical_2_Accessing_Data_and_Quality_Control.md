@@ -1,4 +1,4 @@
-# Computational practical 2: Accessing Data and Quality Control
+# Computational practical 3: Accessing Data and Quality Control
 
 **Original Module Developers:** Dr. Stanford Kwenda, Mr. Collins Kigen and Mr Mishalan Moodley
 
