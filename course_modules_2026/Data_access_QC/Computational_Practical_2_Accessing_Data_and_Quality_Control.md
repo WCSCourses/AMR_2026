@@ -281,7 +281,7 @@ ls -lh
 ## Step 8: Quality Control with NanoQC
 
 ```
-nanoqc ERR8282741.fastq.gz -o nanoqc_output
+nanoQC ERR8282741.fastq.gz -o nanoqc_output
 ```
 ### Output Includes:
 * Read length distribution
