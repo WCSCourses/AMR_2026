@@ -52,27 +52,25 @@ Let's assess the sequence data quality of an isolate of *Klebsiella pneumoniae* 
 ### Step 1: Open the terminal and change your working directory to the directory with the files for this practical, which is a folder called cp2.
 
 ```
-cd /home/data/data/cp2
+cd /home/data/data/cp3/short_reads
 ```
 
-### Step 2: Download the sequence reads (fastq files) for analysis by entering the following commands one after the other.
-
-```
-wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR409/009/ERR4095909/ERR4095909_1.fastq.gz
-
-wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR409/009/ERR4095909/ERR4095909_2.fastq.gz
-```
-### Step 3: Verify Download
+### Step 3: Check Files
 ```
 ls -lh
 ```
+
+You should see
+ERR4095909_1.fastq.gz 
+
+ERR4095909_2.fastq.gz
 
 ### Step 4: Running the FastQC tool<a name="runfastqc"></a>
 
 Run the following command to run the fastqc tool on both the read files:
 
 ```
-fastqc ERR4095909_1.fastq.gz ERR4095909_2.fastq.gz
+fastqc ERR4095909_1.fastq.gz ERR4095909_2.fastq.gz 
 ```
 
 Note: The program will exit with an error if the downloaded “.gz” files are truncated/not downloaded completely. If you face such an error, please download the file again using the `wget` commands and rerun `fastqc`. 
