@@ -218,6 +218,47 @@ When you run `fastp` it will output some statistics like the example screenshot 
  
 ![](images/fastpout.png) 
 
+
+<pre>
+ Read1 before filtering:
+total reads: 1900400
+total bases: 286960400
+Q20 bases: 279663444(97.4572%)
+Q30 bases: 266500082(92.87%)
+
+Read2 before filtering:
+total reads: 1900400
+total bases: 286960400
+Q20 bases: 262536999(91.4889%)
+Q30 bases: 236188710(82.3071%)
+
+Read1 after filtering:
+total reads: 1847152
+total bases: 277432440
+Q20 bases: 271779831(97.9625%)
+Q30 bases: 260263345(93.8114%)
+
+Read2 after filtering:
+total reads: 1847152
+total bases: 271116170
+Q20 bases: 255339372(94.1808%)
+Q30 bases: 232976087(85.9322%)
+
+Filtering result:
+reads passed filter: 3694304
+reads failed due to low quality: 100870
+reads failed due to too many N: 816
+reads failed due to too short: 4810
+reads with adapter trimmed: 5174
+bases trimmed due to adapters: 267645
+
+Duplication rate: 2.86334%
+
+Insert size peak (evaluated by paired-end reads): 271
+
+JSON report: fastp.json
+HTML report: fastp.html
+</pre>
 Here, we can see the number of reads which were retained after trimming and filtering. The full output message tells us how many reads failed for each QC criterion. The filtered and trimmed reads (`ERR4095909_1.trimmed.fastq.gz` and `ERR4095909_2.trimmed.fastq.gz`) will be in the same folder and can be used for the downstream analysis steps. fastp will also generate an HTML file (default name is fastp.html) with more information on the trimming and some other QC information - open this file in a web browser to see the output.
 
 **Quiz: How many reads were removed by fastp due to a) low quality, b) too many Ns, and c) were too short after filtering?**
