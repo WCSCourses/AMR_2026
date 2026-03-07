@@ -281,6 +281,11 @@ ls -lh
 ```
 nanoQC ERR8282741.fastq.gz -o nanoqc_output
 ```
+
+### Step 5: Go to Desktop - amr25_data - data - cp3 - long_reads - nanoqc_output
+
+double click the html file `nanoQC` to open the report on browser
+
 ### Output Includes:
 * Read length distribution
 * Quality score distribution
