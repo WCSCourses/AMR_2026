@@ -166,7 +166,7 @@ Here, we will run fastp on the isolate ERR4095909 that we used in the quiz above
 Multiqc
 
 ```
-cd /home/data/data/cp3/mutliqc
+cd /home/data/data/cp3/multiqc
 ```
 
 ```
