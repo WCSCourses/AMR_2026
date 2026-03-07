@@ -71,7 +71,9 @@ ls -lh
 
 Run the following command to run the fastqc tool on both the read files:
 
-`fastqc ERR4095909_1.fastq.gz ERR4095909_2.fastq.gz`
+```
+fastqc ERR4095909_1.fastq.gz ERR4095909_2.fastq.gz
+```
 
 Note: The program will exit with an error if the downloaded “.gz” files are truncated/not downloaded completely. If you face such an error, please download the file again using the `wget` commands and rerun `fastqc`. 
 
