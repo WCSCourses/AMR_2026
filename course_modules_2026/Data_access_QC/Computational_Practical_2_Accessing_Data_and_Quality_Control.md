@@ -338,9 +338,22 @@ Keep best 90% of reads:
 ```
 filtlong --keep_percent 90 ERR8282741_trimmed.fastq.gz > ERR8282741_filtered.fastq
 ```
+
+
+<pre>
+ Scoring long reads
+  70656 reads (526124445 bp)
+
+Filtering long reads
+  target: 473512000 bp
+  keeping 473513081 bp
+
+Outputting passed long reads
+</pre>
+
 Filter by Minimum Length
 ```
-filtlong --min_length 1000 ERR8282741_trimmed.fastq.gz > ERR8282741_filtered_min1k.fastq
+filtlong --min_length 1000 ERR8282741_filtered.fastq > ERR8282741_filtered_min1k.fastq
 ```
 
 
