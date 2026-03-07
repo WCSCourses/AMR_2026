@@ -55,7 +55,7 @@ Let's assess the sequence data quality of an isolate of *Klebsiella pneumoniae* 
 cd /home/data/data/cp3/short_reads
 ```
 
-### Step 3: Check Files
+### Step 2: Verify the reads are in the directory
 ```
 ls -lh
 ```
@@ -78,6 +78,10 @@ Note: The program will exit with an error if the downloaded “.gz” files are 
 Upon successful completion `fastqc` will create an analysis report in html format, one for each read file named after the name of the file you used as input. We can see the report by opening the html file in the web-browser.
 
 Let's take a look at the graphs generated for ERR4095909_1.fastq, the first read in our read pairs.
+
+
+## Go to Desktop - amr25_data - data - cp3 - short_reads - 
+double click the ERR_1.fastqc
 
 #### Basic statistics <a name="basics"></a>
 
@@ -146,6 +150,21 @@ Once we have assessed the quality of the sequence reads, sometimes we spot bases
 ## Trimming Exercise and Quiz <a name="trimexercise"></a>
 Here, we will run fastp on the isolate ERR4095909 that we used in the quiz above. Run the following command (in a single line) to initiate the tool:
 
+
+Multiqc
+
+```
+cd /home/data/data/cp3/mutliqc
+```
+
+```
+multiqc ./
+```
+
+Go to Desktop - amr25_data - data - cp3 - multiqc
+
+double click multiqc_report
+
 ```
 fastp --in1 ERR4095909_1.fastq.gz --in2 ERR4095909_2.fastq.gz --out1 ERR4095909_1.trimmed.fastq.gz --out2 ERR40959092.trimmed.fastq.gz --length_required 40 --cut_front --cut_tail --cut_mean_quality 25
 ```
@@ -175,16 +194,8 @@ You can run `fastqc` on the filtered files (`ERR5386380_1.trimmed.fastq.gz` and 
 
 # Nanopore Data Access and Quality Control (ONT)
 
-## Step 6: Retrieving Nanopore Data from ENA
-Dataset
-ENA Accession: ERR8282741
-
-Platform: Oxford Nanopore Technologies (ONT)
-
-Format: FASTQ
-
 ```
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR828/001/ERR8282741/ERR8282741.fastq.gz
+cd /home/data/data/cp3/long_read
 ```
 ## Step 7: Verify Download
 ```
