@@ -46,9 +46,9 @@ There are several bioinformatic tools available for evaluating read data quality
 
 ![goodbadqc](images/goodbadqc.png)
 
-## Downloading raw data<a name="intro"></a>
-Let's assess the sequence data quality of an isolate of *Klebsiella pneumoniae* (ERR4095909). We will download this sequence data from the European Nucleotide Archive, a data archive which contains public sequencing data from thousands of bacterial sequencing projects. ERR4095909 is the accession number which allows you to find this data in the public archives.
-
+## Raw data<a name="intro"></a>
+Let's assess the sequence data quality of an isolate of *Klebsiella pneumoniae* (ERR4095909). The data has been downloaded from the European Nucleotide Archive, a data archive which contains public sequencing data from thousands of bacterial sequencing projects. ERR4095909 is the accession number which allows you to find this data in the public archives.
+## Running FstQC <a name="runfastqc"></a>
 ### Step 1: Open the terminal and change your working directory to the directory with the files for this practical, which is a folder called cp3.
 
 ```
@@ -68,7 +68,7 @@ You should see
 </pre>
 
 
-### Step 3: Running the FastQC tool<a name="runfastqc"></a>
+### Step 3: Running the FastQC tool
 
 Run the following command to run the fastqc tool on both the read files:
 
@@ -92,8 +92,20 @@ Upon successful completion `fastqc` will create an analysis report in html forma
 Let's take a look at the graphs generated for ERR4095909_1.fastq, the first read in our read pairs.
 
 
-### Step 5: Go to Desktop - amr25_data - data - cp3 - short_reads 
-`double click the html file ERR4095909_1.fastqc to open the fastqc report on browser`
+
+### Step 5:  Opening the FastQC Report (GUI)
+
+1. Navigate to the following directory:
+
+```
+Desktop → amr25_data → data → cp3 → short_reads
+```
+
+2. Inside this folder, locate and doubleclick on the html file:
+
+```
+ERR4095909_1.fastqc
+```
 
 #### Basic statistics <a name="basics"></a>
 
@@ -146,16 +158,26 @@ It is important to ensure that the sequence reads are not contaminated with adap
 
 From all the above data metrics it appears that the sequence reads of the isolate ERR5386320 are of good quality and can be used to run the downstream analysis.
 
-### Step 6:Combining Fastqc Outputs with Multiqc
+
+## Running MultiQC
+
+When working with sequencing data, we often analyze **many samples at once**. Inspecting quality control reports for each sample individually can be **time-consuming and inefficient**. **MultiQC** simplifies this process by collecting results from multiple QC tools (such as **FastQC, NanoQC, and others**) and combining them into a **single interactive report**. This allows users to quickly compare quality metrics across all samples and identify potential issues in the dataset.
+
+### Step 6:Navigate to directory with fastqc output file
+After running FastQC on multiple samples, each sample produces two files:
+
+- `*_fastqc.html`
+- `*_fastqc.zip`
+
+Both files are needed because **MultiQC reads the summary information stored inside the `.zip` file**.
+Make sure all FastQC outputs are stored in the **same directory**.
 
 ```
 cd /home/data/data/cp3/multiqc
 ```
 
-```
-multiqc ./
-```
-check files
+
+### Step 7: List all the FastQC output files present in the directory
 
 ```
 ls
@@ -169,11 +191,35 @@ ERR4095905_1_fastqc.html  ERR4095909_2_fastqc.html
 ERR4095905_1_fastqc.zip   ERR4095909_2_fastqc.zip
  
 </pre>
+### Step 8: Run multiqc
+```
+multiqc ./
+```
+#### The "./" represent the current directory
 
 
-Go to Desktop - amr25_data - data - cp3 - multiqc
 
-double click on the html file `multiqc_report` to open it on browser
+
+
+### Step 9: Opening the MultiQC Report (GUI)
+
+MultiQC will generate a summary report:
+
+1. Navigate to the following directory:
+
+```
+Desktop → amr25_data → data → cp3 → multiqc
+```
+
+2. Inside this folder, locate and doubleclick on the html file:
+
+```
+multiqc_report
+```
+
+3. **Double-click** the file to open it in your web browser.
+
+The MultiQC report will display a **summary of quality metrics across all samples**, allowing you to quickly review the sequencing data quality.
 
 #### QC Exercise and Quiz <a name="qcexercise"></a>
 
@@ -184,17 +230,17 @@ Now run the fastqc tool on the sequence reads of another isolate cpe079. The ENA
 
 If you would like to see examples of FastQC plots generated when sequencing goes wrong, you can look on the [QCFail site](https://sequencing.qcfail.com/software/fastqc/).
 
-## Step 7: Filtering and trimming of sequence reads<a name="filttrim"></a>
+## Step 10: Filtering and trimming of sequence reads<a name="filttrim"></a>
 Once we have assessed the quality of the sequence reads, sometimes we spot bases with lower quality, particularly in read 2 files. These low quality bases need to be trimmed and here we are going to use another tool fastp for this purpose. fastp is a very fast QC and trimming command, which can be configured in many ways. Run the command `fastp` to see all the different options you can use or look at the website.
 
 ## Trimming Exercise and Quiz <a name="trimexercise"></a>
 Here, we will run fastp on the isolate ERR4095909 that we used in the quiz above. Run the following command (in a single line) to initiate the tool:
 
-## Step 7: Navigate
+## Step 11: Navigate to the directory with the fastq
 ```
 cd /home/data/data/cp3/short_reads
 ```
-## Step 8: Run fastp
+## Step 12: Run fastp
 ```
 fastp --in1 ERR4095909_1.fastq.gz --in2 ERR4095909_2.fastq.gz --out1 ERR4095909_1.trimmed.fastq.gz --out2 ERR40959092.trimmed.fastq.gz --length_required 40 --cut_front --cut_tail --cut_mean_quality 20
 ```
@@ -267,7 +313,7 @@ You can run `fastqc` on the filtered files (`ERR5386380_1.trimmed.fastq.gz` and 
 ```
 cd /home/data/data/cp3/long_reads
 ```
-## Step 7: Verify Download
+## Step 13: Verify files are there
 ```
 ls -lh
 ```
@@ -276,15 +322,28 @@ ls -lh
 <pre>
  -rwxrwxrwx 1 root root 523M Mar  7 12:56 ERR8282741.fastq.gz
 </pre>
-## Step 8: Quality Control with NanoQC
+## Step 14: Quality Control with NanoQC
 
 ```
 nanoQC ERR8282741.fastq.gz -o nanoqc_output
 ```
 
-### Step 5: Go to Desktop - amr25_data - data - cp3 - long_reads - nanoqc_output
+### Step 15: Go to Desktop - amr25_data - data - cp3 - long_reads - nanoqc_output
 
 double click the html file `nanoQC` to open the report on browser
+### Step 15: Opening the nanoQC Report (GUI)
+
+1. Navigate to the following directory:
+
+```
+Desktop → amr25_data → data → cp3 → long_reads → nanoqc_output
+```
+
+2. Inside this folder, locate and double click the html file:
+
+```
+nanoQC
+```
 
 ### Output Includes:
 * Read length distribution
@@ -294,7 +353,7 @@ double click the html file `nanoQC` to open the report on browser
 * Read count
 
 
-## Step 9: Adapter Trimming with Porechop
+## Step 16: Adapter Trimming with Porechop
 Nanopore reads may contain:
 * Adapters
 * Chimeric reads
@@ -328,7 +387,7 @@ Trimming adapters from read ends
  
 </pre>
 
-## Step 10: Filtering Reads with Filtlong
+## Step 17: Filtering Reads with Filtlong
 Filtlong filters reads by:
 * Length
 * Quality
@@ -358,26 +417,3 @@ filtlong --min_length 1000 ERR8282741_filtered.fastq > ERR8282741_filtered_min1k
 
 
 
-
-
-```mermaid
-flowchart TD
-
-A[Raw Sequencing Data<br>FASTQ / FASTQ.gz]
-
-A --> B[Initial Data Inspection<br>ls<br>zcat<br>head]
-
-B --> C[Raw Read Quality Assessment<br>FastQC<br>NanoQC]
-
-C --> D[Adapter Removal<br>fastp<br>Porechop<br>Cutadapt]
-
-D --> E[Quality Trimming<br>fastp<br>Trimmomatic]
-
-E --> F[Read Filtering<br>Minimum length / quality<br>Filtlong]
-
-F --> G[Optional Contaminant Removal<br>Kraken2<br>Bowtie2]
-
-G --> H[Post-Filtering Quality Check<br>FastQC<br>NanoQC<br>MultiQC]
-
-H --> I[Clean Reads Ready for Analysis]
-```
