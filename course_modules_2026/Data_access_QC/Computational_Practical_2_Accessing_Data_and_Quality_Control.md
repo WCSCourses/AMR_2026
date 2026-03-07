@@ -52,7 +52,7 @@ Let's assess the sequence data quality of an isolate of *Klebsiella pneumoniae* 
 ### Step 1: Open the terminal and change your working directory to the directory with the files for this practical, which is a folder called cp2.
 
 ```
-cd /home/data/cp2
+cd /home/data/data/cp2
 ```
 
 ### Step 2: Download the sequence reads (fastq files) for analysis by entering the following commands one after the other.
