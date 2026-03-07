@@ -188,6 +188,11 @@ Go to Desktop - amr25_data - data - cp3 - multiqc
 
 double click multiqc_report
 
+## Trimming
+```
+cd /home/data/data/cp3/short_reads
+```
+
 ```
 fastp --in1 ERR4095909_1.fastq.gz --in2 ERR4095909_2.fastq.gz --out1 ERR4095909_1.trimmed.fastq.gz --out2 ERR40959092.trimmed.fastq.gz --length_required 40 --cut_front --cut_tail --cut_mean_quality 25
 ```
