@@ -173,6 +173,10 @@ cd /home/data/data/cp3/multiqc
 multiqc ./
 ```
 check files
+
+```
+ls
+```
 <pre>
 ERR4095885_1_fastqc.html  ERR4095905_2_fastqc.html
 ERR4095885_1_fastqc.zip   ERR4095905_2_fastqc.zip
@@ -194,7 +198,7 @@ cd /home/data/data/cp3/short_reads
 ```
 
 ```
-fastp --in1 ERR4095909_1.fastq.gz --in2 ERR4095909_2.fastq.gz --out1 ERR4095909_1.trimmed.fastq.gz --out2 ERR40959092.trimmed.fastq.gz --length_required 40 --cut_front --cut_tail --cut_mean_quality 25
+fastp --in1 ERR4095909_1.fastq.gz --in2 ERR4095909_2.fastq.gz --out1 ERR4095909_1.trimmed.fastq.gz --out2 ERR40959092.trimmed.fastq.gz --length_required 40 --cut_front --cut_tail --cut_mean_quality 20
 ```
 
 In the command above we have used a number of options which are explained below:
