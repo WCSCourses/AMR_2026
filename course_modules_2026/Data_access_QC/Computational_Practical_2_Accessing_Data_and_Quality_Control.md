@@ -175,7 +175,7 @@ You can run `fastqc` on the filtered files (`ERR5386380_1.trimmed.fastq.gz` and 
 
 # Nanopore Data Access and Quality Control (ONT)
 
-## Step 1: Retrieving Nanopore Data from ENA
+## Step 6: Retrieving Nanopore Data from ENA
 Dataset
 ENA Accession: ERR8282741
 
@@ -186,11 +186,11 @@ Format: FASTQ
 ```
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR828/001/ERR8282741/ERR8282741.fastq.gz
 ```
-## Step 2: Verify Download
+## Step 7: Verify Download
 ```
 ls -lh
 ```
-## Step 3: Quality Control with NanoQC
+## Step 8: Quality Control with NanoQC
 
 ```
 nanoqc ERR8282741.fastq.gz -o nanoqc_output
@@ -207,7 +207,7 @@ nanoqc ERR8282741.fastq.gz -o nanoqc_output
 * What is the median read length?
 * What is the average Q-score?
 * Is there a large number of very short reads?
-## Step 4: Adapter Trimming with Porechop
+## Step 9: Adapter Trimming with Porechop
 Nanopore reads may contain:
 * Adapters
 * Chimeric reads
@@ -215,7 +215,7 @@ Nanopore reads may contain:
 ```
 porechop -i ERR8282741.fastq.gz -o ERR8282741_trimmed.fastq.gz
 ```
-## Step 5: Filtering Reads with Filtlong
+## Step 10: Filtering Reads with Filtlong
 Filtlong filters reads by:
 * Length
 * Quality
