@@ -273,6 +273,11 @@ cd /home/data/data/cp3/long_reads
 ```
 ls -lh
 ```
+
+## you should see
+<pre>
+ -rwxrwxrwx 1 root root 523M Mar  7 12:56 ERR8282741.fastq.gz
+</pre>
 ## Step 8: Quality Control with NanoQC
 
 ```
