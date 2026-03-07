@@ -61,23 +61,28 @@ Choosing a reference genome is a critical step in this process, an ideal referen
 For this practical we will be analysing the sequence reads of a _S. typhi_ isolate *ERR2093239*. The sequence reads and the reference sequence
 are located in the folder `cp5`.
 
-> [!NOTE]
-> **For those in the overflow room only the files are not there**, so run the following commands to get the files into _cp5/manual_analysis_:
-
-```
-wget 
-wget
-```
-
 Now, `cd` into this directory by typing:
 ```
 cd /home/manager/course/cp5/manual_analysis
 ```
-Note: to ensure the tools are installed properly, the following commands when typed in the terminal must not generate any error.
+
+> [!NOTE]
+> **For those in the overflow room only, the files are not there**, so run the following commands to get the files into _cp5/manual_analysis_:
+
+```
+wget https://github.com/WCSCourses/AMR_2026/edit/main/course_modules_2026/Alignment_and_Variant_Calling/downsampled_manual/ERR2093239_1.fastq.gz
+wget https://github.com/WCSCourses/AMR_2026/edit/main/course_modules_2026/Alignment_and_Variant_Calling/downsampled_manual/ERR2093239_1.fastq.gz
+```
+
+> [!NOTE]
+> The files you have just downloaded are not the original ones. They were downsampled to allow us proceeding with the practical.
+
+Before going any further, let's ensure the tools are installed properly, the following commands when typed in the terminal must not generate any error.
 ```
 bwa
 samtools
 bcftools
+snp-dists
 ```
 
 ## **Alignment** <a name="alignment"></a>
