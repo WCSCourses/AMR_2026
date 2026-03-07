@@ -310,6 +310,8 @@ fastp -i ERR4095885_1.fastq.gz -I ERR4095885_2.fastq.gz -o out.ERR4095885_1.fast
 
 ## Short Read Alignment and SNP calling with snippy<a name="usesnippy"></a>
 ```
+conda activate snippy
+
 #PSA
 # snippy --cpus 4 --outdir snippy_output --reference reference.fasta --R1 output_R1_paired.fastq --R2 output_R2_paired.fastq # Syntax
 snippy --cpus 4 --outdir ERR4095905_snippy --reference cpe058_Kpn-ST78-NDM1.chr.fasta --R1 out.ERR4095905_1.fastq.gz --R2 out.ERR4095905_2.fastq.gz
@@ -318,6 +320,8 @@ snippy --cpus 4 --outdir ERR4095885_snippy --reference cpe058_Kpn-ST78-NDM1.chr.
 ```
 #MSA
 snippy-core --prefix core --ref cpe058_Kpn-ST78-NDM1.chr.fasta *_snippy # or specify the snippy folders: ERR4095885_snippy ERR4095905_snippy
+
+conda deactivate
 ```
 
 ## **Examining the output**<a name="snippyoutput"></a>
