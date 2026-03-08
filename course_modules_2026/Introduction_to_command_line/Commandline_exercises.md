@@ -30,11 +30,11 @@ Begin by downloading a file from these two files
 1. [alice.txt](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/alice.txt)
 
 ```
-wget https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/alice.txt
+wget https://raw.githubusercontent.com/WCSCourses/AMR_2026/refs/heads/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/alice.txt
 ```
 2. [samplefasta.fasta](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/samplefasta.fasta) using commands we have just dicussed in previous class.
 ```
-wget https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/samplefasta.fasta
+wget https://raw.githubusercontent.com/WCSCourses/AMR_2026/refs/heads/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/samplefasta.fasta
 ```
 ### Question 7: After downloading the `alice.txt` file, explain what the following commands do:
 
@@ -83,6 +83,7 @@ Answer the following questions:
     b) What is the GC content? 
 
 # 
+
 
 
 
