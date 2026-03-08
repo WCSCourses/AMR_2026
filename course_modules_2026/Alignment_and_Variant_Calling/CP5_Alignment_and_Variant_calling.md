@@ -223,7 +223,12 @@ same directory.
 The pseudogenome we generated in the above exercise has exactly the same length as the reference, therefore the pseudogenomes can be concatenated to create a
 whole genome alignment.
 ```
-cat reference.fa ERR2093239_pseudogenome.fa > concatenated_alignment.fa
+### Getting another pseudogenome:
+wget https://github.com/WCSCourses/AMR_2026/blob/main/course_modules_2026/Alignment_and_Variant_Calling/downsampled_manual/ERR2093237_pseudogenome.fa.gz
+gunzip ERR2093237_pseudogenome.fa.gz
+
+# Concatenate the 2 pseudogenomes and the reference genome
+cat reference.fa ERR2093239_pseudogenome.fa ERR2093237_pseudogenome.fa > concatenated_alignment.fa
 # cat reference.fa ERR2093237_pseudogenome.fa ERR2093241_pseudogenome.fa ERR2093244_psedudogenome.fa > concatenated_alignment.fa
 ```
 From the whole genome alignment that we created above we can select just the variable sites (snp-sites) only, this is really helpful when running computationally
