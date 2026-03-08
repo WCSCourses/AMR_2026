@@ -322,16 +322,20 @@ ls -lh
 <pre>
  -rwxrwxrwx 1 root root 523M Mar  7 12:56 ERR8282741.fastq.gz
 </pre>
-## Step 14: Quality Control with NanoQC
+## Step 14: Quality Control with NanoQC and NanoPlot
 
 ```
-nanoQC ERR8282741.fastq.gz -o nanoqc_output
+nanoQC ERR8282741.fastq.gz -o qc_output
+```
+then
+```
+NanoPlot --fastq ERR8282741.fastq.gz -o qc_output
 ```
 
-### Step 15: Go to Desktop - amr25_data - data - cp3 - long_reads - nanoqc_output
+### Step 15a: Go to Desktop - amr25_data - data - cp3 - long_reads - qc_output
 
 double click the html file `nanoQC` to open the report on browser
-### Step 15: Opening the nanoQC Report (GUI)
+### Step 15b: Opening the nanoQC Report (GUI)
 
 1. Navigate to the following directory:
 
