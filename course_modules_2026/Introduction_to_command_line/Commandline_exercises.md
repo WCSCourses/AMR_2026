@@ -21,7 +21,7 @@ Note: In Bash, spaces act as argument separators. Don't use spaces in names!!
 
 ### Question 6: Change the name of _file1.txt_ to "file4.txt".
 
-### Question 6b: Delete fileA.dat
+### Question 6b: Delete `file2.txt file3.txt file4.txt fileA.dat fileB.txt`
 
 
 # Linux text processing tools
@@ -146,6 +146,7 @@ ls -R journal
 ```
 
 You should see **12 directories**, each containing **30 text files**.
+
 
 
 
