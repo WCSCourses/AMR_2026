@@ -38,18 +38,18 @@ wget https://raw.githubusercontent.com/WCSCourses/AMR_2026/refs/heads/aemjunior-
 ```
 ### Question 7: After downloading the `alice.txt` file, explain what the following commands do:
 
-    a) `head -n 100  alice.txt > alice100.txt`
+    a) head -n 100  alice.txt > alice100.txt
     
 
-    b) `grep -c -E "^the" alice.txt`
+    b) grep -c -E "^the" alice.txt
     
 
-    c) `wc -l alice.txt`
+    c) wc -l alice.txt
 
-    d) `wc -l alice100.txt`
+    d) wc -l alice100.txt
     
 
-    d) `cat alice100.txt | tr -d 'AEIOUaeiou'` 
+    d) cat alice100.txt | tr -d 'AEIOUaeiou' 
 
 ### Question 8: Still with the `alice.txt` file, write both the command and the response:
 
@@ -146,6 +146,7 @@ ls -R journal
 ```
 
 You should see **12 directories**, each containing **30 text files**.
+
 
 
 
