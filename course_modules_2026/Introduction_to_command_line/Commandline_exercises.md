@@ -1,23 +1,23 @@
 # Computational Practical 1 - Introduction to Command Line and Unix - Exercises
 Developed by: Collins Kigen, Augusto Messa Jr., Silondiwe Nzimande and Miriam Mwama
 
-# Linux file system and files manipulation
+## Linux file system and files manipulation
 Go to your home cp2 directory
 ```
 cd /home/data/data/cp2
 ```
 
-## Question 1: create a directory called _cp2_exercises_ and go into it using the **_cd_** command. 
+### Question 1: create a directory called _cp2_exercises_ and go into it using the **_cd_** command. 
 
-## Question 2: Create the following 5 files: `file1.txt file2.txt file3.txt fileA.dat fileB.txt`
+### Question 2: Create the following 5 files: `file1.txt file2.txt file3.txt fileA.dat fileB.txt`
 
-## Question 3: Create a directory named "new" within the _cp2_exercises_.
+### Question 3: Create a directory named "new" within the _cp2_exercises_.
 
-## Question 4: Copy all files created to the new directory at once (hint: use the wildcards we discussed earlier).
+### Question 4: Copy all files created to the new directory at once (hint: use the wildcards we discussed earlier).
 
-## Question 5: Change the name of the _new_ directory to "old".
+### Question 5: Change the name of the _new_ directory to "old".
 
-## Question 6: Change the name of _file1.txt_ to "file4.txt".
+### Question 6: Change the name of _file1.txt_ to "file4.txt".
 
 
 # Linux text processing tools
@@ -32,17 +32,20 @@ wget https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_module
 ```
 wget https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/samplefasta.fasta
 ```
-## Question 7: After downloading the `alice.txt` file, explain what the following commands do:
+### Question 7: After downloading the `alice.txt` file, explain what the following commands do:
 
     a) `head alice.txt -n 100 > alice100.txt`
+    
 
     b) `grep -c -E "^the" alice.txt`
+    
 
     c) `wc -l alice.txt`
+    
 
     d) `cat alice100.txt | tr -d 'AEIOUaeiou'` 
 
-## Question 8: Still with the `alice.txt` file, write both the command and the response:
+### Question 8: Still with the `alice.txt` file, write both the command and the response:
 
     a) How many characters are within the `alice.txt` file?
 
@@ -50,7 +53,7 @@ wget https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_module
 
     c) What is the difference with the `grep -cw "the" alice.txt` and the command you wrote in the previous question?
 
-## Question 9: The `samplefasta.fasta` is a file with DNA sequences in FASTA format (we discussed this in the previous module).
+### Question 9: The `samplefasta.fasta` is a file with DNA sequences in FASTA format (we discussed this in the previous module).
 Reminder, this is their structure:
 
 ```
@@ -69,12 +72,13 @@ Answer the following questions:
 ![Example FASTQ file.](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/pone.0155461.g001.png)
 
 
-## Question 10: Bonus questions:
+### Question 10: Bonus questions:
 
     a) Compute the total amount of As, C, Gs, Ts and Ns in the `samplefasta.fasta` using pipes and redirections (A.K.A a one-liner)?
 
     b) What is the GC content? 
 
 # 
+
 
 
