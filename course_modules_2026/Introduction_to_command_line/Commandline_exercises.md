@@ -2,27 +2,37 @@
 Developed by: Collins Kigen, Augusto Messa Jr., Silondiwe Nzimande and Miriam Mwama
 
 # Linux file system and files manipulation
-Go to your home directory, create a directory called _cp2_exercises_ and go into it using the **_cd_** command. 
+Go to your home cp2 directory
+```
+cd /home/data/data/cp2
+```
 
-1. Create the following 5 files: `file1.txt file2.txt file3.txt fileA.dat fileB.txt`
+## Question 1: create a directory called _cp2_exercises_ and go into it using the **_cd_** command. 
 
-2. Write the commands necessary as to:
+## Question 2: Create the following 5 files: `file1.txt file2.txt file3.txt fileA.dat fileB.txt`
 
-    a) Create a directory named "new" within the _cp2_exercises_.
+## Question 3: Create a directory named "new" within the _cp2_exercises_.
 
-    b) Copy all files created to the new directory at once (hint: use the wildcards we discussed earlier).
+## Question 4: Copy all files created to the new directory at once (hint: use the wildcards we discussed earlier).
 
-4. Write the commands necessary to:
+## Question 5: Change the name of the _new_ directory to "old".
 
-    a) Change the name of the _new_ directory to "old".
-
-    b) Change the name of _file1.txt_ to "file4.txt".
+## Question 6: Change the name of _file1.txt_ to "file4.txt".
 
 
 # Linux text processing tools
-Begin by downloading a file from these two files [alice.txt](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/alice.txt) and [samplefasta.fasta](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/samplefasta.fasta) using commands we have just dicussed in previous class.
+Begin by downloading a file from these two files 
 
-4. After downloading the `alice.txt` file, explain what the following commands do:
+1. [alice.txt](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/alice.txt)
+
+```
+wget https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/alice.txt
+```
+2. [samplefasta.fasta](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/samplefasta.fasta) using commands we have just dicussed in previous class.
+```
+wget https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/samplefasta.fasta
+```
+## Question 7: After downloading the `alice.txt` file, explain what the following commands do:
 
     a) `head alice.txt -n 100 > alice100.txt`
 
@@ -32,7 +42,7 @@ Begin by downloading a file from these two files [alice.txt](https://github.com/
 
     d) `cat alice100.txt | tr -d 'AEIOUaeiou'` 
 
-5. Still with the `alice.txt` file, write both the command and the response:
+## Question 8: Still with the `alice.txt` file, write both the command and the response:
 
     a) How many characters are within the `alice.txt` file?
 
@@ -40,7 +50,7 @@ Begin by downloading a file from these two files [alice.txt](https://github.com/
 
     c) What is the difference with the `grep -cw "the" alice.txt` and the command you wrote in the previous question?
 
-6. The `samplefasta.fasta` is a file with DNA sequences in FASTA format (we discussed this in the previous module).
+## Question 9: The `samplefasta.fasta` is a file with DNA sequences in FASTA format (we discussed this in the previous module).
 Reminder, this is their structure:
 
 ```
@@ -59,11 +69,12 @@ Answer the following questions:
 ![Example FASTQ file.](https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_modules_2026/Introduction_to_command_line/images_and_data/pone.0155461.g001.png)
 
 
-7. Bonus questions:
+## Question 10: Bonus questions:
 
     a) Compute the total amount of As, C, Gs, Ts and Ns in the `samplefasta.fasta` using pipes and redirections (A.K.A a one-liner)?
 
     b) What is the GC content? 
 
 # 
+
 
