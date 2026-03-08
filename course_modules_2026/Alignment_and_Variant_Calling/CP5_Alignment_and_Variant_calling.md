@@ -229,7 +229,6 @@ gunzip ERR2093237_pseudogenome.fa.gz
 
 # Concatenate the 2 pseudogenomes and the reference genome
 cat reference.fa ERR2093239_pseudogenome.fa ERR2093237_pseudogenome.fa > concatenated_alignment.fa
-# cat reference.fa ERR2093237_pseudogenome.fa ERR2093241_pseudogenome.fa ERR2093244_psedudogenome.fa > concatenated_alignment.fa
 ```
 From the whole genome alignment that we created above we can select just the variable sites (snp-sites) only, this is really helpful when running computationally
 intensive processes such as phylogenetic tree generation. We can use the tool [snp-sites](https://github.com/tseemann/snp-sites) for this:
