@@ -21,6 +21,8 @@ Note: In Bash, spaces act as argument separators. Don't use spaces in names!!
 
 ### Question 6: Change the name of _file1.txt_ to "file4.txt".
 
+### Question 6b: Delete fileA.dat
+
 
 # Linux text processing tools
 Begin by downloading a file from these two files 
@@ -81,6 +83,7 @@ Answer the following questions:
     b) What is the GC content? 
 
 # 
+
 
 
 
