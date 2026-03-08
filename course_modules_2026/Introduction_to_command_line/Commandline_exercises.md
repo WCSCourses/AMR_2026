@@ -7,7 +7,9 @@ Go to your home cp2 directory
 cd /home/data/data/cp2
 ```
 
-### Question 1: create a directory called _cp2_exercises_ and go into it using the **_cd_** command. 
+### Question 1: Create a directory called _cp2_exercises_ and go into it using the **_cd_** command. 
+
+Note: In Bash, spaces act as argument separators. Don't use spaces in names!!
 
 ### Question 2: Create the following 5 files: `file1.txt file2.txt file3.txt fileA.dat fileB.txt`
 
@@ -34,7 +36,7 @@ wget https://github.com/WCSCourses/AMR_2026/blob/aemjunior-patch-1/course_module
 ```
 ### Question 7: After downloading the `alice.txt` file, explain what the following commands do:
 
-    a) `head alice.txt -n 100 > alice100.txt`
+    a) `head -n 100  alice.txt > alice100.txt`
     
 
     b) `grep -c -E "^the" alice.txt`
@@ -79,6 +81,7 @@ Answer the following questions:
     b) What is the GC content? 
 
 # 
+
 
 
 
