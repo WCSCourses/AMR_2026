@@ -22,7 +22,7 @@ The desired outcome is to achieve long contiguous DNA sequences
 (contigs). We will have to try to put fragmented DNA sequences back to
 its original, ordered continuous state (whether it is linear or
 circularized DNA), and this process is called genome assembly. The
-fundamental principel of genome assembly is to look for overlaps
+fundamental principle of genome assembly is to look for overlaps
 between fragments, and you will appreciate why longer reads are
 advantageous here (**Figure 4.2**).
 
