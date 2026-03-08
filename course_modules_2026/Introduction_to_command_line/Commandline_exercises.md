@@ -84,7 +84,69 @@ Answer the following questions:
 
     b) What is the GC content? 
 
-# 
+### Bonus question
+#### Exercise: Creating a Journal Directory Structure
+
+#### Task
+
+Create a **journal directory structure** for one year.
+
+1. Create a directory called `journal` and `cd` into it.
+2. Inside `journal`, create **12 directories** with one liner command, one for each month:
+
+```
+month01  month02  month03  month04
+month05  month06  month07  month08
+month09  month10  month11  month12
+```
+
+3. Inside **each month directory**, create **30 text files** with one liner command, one for each day of the month.
+
+The files should be named:
+
+```
+day01.txt
+day02.txt
+day03.txt
+...
+day30.txt
+```
+
+Assume **every month has 30 days**.
+
+---
+
+### Expected Structure
+
+```
+journal/
+├── month01/
+│   ├── day01.txt
+│   ├── day02.txt
+│   └── ...
+├── month02/
+│   ├── day01.txt
+│   ├── day02.txt
+│   └── ...
+...
+└── month12/
+    ├── day01.txt
+    ├── day02.txt
+    └── day30.txt
+```
+
+---
+
+### Verification
+
+Run the following command to confirm the structure:
+
+```bash
+ls -R journal
+```
+
+You should see **12 directories**, each containing **30 text files**.
+
 
 
 
