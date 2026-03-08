@@ -45,6 +45,8 @@ wget https://raw.githubusercontent.com/WCSCourses/AMR_2026/refs/heads/aemjunior-
     
 
     c) `wc -l alice.txt`
+
+    d) `wc -l alice100.txt`
     
 
     d) `cat alice100.txt | tr -d 'AEIOUaeiou'` 
@@ -83,6 +85,7 @@ Answer the following questions:
     b) What is the GC content? 
 
 # 
+
 
 
 
