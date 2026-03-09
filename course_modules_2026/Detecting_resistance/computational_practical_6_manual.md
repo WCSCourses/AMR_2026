@@ -56,37 +56,30 @@ First of all, launch the Docker image on your machine:
 If you haven’t done so already, clone the course Github directory into your home directory:
 
 ```bash
-docker run -it --mount type=bind,source=C:\Users\4M\Desktop\data,target=/home/data amr:Dockerfile
+docker run -i -t --mount type=bind,source=C:\Users\User\Desktop\amr25_data\,target=/home/data/ amr:Dockerfile
 ```
 
-Navigate to directory `home/data/`, download the course data, and create a new directory for this practical named `cp6`:
+Navigate to directory `/home/data/cp6/`, download the course data, and create a new directory for this practical named `cp6`:
 
 ```bash
-cd home/data/
-git clone https://github.com/WCSCourses/AMR_2026/
-mkdir cp6
+cd home/data/cp6/
 ```
 
 Next, copy the genome assemblies we will use (i.e., those in Tables 1 and 2) into cp6 directory:
 ```bash
-cp ./AMR_2026/course_data_2026/cp6/complete_assemblies/cpe004_Kpn-ST78-NDM1.fasta ./cp6/
-cp ./AMR_2026/course_data_2026/cp6/complete_assemblies/cpe069_Eco-NDM1.fasta ./cp6/
+cp ./complete_assemblies/cpe004_Kpn-ST78-NDM1.fasta .
+cp ./complete_assemblies/cpe069_Eco-NDM1.fasta .
 ```
 
 Copy the genome assemblies of the additional strains in Table 2 (the analysis of these strains is optional):
 ```bash
-cp ./AMR_2026/course_data_2026/cp6/additional_genomes/HO50960412.fa ./cp6/
-cp ./AMR_2026/course_data_2026/cp6/additional_genomes/ERR017261.assembly.fa ./cp6/
-cp ./AMR_2026/course_data_2026/cp6/additional_genomes/ERR2093245.assembly.fa ./cp6/
-cp ./AMR_2026/course_data_2026/cp6/additional_genomes/ERR2093329.assembly.fa ./cp6/
+cp ./additional_genomes/HO50960412.fa .
+cp ./additional_genomes/ERR017261.assembly.fa .
+cp ./additional_genomes/ERR2093245.assembly.fa .
+cp ./additional_genomes/ERR2093329.assembly.fa .
 ```
 
 Also, identify and copy the genome assembly of **your assigned CPE strain** (the one on your EpiCollect sheet).
-
-Finally, navigate to the module folder `cp6` where you should find the genome assemblies you just copied:
-```bash
-cd cp6
-```
 
 ## 4. WGS-based prediction of AMR using AMRFinderPlus <a name="amrfinder"></a>
 
