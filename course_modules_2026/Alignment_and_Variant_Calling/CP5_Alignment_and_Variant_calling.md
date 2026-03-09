@@ -31,7 +31,7 @@ Modified by: Dr. Stanford Kwenda, Augusto Messa Jr., Miriam Mwamba
 6. [References](#refs)
 
 # **Learning objectives** <a name="objectives"></a>
-1. How to align short and long reads from a sequencing experiments to a reference genome.
+1. How to align short and long reads from sequencing experiments to a reference genome.
 2. How to identify variants within the reads from a sequencing experiment and a reference genome.
 
 
