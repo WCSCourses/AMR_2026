@@ -1,5 +1,9 @@
 # Computational Practical 1 - Introduction to Command Line and Unix - Exercises
 Developed by: Collins Kigen, Augusto Messa Jr., Silondiwe Nzimande and Miriam Mwama
+## Open Terminal, the run this command to activate docker
+```
+docker run -i -t -mount type=bind,source=PATH_TO_DATA_FOLDER,target=/home/data/ amr:Dockerfile
+```
 
 ## Linux file system and files manipulation
 Go to your home cp2 directory
@@ -146,6 +150,7 @@ ls -R journal
 ```
 
 You should see **12 directories**, each containing **30 text files**.
+
 
 
 
