@@ -58,29 +58,29 @@ First of all, launch the Docker image on your machine:
 If you haven’t done so already, clone the course Github directory into your home directory:
 
 ```bash
-docker run -it --mount "type=bind,source=C:\Users\User\Desktop\amr25_data,target=/home/data" amr:Dockerfile
+docker run -it --mount "type=bind,source=C:\Users\User\Desktop\amr25_data,target=/home/" amr:Dockerfile
 ```
 
 Navigate to directory `home/data/`, download the course data, and create a new directory for this practical named `cp7`:
 
 ```bash
-cd /home/data/data
+cd /home/data/
 mkdir cp7
 ```
 
 Next, copy the genome assemblies we will use (i.e., those in Tables 1 and 2) from cp6 directory:
 ```bash
 cd cp7/
-cp /home/data/data/cp6/complete_assemblies/cpe004_Kpn-ST78-NDM1.fasta .
-cp /home/data/data/cp6/complete_assemblies/cpe069_Eco-NDM1.fasta .
+cp /home/data/cp6/complete_assemblies/cpe004_Kpn-ST78-NDM1.fasta .
+cp /home/data/cp6/complete_assemblies/cpe069_Eco-NDM1.fasta .
 ```
 
 Copy the genome assemblies of the additional strains in Table 2 (the analysis of these strains is optional):
 ```bash
-cp /home/data/data/cp6/additional_genomes/HO50960412.fa .
-cp /home/data/data/cp6/additional_genomes/ERR017261.assembly.fa .
-cp /home/data/data/cp6/additional_genomes/ERR2093245.assembly.fa .
-cp /home/data/data/cp6/additional_genomes/ERR2093329.assembly.fa .
+cp /home/data/cp6/additional_genomes/HO50960412.fa .
+cp /home/data/cp6/additional_genomes/ERR017261.assembly.fa .
+cp /home/data/cp6/additional_genomes/ERR2093245.assembly.fa .
+cp /home/data/cp6/additional_genomes/ERR2093329.assembly.fa .
 ```
 
 Also, identify and copy the genome assembly of **your assigned CPE strain** (the one on your EpiCollect sheet).
