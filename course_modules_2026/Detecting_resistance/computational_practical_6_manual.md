@@ -95,12 +95,6 @@ The only required arguments to run AMRFinderPlus are either ```-p <protein_fasta
 amrfinder --help
 ```
 
-Use ‘amrfinder -u’ to download and prepare database for AMRFinderPlus:
-
-```bash
-amrfinder -u
-```
-
 First, a local database of the latest the latest AMR database must be download.
 
 ```bash
@@ -111,7 +105,7 @@ amrfinder_update -d ./amrfinder_db
 After making sure the latest AMR database is downloaded, you can run amrfinder on genome assemblies, as showed in the command line below:
 
 ```bash
-amrfinder -n cpe004_Kpn-ST78-NDM1.fasta -O Klebsiella_pneumoniae -o cpe004_Kpn-ST78-NDM1_amrfinder.txt
+amrfinder -n cpe004_Kpn-ST78-NDM1.fasta -O Klebsiella_pneumoniae -o cpe004_Kpn-ST78-NDM1_amrfinder.txt -d amrfinder_db/latest
 ```
 
 We will change the default delimiter of AMRFinder output file to make it easier to open with Excel:
@@ -139,7 +133,7 @@ You will find taxa like ‘Klebsiella_pneumoniae’, ‘Staphylococcus_aureus’
 
 The command below will execute AMRFinder on our CPE *E. coli* strain of interest (Table 1):
 ```bash
-amrfinder -n cpe069_Eco-NDM1.fasta -O Escherichia -o cpe069_Eco-NDM1_amrfinder.txt
+amrfinder -n cpe069_Eco-NDM1.fasta -O Escherichia -o cpe069_Eco-NDM1_amrfinder.txt -d amrfinder_db/latest
 ```
 ```bash
 cat cpe069_Eco-NDM1_amrfinder.txt | tr '\t' ',' > cpe069_Eco-NDM1_amrfinder.csv
@@ -148,10 +142,10 @@ Now adapt and run the amrfinder command above on your assigned outbreak strain. 
 
 It time allows, come back to this section later to run AMRFinder on the additional strains:
 ```bash
-amrfinder -n HO50960412.fa -O Staphylococcus_aureus -o HO50960412_amrfinder.txt
-amrfinder -n ERR017261.assembly.fa -O Staphylococcus_aureus -o ERR017261_amrfinder.txt
-amrfinder -n ERR2093245.assembly.fa -O Salmonella -o ERR2093245_amrfinder.txt
-amrfinder -n ERR2093329.assembly.fa -O Salmonella -o ERR2093329_amrfinder.txt
+amrfinder -n HO50960412.fa -O Staphylococcus_aureus -o HO50960412_amrfinder.txt -d amrfinder_db/latest
+amrfinder -n ERR017261.assembly.fa -O Staphylococcus_aureus -o ERR017261_amrfinder.txt -d amrfinder_db/latest
+amrfinder -n ERR2093245.assembly.fa -O Salmonella -o ERR2093245_amrfinder.txt -d amrfinder_db/latest
+amrfinder -n ERR2093329.assembly.fa -O Salmonella -o ERR2093329_amrfinder.txt -d amrfinder_db/latest
 ```
 ```bash
 cat HO50960412_amrfinder.txt | tr '\t' ',' > HO50960412_amrfinder.csv
