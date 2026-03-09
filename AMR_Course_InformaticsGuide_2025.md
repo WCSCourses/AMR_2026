@@ -10,7 +10,7 @@
 | `docker ps`                            | Lists all running containers.                                                                          |
 | `docker ps -a`                         | Lists all containers, including stopped ones.                                                          |
 | `docker pull <image_name>`             | Pulls a Docker image from Docker Hub.                                                                  |
-| `docker run -it <image_name> /bin/bash` | Runs a container in interactive mode with a Bash shell.                                                |
+| `docker run -i -t <image_name> /bin/bash` | Runs a container in interactive mode with a Bash shell.                                                |
 | `docker stop <container_id_or_name>`   | Stops a running container.                                                                            |
 | `docker rm <container_id_or_name>`     | Removes a container (must be stopped first).                                                           |
 | `docker rmi <image_name_or_id>`        | Removes a Docker image from your local machine.                                                       |
@@ -25,6 +25,13 @@
 | `docker-compose up`                    | Starts multi-container applications defined in a `docker-compose.yml` file.                           |
 | `docker info`                          | Displays detailed information about the Docker installation and system.                               |
 | `docker --version`                     | Shows the installed version of Docker.                                                                 |
+
+### Specific Commands to Run During the Course
+
+Start the Docker engine if stopped (Click Docker icon and wait a short while), open a terminal (e.g. Windows PowerShell) and run:
+
+`docker run -i -t --mount type=bind,source=C:\Users\User\Desktop\amr25_data,target=/home/data amr:Dockerfile`
+
 
 ### Helpful Links for Docker
 
