@@ -105,7 +105,7 @@ If all are installed correctly, you should see the help page of each
 tool, and no error. Navigate to this practical directory:
 
 ```bash
-cd amr25_data/Practical4
+cd amr25_data/Practical_4
 ```
 
 Make a new working directory and go into it -- this is where you will
@@ -337,7 +337,11 @@ Once the assembly is complete:
 2. Use *grep* to display all contig header names and determine the
     number of contigs
 
-3. Use Bandage to visualise the assembly graph
+```bash
+grep -c ">" ../assemblies/cpe004_hybrid.fasta
+```
+
+4. Use Bandage to visualise the assembly graph
 
 How does this compare to the short-read assembly?
 
@@ -473,16 +477,28 @@ Prokka produces several files:
 
 
 1. Display the top 20 lines of the **cpe004_hybrid.gff** file.
+```bash
+head -n 20 prokka/cpe004_hybrid.gff
+```
 
 2. Count how many protein coding genes (CDS) were annotated in the
     **cpe_hybrid.tsv** file.
 
+```bash
+grep -c "CDS" prokka/cpe004_hybrid.gff
+```
+
 3. Count how many "hypothetical proteins" were annotated in the same
     file.
+```bash
+grep -c "hypothetical proteins" prokka/cpe004_hybrid.gff
+```
 
 4. Search if any beta-lactamase resistance genes "*bla*" are present in
     this genome
-
+```bash
+grep "bla" prokka/cpe004_hybrid.gff
+```
 
 
 ## Extra sample for genome assembly
