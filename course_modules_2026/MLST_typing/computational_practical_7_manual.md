@@ -64,7 +64,7 @@ docker run -it --mount "type=bind,source=C:\Users\User\Desktop\amr25_data,target
 Navigate to directory `home/data/`, download the course data, and create a new directory for this practical named `cp7`:
 
 ```bash
-cd /home/data/
+cd /home/data/data
 mkdir cp7
 ```
 
