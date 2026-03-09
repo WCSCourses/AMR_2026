@@ -86,9 +86,9 @@ cp /home/data/data/cp6/additional_genomes/ERR2093329.assembly.fa .
 Also, identify and copy the genome assembly of **your assigned CPE strain** (the one on your EpiCollect sheet).
 
 
-## 4. MLST prediction using mlst-check <a name="MLST"></a>
+## 4. MLST prediction using mlst tool <a name="MLST"></a>
 
-## mlst-check installation using conda
+## mlst installation using conda
 
 Create conda environment for mlst:
 
