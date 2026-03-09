@@ -63,21 +63,12 @@ First, concatenate all Snippy consensus sequences to create a **multi-sequence a
 
 On your machine, to launch the Docker image, type:
 ```bash
-docker run -it --mount type=bind,source=C:\Users\4M\Desktop\data,target=/home/data amr:Dockerfile
+docker run -i -t --mount type=bind,source=C:\Users\User\Desktop\amr25_data\,target=/home/ amr:Dockerfile
 ```
 
 
 ```bash
-cd home/data/
-git clone https://github.com/WCSCourses/AMR_2025/
-mkdir cp8
-```
-
-Next copy the following files and scripts into cp8 directory:
-```bash
-cp ./AMR_2025/course_data_2025/cp8/snippy_files/* ./cp8/
-cp ./AMR_2025/course_data_2025/cp8/replace_fasta_ids.py ./cp8/
-cp ./AMR_2025/course_data_2025/cp8/Kpn_ST78.run_accessions.strain_ids.txt ./cp8/
+cd /home/data/cp8/
 ```
 
 Navidate to the module folder `cp8` where you should find the genome assemblies you just copied:
@@ -87,7 +78,7 @@ cd cp8
 
 We will create the whole-genome sequence alignment by concatenating the Snippy consensus sequence of all 14 K. pneumoniae ST78 isolates:
 ```bash
-cat *.consensus.fa > Kpn_ST78.cpe058.fas
+cat ./snippy_files/*.consensus.fa > Kpn_ST78.cpe058.fas
 ```
 
 Next, it is good practice to run tools like `seqkit` to confirm the expected length of the MSA and the total number of expected sequences in it:
