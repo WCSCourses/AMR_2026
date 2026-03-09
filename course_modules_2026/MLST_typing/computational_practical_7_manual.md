@@ -102,25 +102,28 @@ Activate the conda environment using:
 conda activate mlst
 ```
 
+Now, install the mlst tool inside the mlst conda enviroment you just created.
 
 ```
+conda install mlst
+```
 
-Run mlst --help to test if it was successfully installed
+Run mlst --help to test if it was successfully installed.
 
 ```
 mlst --help
 ```
 
-Run the mlst tool on one of your fasta files. E.g.:
+Run the mlst tool on one of your fasta files, E.g.:
 
 ```
 mlst cpe004_Kpn-ST78-NDM1.fasta
 ```
 
-Do a batch run for the rest of the .fa files and direct the results to an output folder
+Do a batch run for the rest of the .fa files and direct the result to an output file
 
 ```
-mlst *.fa --quiet > output
+mlst *.fa --quiet > output.csv
 ```
 
 Note:
