@@ -105,7 +105,7 @@ If all are installed correctly, you should see the help page of each
 tool, and no error. Navigate to this practical directory:
 
 ```bash
-cd amr25_data/data/Practical4
+cd amr25_data/Practical4
 ```
 
 Make a new working directory and go into it -- this is where you will
