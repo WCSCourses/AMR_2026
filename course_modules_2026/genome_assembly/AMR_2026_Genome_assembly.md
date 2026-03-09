@@ -105,7 +105,7 @@ If all are installed correctly, you should see the help page of each
 tool, and no error. Navigate to this practical directory:
 
 ```bash
-cd ~/genome_assembly
+cd amr25_data/data/Practical4
 ```
 
 Make a new working directory and go into it -- this is where you will
@@ -162,7 +162,7 @@ cpe004_porechop.fastq.gz | gzip > cpe004.filtered.fastq.gz
 ```
 
 The files we will be using for this practical are listed below and are
-in the `course_data_2026/genome_assembly/reads` folder:
+in the `Practical4/reads` folder:
 
 1. **cpe004_R1.fastq.gz** = Read 1 (trimmed) Illumina
 
@@ -182,13 +182,8 @@ First, we will perform the genome assembly using only the short-read
 data. This will be performed using the Shovill tool which uses the
 SPAdes assembler.
 
-1. Create a new screen session for Shovill:
 
-```bash
-screen -S shovill
-```
-
-2. Run the command (this could take up to 15 minutes to complete):
+1. Run the command (this could take up to 15 minutes to complete):
 
 ```bash
 shovill \
@@ -222,14 +217,14 @@ files we will use are:
 | `contigs.gfa` | Assembly graph used to visualise the assembly  |
 
 
-3. Count how many contigs the Shovill assembly has produced with this
+2. Count how many contigs the Shovill assembly has produced with this
     command:
     
 ```bash
 grep -c ">" cpe004_shovill.fasta
 ```
 
-4. The assembly file should be ordered by contig size, so the largest
+3. The assembly file should be ordered by contig size, so the largest
     contig will be reported at the top. Check the output of the first
     few lines of the assembly file with this command:
 
@@ -237,7 +232,7 @@ grep -c ">" cpe004_shovill.fasta
 head -n 4 cpe004_shovill.fasta
 ```
 
-5. Use the Bandage tool to visualise the assembly graph produced by
+4. Use the Bandage tool to visualise the assembly graph produced by
     Shovill.
 
 Open the Bandage software and select File \> Load graph \> navigate to
@@ -274,17 +269,8 @@ diversity and structure of genomes in mixed populations.
 
 Perform genome assembly using only the long reads for the same sample.
 
-1. Detach from the shovill screen: 
-```bash
-screen -D
-```
 
-2. Create new screen for running Flye:
-```bash
-screen -S flye
-```
-
-3. Run the following command:
+1. Run the following command:
 ```bash
 flye \
 -t 4 \
@@ -317,15 +303,8 @@ used with Shovill. Unicycler will first create a short-read only
 assembly using SPAdes, then use the long reads to overlay on top of
 the assembly to hopefully resolve some of the regions.
 
-1. Detach from flye screen and create a new screen for Unicycler:
-```bash
-screen -D
-```
-```bash
-screen -S unicycler
-```
 
-2. Perform a hybrid genome assembly using the following command:
+1. Perform a hybrid genome assembly using the following command:
 
 ```bash
 unicycler \
@@ -355,10 +334,10 @@ Command breakdown:
 
 Once the assembly is complete:
 
-3. Use *grep* to display all contig header names and determine the
+2. Use *grep* to display all contig header names and determine the
     number of contigs
 
-4. Use Bandage to visualise the assembly graph
+3. Use Bandage to visualise the assembly graph
 
 How does this compare to the short-read assembly?
 
