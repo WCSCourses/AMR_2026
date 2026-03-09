@@ -126,7 +126,7 @@ From the command above, note the following chosen options:
 Use ```amrfinder -l``` to list the organism options supported by AMRFinder:
 
 ```bash
-amrfinder -l
+amrfinder -l -d amrfinder_db/latest
 ```
 
 You will find taxa like ‘Klebsiella_pneumoniae’, ‘Staphylococcus_aureus’ or ‘Salmonella’ included among the list of supported organisms.
