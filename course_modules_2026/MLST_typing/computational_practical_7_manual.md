@@ -61,7 +61,7 @@ If you haven’t done so already, clone the course Github directory into your ho
 docker run -it --mount "type=bind,source=C:\Users\User\Desktop\amr25_data,target=/home/" amr:Dockerfile
 ```
 
-Navigate to directory `home/data/`, download the course data, and create a new directory for this practical named `cp7`:
+Navigate to directory `home/data/`and create a new directory for this practical named `cp7`:
 
 ```bash
 cd /home/data/data
@@ -90,55 +90,46 @@ Also, identify and copy the genome assembly of **your assigned CPE strain** (the
 
 ## mlst-check installation using conda
 
-To install mlst-check, first install or update conda. Then install bioconda and mlst-check.
+Create conda environment for mlst:
 
 ```
-conda config --add channels defaults
-conda config --add channels conda-forge
-conda config --add channels bioconda
-conda install perl-bio-mlst-check
+conda create -n mlst
 ```
 
-Set the directory where you would like to store the MLST databases.
+Activate the conda environment using:
 
 ```
-export MLST_DATABASES=/home/mlst
+conda activate mlst
 ```
 
 
-Download the most recent copy of MLST databases
-
-```
-download_mlst_databases 
 ```
 
-
-You can view the list contained in the MLST databases for your other pathogens of interest
-
-```
-get_sequence_type -a
-```
-
-
-Now you can run MLST typing for Klebsiella pneumoniae. In the below code, `-s` specifies the database you want to search against
-
+Run mlst --help to test if it was successfully installed
 
 ```
-get_sequence_type -s "Klebsiella pneumoniae species complex" /home/mlst/data/mlst_genomes/*.fasta
+mlst --help
 ```
 
-You can add multiple options to the line of code. E.g., `-c` outputs a FASTA file with concatenated alleles for building a phylogenetic tree. Similarly, `-y` outputs a phylip file with concatenated alleles for the same purpose.
+Run the mlst tool on one of your fasta files. E.g.:
 
 ```
-get_sequence_type -c -s "Klebsiella pneumoniae species complex" /home/mlst/data/mlst_genomes/*.fasta
+mlst cpe004_Kpn-ST78-NDM1.fasta
 ```
 
-mlst-check outputs a 'mlst_results.allele.csv' that contains the sequence type number of each input FASTA file and the corresponding allele numbers for each gene in the scheme. 
+Do a batch run for the rest of the .fa files and direct the results to an output folder
+
+```
+mlst *.fa --quiet > output
+```
 
 Note:
-It is important to submit unknown alleles to PubMLST for identification and allele number assignment. Therefore, if one of the alleles is unknown in the database, mlst-check assigns it a 'U' flag, and the third column will describe it as 'Unknown'. If the combination of allele numbers is new, it will be flagged as 'Novel'.
+It is important to submit unknown alleles to PubMLST for identification and allele number assignment. Therefore, if one of the alleles is unknown in the database, run:
 
-The 'mlst_results.genomic.csv' spreadsheet is similar to the mlst_results.allele.csv spreadsheet, but it gives the full sequences of each allele instead of the allele number. These can then be used for submission to PubMLST in the case of unknown or novel alleles.
+```
+mlst novel.fa --novel STR > novel_out
+```
+
 
 
 ## 5. cgMLST prediction using chewBBACA <a name="cgMLST"></a>
