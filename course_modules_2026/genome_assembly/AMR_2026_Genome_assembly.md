@@ -449,10 +449,10 @@ aiding in the development of diagnostic tools.
 
 ```bash
 prokka \
---cpus 4\
+--cpus 4 \
 --prefix cpe004_hybrid \
 --outdir prokka/ \
-cpe004_hybrid.fasta
+../assemblies/cpe004_hybrid.fasta
 ```
 
 Prokka produces several files:
