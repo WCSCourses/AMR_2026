@@ -66,16 +66,18 @@ Navigate to directory `home/data/`and create a new directory for this practical 
 ```bash
 cd /home/data/data
 mkdir cp7
+cd cp7/
 ```
 
-Next, copy the genome assemblies we will use (i.e., those in Tables 1 and 2) from cp6 directory:
+Next, copy the genome assemblies we will use for mlst run (i.e., those in Tables 1 and 2) from cp6 directory:
+
 ```bash
-cd cp7/
 cp /home/data/data/cp6/complete_assemblies/cpe004_Kpn-ST78-NDM1.fasta .
 cp /home/data/data/cp6/complete_assemblies/cpe069_Eco-NDM1.fasta .
 ```
 
-Copy the genome assemblies of the additional strains in Table 2 (the analysis of these strains is optional):
+Copy the additional genome assemblies that we will use for a batch run:
+
 ```bash
 cp /home/data/data/cp6/additional_genomes/HO50960412.fa .
 cp /home/data/data/cp6/additional_genomes/ERR017261.assembly.fa .
@@ -102,37 +104,39 @@ Activate the conda environment using:
 conda activate mlst
 ```
 
-Now, install the mlst tool inside the mlst conda enviroment you just created.
+Now, install the mlst tool within the mlst Conda environment you just created.
 
 ```
 conda install mlst
 ```
 
-Run mlst --help to test if it was successfully installed.
+Run mlst --help to test if it was successfully installed. You should see multiple run options.
 
 ```
 mlst --help
 ```
 
-Run the mlst tool on one of your fasta files, E.g.:
+Check available mlst schemes for other pathogens of interest using:
+
+```
+mlst --longlist
+```
+
+Run the mlst tool on your fasta files, e.g.:
 
 ```
 mlst cpe004_Kpn-ST78-NDM1.fasta
 ```
 
-Do a batch run for the rest of the .fa files and direct the result to an output file
+Do a batch run for the rest of the .fa files and direct the result to a .csv output
 
 ```
-mlst *.fa --quiet > output.csv
+mlst --csv *.fa --quiet > output.csv
 ```
 
 Note:
 It is important to submit unknown alleles to PubMLST for identification and allele number assignment. Therefore, if one of the alleles is unknown in the database, run:
-
-```
 mlst novel.fa --novel STR > novel_out
-```
-
 
 
 ## 5. cgMLST prediction using chewBBACA <a name="cgMLST"></a>
