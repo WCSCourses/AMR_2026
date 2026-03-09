@@ -32,6 +32,8 @@ Start the Docker engine if stopped (Click Docker icon and wait a short while), o
 
 `docker run -i -t --mount type=bind,source=C:\Users\User\Desktop\amr25_data,target=/home/data amr:Dockerfile`
 
+Note: This is for Windows PCs. Syntax varies for Mac and Linux. Location after source may vary for Overflow Room participants.
+
 
 ### Helpful Links for Docker
 
