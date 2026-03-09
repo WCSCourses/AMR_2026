@@ -2,7 +2,7 @@
 Developed by: Collins Kigen, Augusto Messa Jr., Silondiwe Nzimande and Miriam Mwama
 ## Open Terminal, the run this command to activate docker
 ```
-docker run -i -t -mount type=bind,source=PATH_TO_DATA_FOLDER,target=/home/data/ amr:Dockerfile
+docker run -it --mount "type=bind,source=C:\Users\User\Desktop\amr25_data,target=/home/data/" amr:Dockerfile
 ```
 
 ## Linux file system and files manipulation
@@ -150,6 +150,7 @@ ls -R journal
 ```
 
 You should see **12 directories**, each containing **30 text files**.
+
 
 
 
