@@ -36,7 +36,7 @@ Note: This is for Windows PCs. Syntax varies for Mac and Linux. The location aft
 
 Once your docker image is running, you will need to change directory (cd) into the data directory for the course:
 
-'cd /home/data/data'
+`cd /home/data/data`
 
 
 ### Helpful Links for Docker
