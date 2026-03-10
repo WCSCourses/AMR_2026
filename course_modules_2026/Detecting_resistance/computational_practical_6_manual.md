@@ -62,7 +62,7 @@ docker run -i -t --mount type=bind,source=C:\Users\User\Desktop\amr25_data\,targ
 Navigate to directory `/home/data/cp6/`, download the course data, and create a new directory for this practical named `cp6`:
 
 ```bash
-cd home/data/cp6/
+cd home/data/data/cp6/
 ```
 
 Next, copy the genome assemblies we will use (i.e., those in Tables 1 and 2) into cp6 directory:
@@ -209,9 +209,9 @@ cd ..
 
 Set approximate environment bash variables for ResFinder executable to locate these databases.
 ```bash
-export CGE_RESFINDER_RESGENE_DB="/home/data/cp6/resfinder_db";
-export CGE_RESFINDER_RESPOINT_DB="/home/data/cp6/pointfinder_db";
-export CGE_DISINFINDER_DB="/home/data/cp6/disinfinder_db";
+export CGE_RESFINDER_RESGENE_DB="/home/data/data/cp6/resfinder_db";
+export CGE_RESFINDER_RESPOINT_DB="/home/data/data/cp6/pointfinder_db";
+export CGE_DISINFINDER_DB="/home/data/data/cp6/disinfinder_db";
 ```
 
 Remember to set these variables in any new terminal window. Otherwise ResFinder will exist with the error: ‘Could not locate ResFinder database path’.
