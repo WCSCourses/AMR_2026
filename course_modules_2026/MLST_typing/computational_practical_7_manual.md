@@ -146,12 +146,12 @@ mlst novel.fa --novel STR > novel_out
 Install chewbbaca and activate environment
 
 ```
-conda create -n chewbbaca -c bioconda -c conda-forge chewbbaca grapetree
+conda create -n chewbbaca -c bioconda -c conda-forge chewbbaca unzip grapetree
 conda activate chewbbaca
 ```
 
 
-Retrieve K. pneumoniae cgMLST schema form ridom seqsphere
+Retrieve K. pneumoniae cgMLST schema from ridom seqsphere
 
 ```
 curl -o k_pneumoniae_cgMLST_alleles.zip https://www.cgmlst.org/ncs/schema/Kpneumoniae1936/alleles/
@@ -162,28 +162,43 @@ unzip k_pneumoniae_cgMLST_alleles.zip -d k_pneumoniae_cgMLST
 PrepExternalSchema - Adapt the ridom seqsphere schema to be used with chewBBACA
 
 ```
-chewBBACA.py PrepExternalSchema -g k_pneumoniae_cgMLST -o k_pneumoniae_schema --cpu 8
+chewBBACA.py PrepExternalSchema -g k_pneumoniae_cgMLST -o k_pneumoniae_schema --cpu 4
 ```
 
 
-AlleleCall - Determine the allelic profiles of a set of genomes
+First, create a directory called 'genomes' in your current cp7 directory
 
 ```
-chewBBACA.py AlleleCall -i mlst_genomes -g k_pneumoniae_schema -o allele_calls --cpu 8
+mkdir genomes
+```
+
+
+Then, copy a few K. pneumoniae fasta files into the 'genomes' directory
+
+```
+cp /home/data/data/cp6/complete_assemblies/cpe034_Kpn-ST78-NDM1.fasta cpe049_Kpn-ST78-NDM1.fasta genomes/
+
+```
+
+
+Determine the allelic profiles of a set of genomes.
+
+```
+chewBBACA.py AlleleCall -i genomes -g k_pneumoniae_schema -o allele_calls --cpu 4
 ```
 
 
 SchemaEvaluator - Build an interactive report for schema evaluation
 
 ```
-chewBBACA.py SchemaEvaluator -g k_pneumoniae_schema -o SchemaEvaluator --cpu 8
+chewBBACA.py SchemaEvaluator -g k_pneumoniae_schema -o SchemaEvaluator --cpu 4
 ```
 
 
 AlleleCallEvaluator - Build an interactive report for allele calling results evaluation
 
 ```
-chewBBACA.py AlleleCallEvaluator -i allele_calls -g k_pneumoniae_schema -o AlleleCallEvaluator --cpu 8 
+chewBBACA.py AlleleCallEvaluator -i allele_calls -g k_pneumoniae_schema -o AlleleCallEvaluator --cpu 4 
 ```
 
 
