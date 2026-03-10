@@ -128,10 +128,10 @@ Run the mlst tool on your fasta files, e.g.:
 mlst cpe004_Kpn-ST78-NDM1.fasta
 ```
 
-Do a batch run for the rest of the .fa files and direct the result to a .csv output
+Do a batch run for the rest of the .fa files and direct the result to an 'output' file
 
 ```
-mlst --csv *.fa --quiet > output.csv
+mlst *.fa --quiet > output
 ```
 
 Note:
@@ -144,7 +144,6 @@ mlst novel.fa --novel STR > novel_out
 ## chewBBACA installation
 
 Install chewbbaca and activate environment
-
 
 ```
 conda create -n chewbbaca -c bioconda -c conda-forge chewbbaca grapetree
