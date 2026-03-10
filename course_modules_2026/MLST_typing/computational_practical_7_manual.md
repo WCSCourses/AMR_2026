@@ -176,8 +176,8 @@ mkdir genomes
 Then, copy a few K. pneumoniae fasta files into the 'genomes' directory
 
 ```
-cp /home/data/data/cp6/complete_assemblies/cpe034_Kpn-ST78-NDM1.fasta cpe049_Kpn-ST78-NDM1.fasta genomes/
-
+cp /home/data/data/cp6/complete_assemblies/cpe034_Kpn-ST78-NDM1.fasta ./genomes/
+cp /home/data/data/cp6/complete_assemblies/cpe049_Kpn-ST78-NDM1.fasta ./genomes/
 ```
 
 
