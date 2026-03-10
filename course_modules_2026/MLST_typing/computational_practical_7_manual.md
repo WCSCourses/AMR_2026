@@ -61,7 +61,7 @@ If you haven’t done so already, clone the course Github directory into your ho
 docker run -it --mount "type=bind,source=C:\Users\User\Desktop\amr25_data,target=/home/data" amr:Dockerfile
 ```
 
-Navigate to directory `home/data/`and create a new directory for this practical named `cp7`:
+Navigate to directory `home/data/data`and create a new directory for this practical named `cp7`:
 
 ```bash
 cd /home/data/data
