@@ -131,7 +131,7 @@ mlst cpe004_Kpn-ST78-NDM1.fasta
 Do a batch run for the rest of the .fa files and direct the result to an 'output' file
 
 ```
-mlst *.fa --quiet > output
+mlst *.fa* --quiet > output
 ```
 
 Note:
