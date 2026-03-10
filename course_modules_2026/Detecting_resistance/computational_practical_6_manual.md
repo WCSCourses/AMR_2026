@@ -56,7 +56,7 @@ First of all, launch the Docker image on your machine:
 If you haven’t done so already, clone the course Github directory into your home directory:
 
 ```bash
-docker run -i -t --mount type=bind,source=C:\Users\User\Desktop\amr25_data\,target=/home/ amr:Dockerfile
+docker run -i -t --mount type=bind,source=C:\Users\User\Desktop\amr25_data\,target=/home/data/ amr:Dockerfile
 ```
 
 Navigate to directory `/home/data/cp6/`, download the course data, and create a new directory for this practical named `cp6`:
