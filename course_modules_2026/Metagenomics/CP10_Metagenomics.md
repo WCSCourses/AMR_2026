@@ -41,7 +41,7 @@ In this tutorial we will be focusing on shotgun metagenomic sequencing.
 
 For this process will need two things: 
 * Metagenomic sequencing reads: for this tutorial, raw files from [Guo et al. 2021 - doi: 10.3389/fmicb.2021.709051](https://doi.org/10.3389/fmicb.2021.709051) will be used
-* Tools to perform different taks: `fastqc`, `multiqc` `fastp`, `seqtk`, `Bbmap`, `hocort`, `Kraken2`, **ADD MORE TOOLS HERE**
+* Tools to perform different taks: `FastQC`, `MultiQC` `Fastp`, `seqtk`, `Bbmap`, `metaSPAdes`, `MetaBAT2`, `Kraken2`, `CheckM`, `Prokka`, `ABRicate` (for AMR prediction) and `Pavian` and `Krona` for visualization.
 
 # **Set-up and Dataset** <a name="setup"></a>
 Go to the `/home/data/data/` directory and create a directory called `cp10` by running:
@@ -74,9 +74,6 @@ We should now have within our working directory the following files:
 
 # **Raw data quality and QC**<a name="rawdataqc"></a>
 This initial QC step can be performed using the same approaches introduced in [Computational Practical 3 - Accessing Data and Quality Control](https://github.com/WCSCourses/AMR_2026/blob/main/course_modules_2026/Data_access_QC/Computational_Practical_2_Accessing_Data_and_Quality_Control.md).
-However, we will be using different tools to perform the raw read quality control, filtering and visualization. 
-
-~~Before we proceed we should note the following:~~
 
 QC of raw reads is often a standard first step used to assess the quality of reads and to identify potential problems or other quality related issues:
 1. Sequencing technologies can produce reads with varying quality.
@@ -85,10 +82,25 @@ QC of raw reads is often a standard first step used to assess the quality of rea
 4. Low base quality.
 
 > [!NOTE]
-> Its IMPORTANT to monitor key metrics at different steps of the data analysis workflow. Always remember one of the golden rules in Computational Biology: Garbage in :arrow_right: Garbage out
+> Its IMPORTANT to monitor key metrics at different steps of the data analysis workflow.
+> Always remember one of the golden rules in Computational Biology: Garbage in :arrow_right: Garbage out
 
 Since we are performing read filtering and QC of metagenomic data, it might be beneficial to perform read deduplication during the initial QC step. This will be done in a single step as we perform our standard QC step. We will perform read QC and filtering based on the steps below:
 
+```
+fastp -i SRR14297772_cpe107_1.fastq.gz -I SRR14297772_cpe107_2.fastq.gz -o SRR14297772_cpe107_1_ds_filtered.fastq.gz -O SRR14297772_cpe107_2_ds_filtered.fastq.gz -h fastp_report.html -j fastp_report.json --length_required 50 --correction --dedup --overrepresentation_analysis --thread 4 
+```
+- **What It Does**: Fastp removes adapters, trims low-quality bases, and discards reads shorter than 50 bp. Hostile gets rid of host (mainly) human reads.
+- **Key Options for Fastp**:
+    - `-h` and `-j`: Generate HTML and JSON reports with trimming metrics.
+    - `-length_required`: Discards reads shorter than 50 bp.
+    - `--dedup`: deduplication.
+    - `--overrepresentation_analysis`: performing an over representation analysis.
+    - `--threads`: specifying how many CPUs can the tool use, to speed up the execution.
+
+> [!NOTE]
+> When you are running this pipeline on multiple samples, and you don't want to build this commands one by one for each sample, it's possible to package it within a single loop, just like below.
+> Do not run it.
 ```
 # Create output directory for fastp output
 clean_reads=/home/data/data/cp10/clean_reads
@@ -96,6 +108,8 @@ mkdir -p $clean_reads
 
 # Provide path to the raw reads directory
 raw_reads=/home/data/data/cp10/raw_reads
+
+# We will skip the FastQC step
 
 # Execute the for loop to perform QC on all samples in the raw_reads directory
 for fq in $(find $raw_reads -name "*1.f*q.gz"); do \
@@ -111,7 +125,8 @@ for fq in $(find $raw_reads -name "*1.f*q.gz"); do \
 	-o $clean_reads/${sampleid}.1.fq.gz -O $clean_reads/${sampleid}.2.fq.gz \
 done >> $clean_reads/qc_step1.log 2>&1
 ```
-**Key points**:
+
+## **Key points**:
 
 Including a read deduplication step can potentially:
 1. Increase the number of metagenome-assembled contigs (might be sample dependent).
@@ -145,34 +160,52 @@ Navigate to the `multiqc` output directory/folder and open the report in your br
 	- Data protection or unintended data sharing e.g. in the case of a human host
 * Positive vs negative filtering
 
-For the decontamination step, we will use a tool called [`hocort`](https://github.com/ignasrum/hocort) (Host Co ntamination Removal Tool developed by Rumbavicius et al. 2023 - doi: [10.1186/s12859-023-05492-w](https://doi.org/10.1186/s12859-023-05492-w)).
+For the decontamination step, we will use a tool called [`hostile`](https://github.com/bede/hostile) (developed by Constantinides et al. 2023 - doi: [10.1093/bioinformatics/btad728](https://doi.org/10.1093/bioinformatics/btad728)).
+
+> [!IMPORTANT]
+> In this tutorial, we will be using the files from cleaned from fastp. So, DO NOT run the code bellow.
+> However, in the practical applications, please ensure that you have removed the host reads to ensure your downstream analyses is on microbial reads only.
 
 ```
-# Activate the hocort environment
-conda activate hocort
+# Create and activate a conda env 
+conda create -y -n hostile -c conda-forge -c bioconda hostile 
+conda activate hostile
+conda activate --stack amr # to access packages from the amr env 
+ # Run Hostile on paired short reads 
+hostile clean --fastq1 SRR14297772_cpe107_1_ds_filtered.fastq.gz --fastq2 SRR14297772_cpe107_2_ds_filtered.fastq.gz -o - > SRR14297772_cpe107.interleaved.fastq
 
-# Provide path to the bowtie2 index files
-bwt=~/course/cp8/databases/hocort/human
- wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/914/755/GCF_009914755.1_T2T-CHM13v2.0/GCF_009914755.1_T2T-CHM13v2.0_genomic.fna.gz
+# Bin interleaved fastq files into clean.fastq1 and clean.fastq2 using seqtk
+seqtk seq -1 SRR14297772_cpe107.interleaved.fastq > clean.SRR14297772_cpe107_1.fastq
+seqtk seq -2 SRR14297772_cpe107.interleaved.fastq > clean.SRR14297772_cpe107_2.fastq
 
-# Create directory to save decontaminated reads
-hocort=~/course/cp8/hocort # Locate this index database
-mkdir -p $hocort
-threads=4
-
-for fq in $(find $clean_reads -name "*1.fq.gz"); do
-	sampleid=$(basename -s ".1.fq.gz" $fq)
-	read1=$(find $clean_reads -name "${sampleid}*1*f*q.gz")
-	read2=$(find $clean_reads -name "${sampleid}*2*f*q.gz")
-	hocort map bowtie2 --threads $threads --filter true \
-	-x ${bwt}/grch38 -i $read1 $read2 \
-	-o $hocort/${sampleid}.R1.fq $hocort/${sampleid}.R2.fq 2> $hocort/${sampleid}.err
-
-	# compress reads
-	gzip $hocort/${sampleid}.1.fq
-	gzip $hocort/${sampleid}.2.fq
-done
+#Compress all fastq files (pigz offers fast compression. You can also use gzip)
+pigz SRR14297772_cpe107.interleaved.fastq
+pigz clean.SRR14297772_cpe107_1.fastq
+pigz clean.SRR14297772_cpe107_2.fastq
 ```
+## **Downsample Reads (Optional)**
+Sometimes this step is done -- but it is not mandatory. For this tutorial, we will skip this step.
+
+Reduce the number of reads in the dataset while preserving the diversity of the sample. Use **seqtk** sample for random subsampling of reads to a desired percentage or absolute number.
+```bash
+seqtk sample -s100 input.fastq 0.1 > downsampled.fastq
+
+#-s100 specifies a random seed for reproducibility.
+#0.1 specifies 10% of the total reads (adjust according to needs).
+```
+
+Use [**bbnorm.sh**](http://bbnorm.sh/) in BBMap for read normalization, which reduces redundancy while keeping unique reads.
+
+```bash
+bbnorm.sh in=input.fastq out=downsampled.fastq target=20 min=2
+
+# target=20 controls coverage normalization depth (can be adjusted based on data).
+```
+
+# **Metagenome assembly with metaSPAdes**<a name='metaspades'></a>
+**[metaSPAdes]** is optimized for metagenomic data and assembles reads into contigs, reconstructing genome fragments from complex microbial communities.
+
+
 
 # **Taxonomic classification**<a name='taxclassification'></a>
 Annotation of reads or contigs with taxonomic information using e.g. blast based methods against reference databases. Quality of taxonomic assignments depends on:
