@@ -226,8 +226,8 @@ metaspades.py -1 clean_reads/SRR14297772_cpe110_1_ds_filtered.fastq.gz -2 clean_
 **If you have removed host reads with `hostile`**
 
 ```
-metaspades.py -1 clean.SRR14297772_cpe107_1.fastq.gz -2 clean.SRR14297772_cpe107_2.fastq.gz -o clean_SRR14297772_cpe107_metaspades_output/ --only-assembler # fastp and hostile-cleaned
-metaspades.py -1 clean.SRR14297772_cpe110_1.fastq.gz -2 clean.SRR14297772_cpe110_2.fastq.gz -o clean_SRR14297772_cpe110_metaspades_output/ --only-assembler # fastp and hostile-cleaned
+#metaspades.py -1 clean.SRR14297772_cpe107_1.fastq.gz -2 clean.SRR14297772_cpe107_2.fastq.gz -o clean_SRR14297772_cpe107_metaspades_output/ --only-assembler # fastp and hostile-cleaned
+#metaspades.py -1 clean.SRR14297772_cpe110_1.fastq.gz -2 clean.SRR14297772_cpe110_2.fastq.gz -o clean_SRR14297772_cpe110_metaspades_output/ --only-assembler # fastp and hostile-cleaned
 ```
 
 - **What It Does**: metaSPAdes assembles contigs by building a de Bruijn graph adapted for metagenomic data.
@@ -240,6 +240,7 @@ What are the N50 and L50 values? [Hint: use python script `find_assembly_stats.p
 ```
 cd /home/data/data/metagenomics/
 wget https://github.com/WCSCourses/AMR_2026/blob/main/course_modules_2026/Metagenomics/find_assembly_stats.py
+cd /home/data/data/cp10/
 ```
 
 Another tool that can be used is [Quast](https://github.com/ablab/quast), which we learned about during [Computational Practical 4 - Genome assembly and annotation](https://github.com/WCSCourses/AMR_2026/blob/main/course_modules_2026/genome_assembly/AMR_2026_Genome_assembly.md).
@@ -250,7 +251,8 @@ Binning groups of contigs into bins representing putative genomes. **MetaBAT2** 
 
 1. **Run MetaBAT2**:
 ```
-metabat2 -i SRR14297772_cpe_107_metaspades_output/contigs.fasta -o bins_folder/bin -m 1500
+metabat2 -i SRR14297772_cpe_107_metaspades_output/contigs.fasta -o SRR14297772_cpe_107_bins_folder/SRR14297772_cpe_107_bin -m 1500
+metabat2 -i SRR14297772_cpe_110_metaspades_output/contigs.fasta -o SRR14297772_cpe_107_bins_folder/SRR14297772_cpe_110_bin -m 1500
 ```
    
 * **What It Does**: MetaBAT2 clusters contigs into bins that represent draft genomes.
