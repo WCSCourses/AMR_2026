@@ -267,7 +267,8 @@ Use **CheckM** to evaluate the quality of binned genomes, assessing completeness
 
 1. **Run CheckM**:
 ```
-checkm lineage_wf -x fa -t 8 bins_folder/ checkm_output/ --pplacer_threads 8
+checkm lineage_wf -x fa -t 8 SRR14297772_cpe107_bins_folder/ SRR14297772_cpe107_checkm_output/ --pplacer_threads 8
+checkm lineage_wf -x fa -t 8 SRR14297772_cpe110_bins_folder/ SRR14297772_cpe110_checkm_output/ --pplacer_threads 8
 ```
    
 * **What It Does**: CheckM evaluates each bin for genome completeness and contamination.
@@ -284,7 +285,8 @@ Annotation of reads or contigs with taxonomic information using e.g. blast based
 
 ## **Run Kraken2 to identify microbial diversity**:
 ```
-kraken2 --db /home/data/data/kraken2/ --threads 8 --output kraken_output.txt --report kraken_report.txt SRR14297772_cpe_107_metaspades/contigs.fasta
+kraken2 --db /home/data/data/kraken2/ --threads 8 --output SRR14297772_cpe107_kraken_output.txt --report SRR14297772_cpe107_kraken_report.txt SRR14297772_cpe107_metaspades/contigs.fasta
+kraken2 --db /home/data/data/kraken2/ --threads 8 --output SRR14297772_cpe110_kraken_output.txt --report SRR14297772_cpe110_kraken_report.txt SRR14297772_cpe110_metaspades/contigs.fasta
 ```
     
 * **What It Does**: Kraken2 assigns taxonomic classifications by matching sequences against a reference database.
@@ -301,7 +303,9 @@ kraken2 --db /home/data/kraken2/ clean.SRR14297772_cpe107_1.fastq.gz clean.SRR14
 We can now use `Prokka` to annotate each bin to identify genes and other genomic features.
 
 ```
-prokka --outdir annotation_output --prefix bin_1_annotation bins_folder/bin.1.fa
+prokka --outdir SRR14297772_cpe107_annotation_output --prefix SRR14297772_cpe107_bin_1_annotation SRR14297772_cpe107_bins_folder/bin.1.fa
+prokka --outdir SRR14297772_cpe110_annotation_output --prefix SRR14297772_cpe110_bin_1_annotation SRR14297772_cpe110_bins_folder/bin.1.fa
+prokka --outdir SRR14297772_cpe110_annotation_output --prefix SRR14297772_cpe110_bin_2_annotation SRR14297772_cpe110_bins_folder/bin.2.fa
 ```
     
 * **What It Does**: Prokka annotates genes and functional elements in each bin.
@@ -319,7 +323,9 @@ abricate --list
 
 To run ABRicate on the bins [Default database is ncbi]
 ```
-abricate bins_folder/bin.1.fa > abricate_output.txt
+abricate SRR14297772_cpe107_bins_folder/SRR14297772_cpe107_bin.1.fa > SRR14297772_cpe107_abricate_output.txt
+abricate SRR14297772_cpe107_bins_folder/SRR14297772_cpe110_bin.1.fa > SRR14297772_cpe110_abricate_output.txt
+abricate SRR14297772_cpe110_bins_folder/SRR14297772_cpe110_bin.2.fa >> SRR14297772_cpe110_abricate_output.txt
 ```
 * **What It Does**: ABRicate searches for known AMR genes by comparing genome sequences against the ResFinder database.
 * **Output**: Results in `abricate_output.txt` list detected AMR genes, their identities, and resistance classes.
@@ -351,7 +357,8 @@ cd Krona/KronaTools
 
 **Convert Kraken2 Output for Krona**:
 ```
-cut -f2,3 kraken_output.txt > krona_input.txt
+cut -f2,3 SRR14297772_cpe107_kraken_output.txt > SRR14297772_cpe107_krona_input.txt
+cut -f2,3 SRR14297772_cpe110_kraken_output.txt > SRR14297772_cpe110_krona_input.txt
 ```
     
 * **What It Does**: Extracts only the taxonomic ID and classification from Kraken2 output, creating a format compatible with Krona.
