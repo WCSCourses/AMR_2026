@@ -303,9 +303,9 @@ kraken2 --db /home/data/kraken2/ clean.SRR14297772_cpe107_1.fastq.gz clean.SRR14
 We can now use `Prokka` to annotate each bin to identify genes and other genomic features.
 
 ```
-prokka --outdir SRR14297772_cpe107_annotation_output --prefix SRR14297772_cpe107_bin_1_annotation SRR14297772_cpe107_bins_folder/bin.1.fa
-prokka --outdir SRR14297772_cpe110_annotation_output --prefix SRR14297772_cpe110_bin_1_annotation SRR14297772_cpe110_bins_folder/bin.1.fa
-prokka --outdir SRR14297772_cpe110_annotation_output --prefix SRR14297772_cpe110_bin_2_annotation SRR14297772_cpe110_bins_folder/bin.2.fa
+prokka --outdir SRR14297772_cpe107_annotation_output --prefix SRR14297772_cpe107_bin_1_annotation SRR14297772_cpe107_bins_folder/SRR14297772_cpe107_bin.1.fa
+prokka --outdir SRR14297772_cpe110_annotation_output --prefix SRR14297772_cpe110_bin_1_annotation SRR14297772_cpe110_bins_folder/SRR14297772_cpe110_bin.1.fa
+prokka --outdir SRR14297772_cpe110_annotation_output --prefix SRR14297772_cpe110_bin_2_annotation SRR14297772_cpe110_bins_folder/SRR14297772_cpe110_bin.2.fa
 ```
     
 * **What It Does**: Prokka annotates genes and functional elements in each bin.
