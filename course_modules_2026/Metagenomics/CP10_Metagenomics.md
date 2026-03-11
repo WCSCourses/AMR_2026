@@ -224,7 +224,10 @@ metaspades.py -1 clean.SRR14297772_cpe107_1.fastq.gz -2 clean.SRR14297772_cpe107
 
 Inspect `contigs.fasta` in `SRR14297772_cpe_107_metaspades_output/` to check contig lengths and quality. 
 
-What are the N50 and L50 values? [Hint: use python script `find_assembly_stats.py` from the `Metagenomics` folder]. 
+What are the N50 and L50 values? [Hint: use python script `find_assembly_stats.py` from the `Metagenomics` folder]. You can also download it from here:
+```
+wget https://github.com/WCSCourses/AMR_2026/blob/main/course_modules_2025/Metagenomics/find_assembly_stats.py
+```
 
 Another tool that can be used is [Quast](https://github.com/ablab/quast), which we learned about during [Computational Practical 4 - Genome assembly and annotation](https://github.com/WCSCourses/AMR_2026/blob/main/course_modules_2026/genome_assembly/AMR_2026_Genome_assembly.md).
 
