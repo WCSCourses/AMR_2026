@@ -63,17 +63,13 @@ First, concatenate all Snippy consensus sequences to create a **multi-sequence a
 
 On your machine, to launch the Docker image, type:
 ```bash
-docker run -i -t --mount type=bind,source=C:\Users\User\Desktop\amr25_data\,target=/home/ amr:Dockerfile
+docker run -i -t --mount type=bind,source=C:\Users\User\Desktop\amr25_data\,target=/home/data/ amr:Dockerfile
 ```
 
-
-```bash
-cd /home/data/cp8/
-```
 
 Navidate to the module folder `cp8` where you should find the genome assemblies you just copied:
 ```bash
-cd cp8
+cd /home/data/data/cp8/
 ```
 
 We will create the whole-genome sequence alignment by concatenating the Snippy consensus sequence of all 14 K. pneumoniae ST78 isolates:
