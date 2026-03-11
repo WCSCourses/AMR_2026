@@ -4,14 +4,18 @@
 
 Modified by: Dr. Stanford Kwenda, Augusto Messa Jr., Miriam Mwamba
 
-## Table of contents (To be updated)
+## Table of contents
 1. [Learning objectives](#objectives)
 2. [Introduction](#intro)
 3. [Set-up and Dataset](#setup)
 4. [Raw data quality and QC](#rawdataqc)
 5. [Host contamination removal](#contremoval)
-6. [Taxonomic classification](#taxclassification)
-7. [AMR profiling](#amrprofiling)
+6. [Metagenome assembly with metaSPAdes](#metaspades)
+7. [Binning the Contigs](#binning)
+8. [Taxonomic classification kof Contigs (MAGs) and/or Reads](#taxclassification)
+9. [Genome Annotation](#magsannotation)
+10. [AMR Prediction](#amrpred)
+11. [Visualization of Taxonomy with Pavian or Krona](#metavisualization)
 
 # **Learning objectives** <a name="objectives"></a>
 This tutorial provides a step by step command line workflow for analyzing bacterial genomes from Illumina short-read metagenomica data. By following the steps, you will be able to:
@@ -296,7 +300,7 @@ prokka --outdir annotation_output --prefix bin_1_annotation bins_folder/bin.1.fa
 * **Output**: Annotations are saved in `annotation_output/
 
 
-# **AMR Prediction**
+# **AMR Prediction**<a name='amrpred'></a>
 We can now proceed to identify antimicrobial resistance (AMR) genes using **ABRicate**, which screens genomes against known AMR gene databases. By default it uses NCBI database, which is a subset of the AMRFinderPlus database to do AMR gene detection. To exploit the complete functionality of AMR prediction, use AMRFinderPlus. See note [here](https://www.ncbi.nlm.nih.gov/pathogens/antimicrobial-resistance/AMRFinder/). 
 
 **Run ABRicate for AMR Prediction**:
@@ -315,7 +319,7 @@ abricate bins_folder/bin.1.fa > abricate_output.txt
 **Question**: Can you compare the results from Prokka and ABRicate? Do you find anything in common? Can you explain your observation?
 
 
-# **Visualization of Taxonomy with Pavian or Krona**<a name='metavis'></a>
+# **Visualization of Taxonomy with Pavian or Krona**<a name='metavisualization'></a>
 Now, with these results we can visualize taxonomic classifications interactively using **Pavian** or **Krona**:
 
 * **Pavian** provides an interactive web-based interface (based on R).
