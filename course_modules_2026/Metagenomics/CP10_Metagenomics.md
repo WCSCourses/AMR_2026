@@ -163,7 +163,7 @@ Navigate to the `multiqc` output directory/folder and open the report in your br
 For the decontamination step, we will use a tool called [`hostile`](https://github.com/bede/hostile) (developed by Constantinides et al. 2023 - doi: [10.1093/bioinformatics/btad728](https://doi.org/10.1093/bioinformatics/btad728)).
 
 > [!IMPORTANT]
-> In this tutorial, we will be using the files from cleaned from fastp. So, DO NOT run the code bellow.
+> In this tutorial, we will be using the cleaned files from `fastp`. So, DO NOT run the code bellow.
 > However, in the practical applications, please ensure that you have removed the host reads to ensure your downstream analyses is on microbial reads only.
 
 ```
@@ -183,10 +183,11 @@ pigz SRR14297772_cpe107.interleaved.fastq
 pigz clean.SRR14297772_cpe107_1.fastq
 pigz clean.SRR14297772_cpe107_2.fastq
 ```
+
 ## **Downsample Reads (Optional)**
 Sometimes this step is done -- but it is not mandatory. For this tutorial, we will skip this step.
 
-Reduce the number of reads in the dataset while preserving the diversity of the sample. Use **seqtk** sample for random subsampling of reads to a desired percentage or absolute number.
+Reduce the number of reads in the dataset while preserving the diversity of the sample. Use `seqtk` sample for random subsampling of reads to a desired percentage or absolute number.
 ```bash
 seqtk sample -s100 input.fastq 0.1 > downsampled.fastq
 
@@ -194,7 +195,7 @@ seqtk sample -s100 input.fastq 0.1 > downsampled.fastq
 #0.1 specifies 10% of the total reads (adjust according to needs).
 ```
 
-Use [**bbnorm.sh**](http://bbnorm.sh/) in BBMap for read normalization, which reduces redundancy while keeping unique reads.
+Use [`bbnorm.sh`](http://bbnorm.sh/) in [`BBMap`](https://sourceforge.net/projects/bbmap/) for read normalization, which reduces redundancy while keeping unique reads.
 
 ```bash
 bbnorm.sh in=input.fastq out=downsampled.fastq target=20 min=2
@@ -203,11 +204,68 @@ bbnorm.sh in=input.fastq out=downsampled.fastq target=20 min=2
 ```
 
 # **Metagenome assembly with metaSPAdes**<a name='metaspades'></a>
-**[metaSPAdes]** is optimized for metagenomic data and assembles reads into contigs, reconstructing genome fragments from complex microbial communities.
+**metaSPAdes** is a high-performance, open-source de novo metagenomic assembler designed for assembling complex, uneven-coverage sequencing data, such as soil or gut microbiome samples. It is optimized for metagenomic data and assembles reads into contigs, reconstructing genome fragments from complex microbial communities. metaSPAdes is part of the [SPAdes](https://github.com/ablab/spades) toolkit and is described in the paper by Nurk et al. 2017 (doi: [10.1101/gr.213959.116](https://doi.org/10.1101/gr.213959.116)).
+
+**With the output from fastp**
+
+```
+metaspades.py -1 SRR14297772_cpe107_1_ds_filtered.fastq.gz -2 SRR14297772_cpe107_2_ds_filtered.fastq.gz -o SRR14297772_cpe107_metaspades_output/ --only-assembler # fastp-cleaned only
+```
+
+**If you have removed host reads with `hostile`**
+
+```
+metaspades.py -1 clean.SRR14297772_cpe107_1.fastq.gz -2 clean.SRR14297772_cpe107_2.fastq.gz -o clean_SRR14297772_cpe107_metaspades_output/ --only-assembler # fastp and hostile-cleaned
+```
+
+- **What It Does**: metaSPAdes assembles contigs by building a de Bruijn graph adapted for metagenomic data.
+- **Output**: Assembled contigs are saved in the `metaspades_output/` directory (In our case the output is in `SRR14297772_cpe_107_metaspades_output/`).
+- **Warning**: This step is usually time consuming and memory intensive.
+
+Inspect `contigs.fasta` in `metaspades_output/` to check contig lengths and quality. 
+
+What are the N50 and L50 values? [Hint: use python script `find_assembly_stats.py` from the `Metagenomics` folder]. 
+
+Another tool that can be used is [Quast](https://github.com/ablab/quast), which we learned about during [Computational Practical 4 - Genome assembly and annotation](https://github.com/WCSCourses/AMR_2026/blob/main/course_modules_2026/genome_assembly/AMR_2026_Genome_assembly.md).
+
+# **Binning the Contigs**<a name='binning'></a>
+
+Binning groups contigs into bins representing putative genomes. **MetaBAT2** performs binning based on sequence composition and read coverage.
+
+1. **Run MetaBAT2**:
+    
+    ```
+    metabat2 -i metaspades_output/contigs.fasta -o bins_folder/bin -m 1500
+    
+    ```
+    
+    - **What It Does**: MetaBAT2 clusters contigs into bins that represent draft genomes.
+    - **Key Option**:
+        - `m 1500`: Sets the minimum contig length to 1500 bp for binning.
+2. **Examine Binning Results**:
+The binned genomes are saved in `bins_folder/`, with each bin corresponding to a draft genome.
+
+## Step 5: Quality Assessment of Bins
+
+Use **CheckM** to evaluate the quality of binned genomes, assessing completeness and contamination based on conserved marker genes.
+
+1. **Run CheckM**:
+    
+    ```
+    checkm lineage_wf -x fa -t 8 bins_folder/ checkm_output/ --pplacer_threads 8
+    
+    ```
+    
+    - **What It Does**: CheckM evaluates each bin for genome completeness and contamination.
+    - **Interpret Results**: Bins with >90% completeness and <5% contamination are considered high-quality.
+  
+Q: What is the completeness and contamination of bins? [**Hint**: Look at bin_stats_ext.tsv]
 
 
 
-# **Taxonomic classification**<a name='taxclassification'></a>
+
+
+# **Taxonomic classification of Contigs (MAGs) and/or Reads**<a name='taxclassification'></a>
 Annotation of reads or contigs with taxonomic information using e.g. blast based methods against reference databases. Quality of taxonomic assignments depends on:
 1. Choice of tools
 2. Reference database
