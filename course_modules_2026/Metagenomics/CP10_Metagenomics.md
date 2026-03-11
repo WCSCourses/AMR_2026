@@ -285,8 +285,8 @@ Annotation of reads or contigs with taxonomic information using e.g. blast based
 
 ## **Run Kraken2 to identify microbial diversity**:
 ```
-kraken2 --db /home/data/data/kraken2/ --threads 8 --output SRR14297772_cpe107_kraken_output.txt --report SRR14297772_cpe107_kraken_report.txt SRR14297772_cpe107_metaspades/contigs.fasta
-kraken2 --db /home/data/data/kraken2/ --threads 8 --output SRR14297772_cpe110_kraken_output.txt --report SRR14297772_cpe110_kraken_report.txt SRR14297772_cpe110_metaspades/contigs.fasta
+kraken2 --db /home/data/data/kraken2/ --threads 8 --output SRR14297772_cpe107_kraken_output.txt --report SRR14297772_cpe107_kraken_report.txt SRR14297772_cpe107_metaspades_output/contigs.fasta
+kraken2 --db /home/data/data/kraken2/ --threads 8 --output SRR14297772_cpe110_kraken_output.txt --report SRR14297772_cpe110_kraken_report.txt SRR14297772_cpe110_metaspades_output/contigs.fasta
 ```
     
 * **What It Does**: Kraken2 assigns taxonomic classifications by matching sequences against a reference database.
