@@ -257,7 +257,7 @@ metabat2 -i SRR14297772_cpe110_metaspades_output/contigs.fasta -o SRR14297772_cp
    
 * **What It Does**: MetaBAT2 clusters contigs into bins that represent draft genomes.
 * **Key Option**:
-	- `m 1500`: Sets the minimum contig length to 1500 bp for binning.
+	- `-m 1500`: Sets the minimum contig length to 1500 bp for binning.
 
 2. **Examine Binning Results**:
 The binned genomes are saved in `bins_folder/`, with each bin corresponding to a draft genome.
