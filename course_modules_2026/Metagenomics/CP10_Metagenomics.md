@@ -69,7 +69,7 @@ To download the raw read files, you would run the following commands. However, t
 
 For this tutorail, we will be using a custom set of sequences (which were spiked-in) that can be obtained from [here](https://tinyurl.com/mvr3d263). Let's copy them into our working directory:
 ```
-mkdir /home/data/data/cp10/raw_reads
+mkdir /home/data/data/cp10/raw_reads /home/data/data/cp10/clean_reads /home/data/data/cp10/qc_reports
 cp /home/data/data/metagenomics/mgx_sequences/SRR14297772_cpe107_* raw_reads/
 cp /home/data/data/metagenomics/mgx_sequences/SRR14297772_cpe110_* raw_reads/
 ls
@@ -96,8 +96,8 @@ QC of raw reads is often a standard first step used to assess the quality of rea
 Since we are performing read filtering and QC of metagenomic data, it might be beneficial to perform read deduplication during the initial QC step. This will be done in a single step as we perform our standard QC step. We will perform read QC and filtering based on the steps below:
 
 ```
-fastp -i raw_reads/SRR14297772_cpe107_1.fastq.gz -I raw_reads/SRR14297772_cpe107_2.fastq.gz -o clean_reads/SRR14297772_cpe107_1_ds_filtered.fastq.gz -O clean_reads/SRR14297772_cpe107_2_ds_filtered.fastq.gz -h cpe107_fastp_report.html -j cpe107_fastp_report.json --length_required 50 --correction --dedup --overrepresentation_analysis --thread 4
-fastp -i raw_reads/SRR14297772_cpe110_1.fastq.gz -I raw_reads/SRR14297772_cpe110_2.fastq.gz -o clean_reads/SRR14297772_cpe110_1_ds_filtered.fastq.gz -O clean_reads/SRR14297772_cpe110_2_ds_filtered.fastq.gz -h cpe110_fastp_report.html -j cpe107_fastp_report.json --length_required 50 --correction --dedup --overrepresentation_analysis --thread 4 
+fastp -i raw_reads/SRR14297772_cpe107_1.fastq.gz -I raw_reads/SRR14297772_cpe107_2.fastq.gz -o clean_reads/SRR14297772_cpe107_1_ds_filtered.fastq.gz -O clean_reads/SRR14297772_cpe107_2_ds_filtered.fastq.gz -h qc_reports/cpe107_fastp_report.html -j qc_reports/cpe107_fastp_report.json --length_required 50 --correction --dedup --overrepresentation_analysis --thread 4
+fastp -i raw_reads/SRR14297772_cpe110_1.fastq.gz -I raw_reads/SRR14297772_cpe110_2.fastq.gz -o clean_reads/SRR14297772_cpe110_1_ds_filtered.fastq.gz -O clean_reads/SRR14297772_cpe110_2_ds_filtered.fastq.gz -h qc_reports/cpe110_fastp_report.html -j qc_reports/cpe107_fastp_report.json --length_required 50 --correction --dedup --overrepresentation_analysis --thread 4 
 ```
 - **What It Does**: Fastp removes adapters, trims low-quality bases, and discards reads shorter than 50 bp. Hostile gets rid of host (mainly) human reads.
 - **Key Options for Fastp**:
