@@ -44,7 +44,7 @@ Over the years, a number of bioinformatic tools have been developed to enable ma
 [10.3389/fpls.2021.657240](https://www.frontiersin.org/articles/10.3389/fpls.2021.657240/full)). We will use the [**_BWA_** (Burrows-Wheeler
 Aligner)](https://bio-bwa.sourceforge.net/), followed by variant calling using [**_samtools_**](https://samtools.org/) and [**_bcftools_**](https://github.com/samtools/bcftools) to perform these tasks "manually". Then we will also explore doing it using [`snippy`](https://github.com/tseemann/snippy) tool for short reads. Steps to perform alignment and variant calling for long reads are also provided. 
 
-For this process will need two things: 
+For this process will need a couple of things: 
 * Sequence reads.
 * Reference genome.
 * Tools for working with short reads: `fastp`, `snippy`, `samtools` and `bcftools`.
