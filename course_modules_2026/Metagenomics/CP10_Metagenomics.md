@@ -234,7 +234,7 @@ metaspades.py -1 clean_reads/SRR14297772_cpe110_1_ds_filtered.fastq.gz -2 clean_
 - **Output**: Assembled contigs are saved in the `metaspades_output/` directory (In our case the output is in `SRR14297772_cpe_107_metaspades_output/`).
 - **Warning**: This step is usually time consuming and memory intensive.
 
-Inspect `contigs.fasta` in `SRR14297772_cpe_107_metaspades_output/` and `SRR14297772_cpe_110_metaspades_output/` to check contig lengths and quality. 
+Inspect `contigs.fasta` in `SRR14297772_cpe107_metaspades_output/` and `SRR14297772_cpe110_metaspades_output/` to check contig lengths and quality. 
 
 What are the N50 and L50 values? [Hint: use python script `find_assembly_stats.py` from the `Metagenomics` folder]. You can also download it from [here](https://github.com/WCSCourses/AMR_2026/blob/main/course_modules_2026/Metagenomics/find_assembly_stats.py):
 ```
@@ -251,8 +251,8 @@ Binning groups of contigs into bins representing putative genomes. **MetaBAT2** 
 
 1. **Run MetaBAT2**:
 ```
-metabat2 -i SRR14297772_cpe_107_metaspades_output/contigs.fasta -o SRR14297772_cpe_107_bins_folder/SRR14297772_cpe_107_bin -m 1500
-metabat2 -i SRR14297772_cpe_110_metaspades_output/contigs.fasta -o SRR14297772_cpe_107_bins_folder/SRR14297772_cpe_110_bin -m 1500
+metabat2 -i SRR14297772_cpe107_metaspades_output/contigs.fasta -o SRR14297772_cpe107_bins_folder/SRR14297772_cpe107_bin -m 1500
+metabat2 -i SRR14297772_cpe110_metaspades_output/contigs.fasta -o SRR14297772_cpe107_bins_folder/SRR14297772_cpe110_bin -m 1500
 ```
    
 * **What It Does**: MetaBAT2 clusters contigs into bins that represent draft genomes.
