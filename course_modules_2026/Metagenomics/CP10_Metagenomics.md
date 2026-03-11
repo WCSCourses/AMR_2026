@@ -71,12 +71,13 @@ For this tutorail, we will be using a custom set of sequences (which were spiked
 ```
 mkdir /home/data/data/cp10/raw_reads
 cp /home/data/data/metagenomics/mgx_sequences/SRR14297772_cpe107_* raw_reads/
+cp /home/data/data/metagenomics/mgx_sequences/SRR14297772_cpe110_* raw_reads/
 ls
 ```
 We should now have within our working directory the following files:
 ```
 # Spiked: c/o Aarthi and Arun: Download from <https://tinyurl.com/mvr3d263>
-# Filenames: SRR14297772_cpe107_1.fastq.gz and SRR14297772_cpe107_2.fastq.gz
+# Filenames: SRR14297772_cpe107_1.fastq.gz and SRR14297772_cpe107_2.fastq.gz & SRR14297772_cpe110_1.fastq.gz and SRR14297772_cpe110_2.fastq.gz 
 ```
 
 # **Raw data quality and QC**<a name="rawdataqc"></a>
@@ -95,7 +96,8 @@ QC of raw reads is often a standard first step used to assess the quality of rea
 Since we are performing read filtering and QC of metagenomic data, it might be beneficial to perform read deduplication during the initial QC step. This will be done in a single step as we perform our standard QC step. We will perform read QC and filtering based on the steps below:
 
 ```
-fastp -i SRR14297772_cpe107_1.fastq.gz -I SRR14297772_cpe107_2.fastq.gz -o SRR14297772_cpe107_1_ds_filtered.fastq.gz -O SRR14297772_cpe107_2_ds_filtered.fastq.gz -h fastp_report.html -j fastp_report.json --length_required 50 --correction --dedup --overrepresentation_analysis --thread 4 
+fastp -i raw_reads/SRR14297772_cpe107_1.fastq.gz -I raw_reads/SRR14297772_cpe107_2.fastq.gz -o clean_reads/SRR14297772_cpe107_1_ds_filtered.fastq.gz -O clean_reads/SRR14297772_cpe107_2_ds_filtered.fastq.gz -h cpe107_fastp_report.html -j cpe107_fastp_report.json --length_required 50 --correction --dedup --overrepresentation_analysis --thread 4
+fastp -i raw_reads/SRR14297772_cpe110_1.fastq.gz -I raw_reads/SRR14297772_cpe110_2.fastq.gz -o clean_reads/SRR14297772_cpe110_1_ds_filtered.fastq.gz -O clean_reads/SRR14297772_cpe110_2_ds_filtered.fastq.gz -h cpe110_fastp_report.html -j cpe107_fastp_report.json --length_required 50 --correction --dedup --overrepresentation_analysis --thread 4 
 ```
 - **What It Does**: Fastp removes adapters, trims low-quality bases, and discards reads shorter than 50 bp. Hostile gets rid of host (mainly) human reads.
 - **Key Options for Fastp**:
