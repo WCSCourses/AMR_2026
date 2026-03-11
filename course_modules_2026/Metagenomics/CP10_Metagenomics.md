@@ -110,27 +110,27 @@ fastp -i SRR14297772_cpe107_1.fastq.gz -I SRR14297772_cpe107_2.fastq.gz -o SRR14
 > Do not run it.
 ```
 # Create output directory for fastp output
-clean_reads=/home/data/data/cp10/clean_reads
-mkdir -p $clean_reads
+#clean_reads=/home/data/data/cp10/clean_reads
+#mkdir -p $clean_reads
 
 # Provide path to the raw reads directory
-raw_reads=/home/data/data/cp10/raw_reads
+#raw_reads=/home/data/data/cp10/raw_reads
 
 # We will skip the FastQC step
 
 # Execute the for loop to perform QC on all samples in the raw_reads directory
-for fq in $(find $raw_reads -name "*1.f*q.gz"); do \
-	sampleid=$(basename -s "_1.fastq.gz" $fq) \ 
-	read1=$(find $raw_reads -name "${sampleid}*1*f*q.gz") \
-	read2=$(find $raw_reads -name "${sampleid}*2*f*q.gz") \
-	
-	fastp -i "$read1" -I "$read2" \
-	-q 20 -l 36 --cut_front -M 10 -W 4 \
-	-R "$sampleid" -j $clean_reads/${sampleid}.fastp.json \
-	-h $clean_reads/${sampleid}.fastp.html \
-	--correction --dedup --overrepresentation_analysis --thread 4 \
+#for fq in $(find $raw_reads -name "*1.f*q.gz"); do \
+#	sampleid=$(basename -s "_1.fastq.gz" $fq) \ 
+#	read1=$(find $raw_reads -name "${sampleid}*1*f*q.gz") \
+#	read2=$(find $raw_reads -name "${sampleid}*2*f*q.gz") \
+#	
+#	fastp -i "$read1" -I "$read2" \
+#	-q 20 -l 36 --cut_front -M 10 -W 4 \
+#	-R "$sampleid" -j $clean_reads/${sampleid}.fastp.json \
+#	-h $clean_reads/${sampleid}.fastp.html \
+#	--correction --dedup --overrepresentation_analysis --thread 4 \
 	-o $clean_reads/${sampleid}.1.fq.gz -O $clean_reads/${sampleid}.2.fq.gz \
-done >> $clean_reads/qc_step1.log 2>&1
+#done >> $clean_reads/qc_step1.log 2>&1
 ```
 
 ## **Key points**:
@@ -142,11 +142,12 @@ Including a read deduplication step can potentially:
 4. Decrease the maximum memory requirement and time consumption during the computationally intensive meta-assembly step.
 5. Enhance the coverage abundance profiles of contigs.
 
-## Read QC visualization
-For read QC visualization, we will use `multiqc`. We have used this in previous practicals.
+## Read QC visualization (Optional)
+For read QC visualization, we can use `multiqc`. We have used this in previous practicals. We have used this in previous practicals. We could use it in the `FastQC` or `Fastp` reports, but that would be most useful if we had multiple samples, since we only have one, we will skip it and just check the `Fastp` report.
+
 ```
-qc_reports=/home/data/data/cp10/multiqc
-multiqc -f --no-data-dir $clean_reads --outdir $qc_reports
+#qc_reports=/home/data/data/cp10/multiqc
+#multiqc -f --no-data-dir $clean_reads --outdir $qc_reports
 ```
 
 **Group activity 1**
@@ -322,21 +323,16 @@ abricate bins_folder/bin.1.fa > abricate_output.txt
 # **Visualization of Taxonomy with Pavian or Krona**<a name='metavisualization'></a>
 Now, with these results we can visualize taxonomic classifications interactively using **Pavian** or **Krona**:
 
-* **Pavian** provides an interactive web-based interface (based on R).
-* **Krona** produces circular, hierarchical plots for exploring multi-level taxonomic data.
+* [**Pavian**]((https://github.com/fbreitwieser/pavian)) is a interactive browser application for analyzing and visualization metagenomics classification results from classifiers such as Kraken, KrakenUniq, Kraken 2, Centrifuge and MetaPhlAn. Pavian also provides an alignment viewer for validation of matches to a particular genome. Read the publication: Breitwieser and Salzberg 2020 - doi: [10.1093/bioinformatics/btz715](https://doi.org/10.1093/bioinformatics/btz715).
+* [**Krona**](https://github.com/marbl/Krona/wiki) allows hierarchical data to be explored with zooming, multi-layered pie charts. Krona charts can be created using an Excel template or KronaTools, which includes support for several bioinformatics tools and raw data formats. The interactive charts are self-contained and can be viewed with any modern web browser. Read the publication: Ondov et al. 2011 - doi: [10.1186/1471-2105-12-385](https://doi.org/10.1186/1471-2105-12-385).
 
 ## Option 1: Visualization with Pavian
-**Set Up Pavian for Visualization**:
-
-```
-pavian server
-# or upload the kraken reports on the web server: [<https://shiny.hiplot.cn/pavian/>](https://fbreitwieser.shinyapps.io/pavian/)    
-```
+Start the pavian server from your terminal or upload the kraken reports on the [web server](https://fbreitwieser.shinyapps.io/pavian/).
     
 * **What It Does**: Pavian launches a local server for visualizing taxonomic classifications in your web browser.
 * **Upload**: Load `kraken_report.txt` into Pavian for an interactive visualization.
 
-### Option 2: Visualization with Krona
+### Option 2: Visualization with Krona)
 Documentation: https://github.com/marbl/Krona/wiki/Installing
 ```
 # Installation
