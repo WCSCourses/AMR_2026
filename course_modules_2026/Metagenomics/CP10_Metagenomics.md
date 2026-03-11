@@ -17,7 +17,10 @@ Modified by: Dr. Stanford Kwenda, Augusto Messa Jr., Miriam Mwamba
 This tutorial provides a step by step command line workflow for analyzing bacterial genomes from Illumina short-read metagenomica data. By following the steps, you will be able to:
 
 1. Conduct quality control on Illumina reads
-2. 
+2. Assemble short reads into contigs using metaSPAdes.
+3. Bin contigs into genomes (Metagenome-Assembled Genomes or MAGs).
+4. Taxonomically classify and annotate these genomes.
+5. Assess antimicrobial resistance (AMR) potential and visualize taxonomic data.
 
 # **Introduction**<a name="intro"></a>
 Metagenomics provides a culture-independent approach to investigate whole microbial communities (i.e. metagenomes). The word [ "Meta" comes from from Ancient Greek (μετά = metá, 'after, beyond') is an adjective meaning 'more comprehensive' or 'transcending'](https://en.wikipedia.org/wiki/Meta_(prefix)). Metagenomics is often used to study a specific community of microorganisms, such as those residing on human skin, in the soil or in a water sample.
