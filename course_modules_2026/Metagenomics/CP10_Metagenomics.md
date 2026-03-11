@@ -30,7 +30,7 @@ This tutorial provides a step by step command line workflow for analyzing bacter
 Metagenomics provides a culture-independent approach to investigate whole microbial communities (i.e. metagenomes). The word [ "Meta" comes from from Ancient Greek (μετά = metá, 'after, beyond') is an adjective meaning 'more comprehensive' or 'transcending'](https://en.wikipedia.org/wiki/Meta_(prefix)). Metagenomics is often used to study a specific community of microorganisms, such as those residing on human skin, in the soil or in a water sample.
 
 There are two major approaches to metagenomic studies:
-*  Amplicon sequencing (e.g. targetting the 16S rRNA gene; either entirely or specific regions).
+*  Amplicon sequencing (e.g. targetting the 16S rRNA gene; either entirely or specific regions) - metabarcoding.
 *  Shotgun metagenomic sequencing or whole-genome shotgun sequencing.
 
 **Key differences between the two approaches**
