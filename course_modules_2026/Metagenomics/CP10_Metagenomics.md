@@ -227,16 +227,18 @@ metaspades.py -1 clean_reads/SRR14297772_cpe110_1_ds_filtered.fastq.gz -2 clean_
 
 ```
 metaspades.py -1 clean.SRR14297772_cpe107_1.fastq.gz -2 clean.SRR14297772_cpe107_2.fastq.gz -o clean_SRR14297772_cpe107_metaspades_output/ --only-assembler # fastp and hostile-cleaned
+metaspades.py -1 clean.SRR14297772_cpe110_1.fastq.gz -2 clean.SRR14297772_cpe110_2.fastq.gz -o clean_SRR14297772_cpe110_metaspades_output/ --only-assembler # fastp and hostile-cleaned
 ```
 
 - **What It Does**: metaSPAdes assembles contigs by building a de Bruijn graph adapted for metagenomic data.
 - **Output**: Assembled contigs are saved in the `metaspades_output/` directory (In our case the output is in `SRR14297772_cpe_107_metaspades_output/`).
 - **Warning**: This step is usually time consuming and memory intensive.
 
-Inspect `contigs.fasta` in `SRR14297772_cpe_107_metaspades_output/` to check contig lengths and quality. 
+Inspect `contigs.fasta` in `SRR14297772_cpe_107_metaspades_output/` and `SRR14297772_cpe_110_metaspades_output/` to check contig lengths and quality. 
 
 What are the N50 and L50 values? [Hint: use python script `find_assembly_stats.py` from the `Metagenomics` folder]. You can also download it from [here](https://github.com/WCSCourses/AMR_2026/blob/main/course_modules_2026/Metagenomics/find_assembly_stats.py):
 ```
+cd /home/data/data/metagenomics/
 wget https://github.com/WCSCourses/AMR_2026/blob/main/course_modules_2026/Metagenomics/find_assembly_stats.py
 ```
 
