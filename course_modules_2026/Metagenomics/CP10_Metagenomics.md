@@ -98,8 +98,8 @@ mkdir -p $clean_reads
 raw_reads=/home/data/data/cp10/raw_reads
 
 # Execute the for loop to perform QC on all samples in the raw_reads directory
-for fq in $(find $raw_reads -name "*1.fq.gz"); do \
-	sampleid=$(basename -s "_1.fq.gz" $fq) \ 
+for fq in $(find $raw_reads -name "*1.f*q.gz"); do \
+	sampleid=$(basename -s "_1.fastq.gz" $fq) \ 
 	read1=$(find $raw_reads -name "${sampleid}*1*f*q.gz") \
 	read2=$(find $raw_reads -name "${sampleid}*2*f*q.gz") \
 	
