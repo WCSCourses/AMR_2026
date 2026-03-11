@@ -11,26 +11,7 @@ Modified by: Dr. Stanford Kwenda, Augusto Messa Jr., Miriam Mwamba
 4. [Raw data quality and QC](#rawdataqc)
 5. [Host contamination removal](#contremoval)
 6. [Taxonomic classification](#taxclassification)
-    - [Aligning reads to reference](#alignment)
-    - [Quiz 1](#quiz1)
-    - [Variant calling](#variants)
-    - [Creating a pseudogenome](#pseudogenomes)
-    - [Creating a whole-geome alignment](#wgalignment)
-    - [Quiz 2](#quiz2)
-7. [Using snippy](#snippy)
-    - [Data preparation](#dataprep)
-    - [Quality control](#qcshort)
-    - [Cleaning the reads (if necessary)](#cleaningshort)
-    - [Short Read Alignment and SNP calling with snippy](#usesnippy)
-    - [Examining the output](#snippyoutput)
-    - [Post-processing and Analysis](#postshort)
-8. [Long reads](#longreads)
-    - [Data preparation](#datapreplong)
-    - [Running Medaka](#medaka)
-    - [Run DeepVariant](#deepvariant)
-    - [PEPPER DeepVariant for nanopore reads](#pepperdeepvariant)
-    - [Post-processing and Analysis](#postlong)
-9. [References](#refs)
+7. [AMR profiling](#amrprofiling)
 
 # **Learning objectives** <a name="objectives"></a>
 This tutorial provides a step by step command line workflow for analyzing bacterial genomes from Illumina short-read metagenomica data. By following the steps, you will be able to:
@@ -285,10 +266,10 @@ ktImportTaxonomy -t 5 -m 3 -o $krona/grouped.krona.html $brak
 conda deactivate
 ```
 
-# AMR profiling
-We can determine the resistome of each metagenomic sample by either directly mapping/aligning cleaned reads to an AMR database, or using metagenomic assemblies. In this section, we will explore the read-based mapping option using kma and the resfinder database. 
+# **AMR profiling**<a name='amrprofiling'></a>
+We can determine the resistome of each metagenomic sample by either directly mapping/aligning cleaned reads to an AMR database, or using metagenomic assemblies. In this section, we will explore the read-based mapping option using `kma` and the `resfinder` database. 
 
-kma should already be available in your path, and can verify this by using any of the following command(s):
+`kma` should already be available in your path, and can verify this by using any of the following command(s):
 ```
 kma -v
 which kma
