@@ -97,7 +97,7 @@ Since we are performing read filtering and QC of metagenomic data, it might be b
 
 ```
 fastp -i raw_reads/SRR14297772_cpe107_1.fastq.gz -I raw_reads/SRR14297772_cpe107_2.fastq.gz -o clean_reads/SRR14297772_cpe107_1_ds_filtered.fastq.gz -O clean_reads/SRR14297772_cpe107_2_ds_filtered.fastq.gz -h qc_reports/cpe107_fastp_report.html -j qc_reports/cpe107_fastp_report.json --length_required 50 --correction --dedup --overrepresentation_analysis --thread 4
-fastp -i raw_reads/SRR14297772_cpe110_1.fastq.gz -I raw_reads/SRR14297772_cpe110_2.fastq.gz -o clean_reads/SRR14297772_cpe110_1_ds_filtered.fastq.gz -O clean_reads/SRR14297772_cpe110_2_ds_filtered.fastq.gz -h qc_reports/cpe110_fastp_report.html -j qc_reports/cpe107_fastp_report.json --length_required 50 --correction --dedup --overrepresentation_analysis --thread 4 
+fastp -i raw_reads/SRR14297772_cpe110_1.fastq.gz -I raw_reads/SRR14297772_cpe110_2.fastq.gz -o clean_reads/SRR14297772_cpe110_1_ds_filtered.fastq.gz -O clean_reads/SRR14297772_cpe110_2_ds_filtered.fastq.gz -h qc_reports/cpe110_fastp_report.html -j qc_reports/cpe110_fastp_report.json --length_required 50 --correction --dedup --overrepresentation_analysis --thread 4 
 ```
 - **What It Does**: Fastp removes adapters, trims low-quality bases, and discards reads shorter than 50 bp. Hostile gets rid of host (mainly) human reads.
 - **Key Options for Fastp**:
@@ -145,11 +145,11 @@ Including a read deduplication step can potentially:
 5. Enhance the coverage abundance profiles of contigs.
 
 ## Read QC visualization (Optional)
-For read QC visualization, we can use `multiqc`. We have used this in previous practicals. We have used this in previous practicals. We could use it in the `FastQC` or `Fastp` reports, but that would be most useful if we had multiple samples, since we only have one, we will skip it and just check the `Fastp` report.
+For read QC visualization, we can use `multiqc`, which we used in previous practicals.
 
 ```
-#qc_reports=/home/data/data/cp10/multiqc
-#multiqc -f --no-data-dir $clean_reads --outdir $qc_reports
+qc_reports=/home/data/data/cp10/qc_reports/
+multiqc -f --no-data-dir "$qc_reports"/. --outdir "$qc_reports"
 ```
 
 **Group activity 1**
@@ -219,7 +219,8 @@ Use [`bbnorm.sh`](http://bbnorm.sh/) in [`BBMap`](https://sourceforge.net/projec
 **With the output from fastp**
 
 ```
-metaspades.py -1 SRR14297772_cpe107_1_ds_filtered.fastq.gz -2 SRR14297772_cpe107_2_ds_filtered.fastq.gz -o SRR14297772_cpe107_metaspades_output/ --only-assembler # fastp-cleaned only
+metaspades.py -1 clean_reads/SRR14297772_cpe107_1_ds_filtered.fastq.gz -2 clean_reads/SRR14297772_cpe107_2_ds_filtered.fastq.gz -o SRR14297772_cpe107_metaspades_output/ --only-assembler # fastp-cleaned only
+metaspades.py -1 clean_reads/SRR14297772_cpe110_1_ds_filtered.fastq.gz -2 clean_reads/SRR14297772_cpe110_2_ds_filtered.fastq.gz -o SRR14297772_cpe110_metaspades_output/ --only-assembler # fastp-cleaned only
 ```
 
 **If you have removed host reads with `hostile`**
