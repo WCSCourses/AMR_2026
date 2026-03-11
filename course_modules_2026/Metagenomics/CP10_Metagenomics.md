@@ -308,3 +308,17 @@ For downstream analysis, the following output files can be used e.g. in R, as in
 1. amr.mapstat
 2. Amr.res
 3. amr.vcf.gz
+
+# Hostile pipeline
+```
+cd /home/data/data/
+git clone https://github.com/bede/hostile.git
+cd hostile
+conda env create -y -f environment.yml
+conda activate hostile
+pip install --editable '.[dev]'
+pytest
+pre-commit install
+```
+Run this before Stanford's talk on metagenomics:
+Then copy the `human-t2t-hla.tar` file to `/root/.local/share/hostile` to make sure the database is there, and we don't have to rely on it being downloaded for each individual participant.
