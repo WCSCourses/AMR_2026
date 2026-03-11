@@ -222,7 +222,7 @@ metaspades.py -1 clean.SRR14297772_cpe107_1.fastq.gz -2 clean.SRR14297772_cpe107
 - **Output**: Assembled contigs are saved in the `metaspades_output/` directory (In our case the output is in `SRR14297772_cpe_107_metaspades_output/`).
 - **Warning**: This step is usually time consuming and memory intensive.
 
-Inspect `contigs.fasta` in `metaspades_output/` to check contig lengths and quality. 
+Inspect `contigs.fasta` in `SRR14297772_cpe_107_metaspades_output/` to check contig lengths and quality. 
 
 What are the N50 and L50 values? [Hint: use python script `find_assembly_stats.py` from the `Metagenomics` folder]. 
 
@@ -230,186 +230,147 @@ Another tool that can be used is [Quast](https://github.com/ablab/quast), which 
 
 # **Binning the Contigs**<a name='binning'></a>
 
-Binning groups contigs into bins representing putative genomes. **MetaBAT2** performs binning based on sequence composition and read coverage.
+Binning groups of contigs into bins representing putative genomes. **MetaBAT2** performs binning based on sequence composition and read coverage.
 
 1. **Run MetaBAT2**:
-    
-    ```
-    metabat2 -i metaspades_output/contigs.fasta -o bins_folder/bin -m 1500
-    
-    ```
-    
-    - **What It Does**: MetaBAT2 clusters contigs into bins that represent draft genomes.
-    - **Key Option**:
-        - `m 1500`: Sets the minimum contig length to 1500 bp for binning.
+```
+metabat2 -i SRR14297772_cpe_107_metaspades_output/contigs.fasta -o bins_folder/bin -m 1500
+```
+   
+* **What It Does**: MetaBAT2 clusters contigs into bins that represent draft genomes.
+* **Key Option**:
+	- `m 1500`: Sets the minimum contig length to 1500 bp for binning.
+
 2. **Examine Binning Results**:
 The binned genomes are saved in `bins_folder/`, with each bin corresponding to a draft genome.
 
-## Step 5: Quality Assessment of Bins
-
+## Quality Assessment of Bins
 Use **CheckM** to evaluate the quality of binned genomes, assessing completeness and contamination based on conserved marker genes.
 
 1. **Run CheckM**:
-    
-    ```
-    checkm lineage_wf -x fa -t 8 bins_folder/ checkm_output/ --pplacer_threads 8
-    
-    ```
-    
-    - **What It Does**: CheckM evaluates each bin for genome completeness and contamination.
-    - **Interpret Results**: Bins with >90% completeness and <5% contamination are considered high-quality.
+```
+checkm lineage_wf -x fa -t 8 bins_folder/ checkm_output/ --pplacer_threads 8
+```
+   
+* **What It Does**: CheckM evaluates each bin for genome completeness and contamination.
+* **Interpret Results**: Bins with >90% completeness and <5% contamination are considered high-quality.
   
 Q: What is the completeness and contamination of bins? [**Hint**: Look at bin_stats_ext.tsv]
 
-
-
-
-
 # **Taxonomic classification of Contigs (MAGs) and/or Reads**<a name='taxclassification'></a>
+Taxonomic classification allows annotation of reads or contigs with taxonomic information. This is performed by identifying the contigs taxonomic origin with [**Kraken2**](https://ccb.jhu.edu/software/kraken2/), which compares contigs to a taxonomic database.
+
 Annotation of reads or contigs with taxonomic information using e.g. blast based methods against reference databases. Quality of taxonomic assignments depends on:
 1. Choice of tools
 2. Reference database
 
-## Prepare kraken2 database
+## **Run Kraken2 to identify microbial diversity**:
 ```
-# First let’s create a directory to store our databases
-mkdir -p ~/course/cp8/databases/kraken2_8gb
-# Next we will decompress the kraken2 database into the path we created above
-
-tar -xvzf ~/course/cp8/databases/kraken2/k2_standard_08gb_20240112.tar.gz -C ~/course/cp8/databases/kraken2_8gb/
+kraken2 --db /home/data/data/kraken2/ --threads 8 --output kraken_output.txt --report kraken_report.txt SRR14297772_cpe_107_metaspades/contigs.fasta
 ```
-\*This step takes a bit of time and should be done the day before (or overnight).
+    
+* **What It Does**: Kraken2 assigns taxonomic classifications by matching sequences against a reference database.
+* **Output**: Results are saved in `kraken_output.txt` with a summary report in `kraken_report.txt`.
+* Alternatively, run Kraken 2 on the reads after host contamination removal (`hostile`).
 
-## Perform taxonomic classification using kraken2
-Now let’s activate the environment with the tools that we will need to use for this section.
+> [!NOTE]
+> DO NOT run the command below
 ```
-conda activate classify
-# create directory for kraken2 output
-mkdir -p ~/course/cp8/kraken2
-
-krak=~/course/cp8/kraken2
-
-
-# set threads
-threads=4
-
-# set path to kraken2 database and clean_reads directory
-
-db=~/course/cp8/databases/kraken2_8gb/
-clean_reads=~/course/cp8/clean_reads
-
-
-# execute kraken2
-for fq in $(find $hocort -name "*R1.fq.gz"); do
-	sampleid=$(basename -s ".R1.fq.gz" $fq)
-	read1=$(find $hocort -name "${sampleid}*R1*f*q.gz")
-	read2=$(find $hocort -name "${sampleid}*R2*f*q.gz")
-
-
-	kraken2 --db "$db" --threads $threads --quick --paired \
-		--output $krak/${sampleid}.kraken \
-		--report $krak/${sampleid}.kraken.report \
-		--memory-mapping $read1 $read2 \
-		--gzip-compressed \
-		--unclassified-out $krak/${sampleid}#_unclassified.fq >> $krak/krak.log
-done
+kraken2 --db /home/data/kraken2/ clean.SRR14297772_cpe107_1.fastq.gz clean.SRR14297772_cpe107_2.fastq.gz --threads 8 --output kraken_output_reads.txt --report kraken_report_reads.txt    
 ```
 
-## Getting relative abundances
-For this exercise we will be using a tool called bracken. Bracken computes the genus/species level abundance estimates based on DNA sequences from a metagenomic sample using taxonomic annotations assigned by kraken.
+# **Genome Annotation**<a name='magsannotation'></a>
+We can now use `Prokka` to annotate each bin to identify genes and other genomic features.
 
 ```
-brak=~/course/cp8/bracken
-mkdir -p $brak
+prokka --outdir annotation_output --prefix bin_1_annotation bins_folder/bin.1.fa
+```
+    
+* **What It Does**: Prokka annotates genes and functional elements in each bin.
+* **Output**: Annotations are saved in `annotation_output/
 
 
-for file in $(find $krak -name "*kraken.report"); do 
-	sampleid=$(basename -s ".kraken.report" $file)
-	bracken -d "$db" -i $file -o $brak/${sampleid}.bracken.report -w ${sampleid}.bracken_species.report
-done
+# **AMR Prediction**
+We can now proceed to identify antimicrobial resistance (AMR) genes using **ABRicate**, which screens genomes against known AMR gene databases. By default it uses NCBI database, which is a subset of the AMRFinderPlus database to do AMR gene detection. To exploit the complete functionality of AMR prediction, use AMRFinderPlus. See note [here](https://www.ncbi.nlm.nih.gov/pathogens/antimicrobial-resistance/AMRFinder/). 
+
+**Run ABRicate for AMR Prediction**:
+List all available databases:
+```
+abricate --list
 ```
 
-## Visualize the taxonomic classification results
-For easy visualization/ summarization of the bracken output, we will use 2 approaches:
-1. multiqc
-2. krona
-
+To run ABRicate on the bins [Default database is ncbi]
 ```
-krona=~/course/cp8/krona
-mkdir -p $krona
-
-
-## ****** Participants working directly from the server can skip this step ******** ##
-# Download and unpack the taxonomy data
-copath=$(conda info --base)
-
-cd $copath/envs/classify/opt/krona/taxonomy
-wget -c ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
-
-# prepare/build the tax data
-ktUpdateTaxonomy.sh --only-build
-
-## ******************************************************************************** ##
-
-cd ~/course/cp8
-
-ktImportTaxonomy -t 5 -m 3 -o $krona/grouped.krona.html $brak
-conda deactivate
+abricate bins_folder/bin.1.fa > abricate_output.txt
 ```
+* **What It Does**: ABRicate searches for known AMR genes by comparing genome sequences against the ResFinder database.
+* **Output**: Results in `abricate_output.txt` list detected AMR genes, their identities, and resistance classes.
+   
+**Question**: Can you compare the results from Prokka and ABRicate? Do you find anything in common? Can you explain your observation?
 
-# **AMR profiling**<a name='amrprofiling'></a>
-We can determine the resistome of each metagenomic sample by either directly mapping/aligning cleaned reads to an AMR database, or using metagenomic assemblies. In this section, we will explore the read-based mapping option using `kma` and the `resfinder` database. 
 
-`kma` should already be available in your path, and can verify this by using any of the following command(s):
+Visualization of Taxonomy with Pavian or Krona
+
+Visualize taxonomic classifications interactively using **Pavian** or **Krona**:
+
+- **Pavian** provides an interactive web-based interface (based on R).
+- **Krona** produces circular, hierarchical plots for exploring multi-level taxonomic data.
+
+### Option 1: Visualization with Pavian
+
+1. **Set Up Pavian for Visualization**:
+    
+    ```
+    pavian server
+    # or upload the kraken reports on the web server: [<https://shiny.hiplot.cn/pavian/>](https://fbreitwieser.shinyapps.io/pavian/)
+    
+    ```
+    
+    - **What It Does**: Pavian launches a local server for visualizing taxonomic classifications in your web browser.
+    - **Upload**: Load `kraken_report.txt` into Pavian for an interactive visualization.
+
+### Option 2: Visualization with Krona
+Documentation: https://github.com/marbl/Krona/wiki/Installing
 ```
-kma -v
-which kma
+# Installation
+git clone https://github.com/marbl/Krona.git
+cd Krona/KronaTools
+./install.pl
 ```
-You should either get the version of kma or the path to kma executable binary.
+1. **Convert Kraken2 Output for Krona**:
+    
+    ```
+    cut -f2,3 kraken_output.txt > krona_input.txt
+    
+    ```
+    
+    - **What It Does**: Extracts only the taxonomic ID and classification from Kraken2 output, creating a format compatible with Krona.
+2. **Generate Krona Plot**:
+    
+    ```
+    # Update taxonomy index
+    ktUpdateTaxonomy.sh
+    
+    ```
+    
+    ```
+    ktImportTaxonomy -m 1 -o krona-test.html
+    ktImportTaxonomy krona_input.txt -o krona_output.html
+    
+    ```
+    
+    - **What It Does**: Krona generates an HTML file (`krona_output.html`) with a multi-level circular plot for exploring taxonomic data.
+    - **View the Plot**: Open `krona_output.html` in any web browser.
+3. **Exploring the Krona Plot**:
+    - Click on different sections to zoom into taxonomic levels.
+    - Hover over sections to view specific taxonomic details.
 
-```
-# set threads
-threads=4
+### Exercises
+
+1. Test this workflow on the sample Illumina dataset we provided.
+2. Experiment with different assembly parameters in metaSPAdes.
+3. Compare taxonomic classifications generated by Kraken2 with other tools, such as Centrifuge.
+4. Visualize different datasets in Pavian or Krona to identify any microbial community trends or outliers.
 
 
 
-# path to resfinder db
-res_db=~/course/cp6/resfinder_db
-kma_out=~/course/cp8/resistance
-
-
-mkdir -p $kma_out
-
-
-# Now let’s run kma
-
-for fq in $(find $hocort -name "*R1.fq.gz"); do
-	sampleid=$(basename -s ".R1.fq.gz" $fq)
-	read1=$(find $hocort -name "${sampleid}*R1*f*q.gz")
-	read2=$(find $hocort -name "${sampleid}*R2*f*q.gz")
-
-
-	kma -mem_mode -ef -cge -nf -vcf -t $threads -ipe $read1 $read2 -t_db $res_db/all -o $kma_out/amr -1t1
-done
-```
-
-**Output files**:
-
-For downstream analysis, the following output files can be used e.g. in R, as input for differential abundance analysis, generation of graphs and other analyses.
-1. amr.mapstat
-2. Amr.res
-3. amr.vcf.gz
-
-# Hostile pipeline
-```
-cd /home/data/data/
-git clone https://github.com/bede/hostile.git
-cd hostile
-conda env create -y -f environment.yml
-conda activate hostile
-pip install --editable '.[dev]'
-pytest
-pre-commit install
-```
-Run this before Stanford's talk on metagenomics:
-Then copy the `human-t2t-hla.tar` file to `/root/.local/share/hostile` to make sure the database is there, and we don't have to rely on it being downloaded for each individual participant.
