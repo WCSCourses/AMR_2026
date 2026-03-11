@@ -153,7 +153,7 @@ conda activate hocort
 
 # Provide path to the bowtie2 index files
 bwt=~/course/cp8/databases/hocort/human
-
+ wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/914/755/GCF_009914755.1_T2T-CHM13v2.0/GCF_009914755.1_T2T-CHM13v2.0_genomic.fna.gz
 
 # Create directory to save decontaminated reads
 hocort=~/course/cp8/hocort # Locate this index database
