@@ -63,8 +63,8 @@ To download the raw read files, you would run the following commands. However, t
 
 ```
 # Raw
-wget <ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR142/072/SRR14297772/SRR14297772_1_ds.fastq.gz>
-wget <ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR142/072/SRR14297772/SRR14297772_2.fastq.gz>
+#wget <ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR142/072/SRR14297772/SRR14297772_1_ds.fastq.gz>
+#wget <ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR142/072/SRR14297772/SRR14297772_2.fastq.gz>
 ```
 
 For this tutorail, we will be using a custom set of sequences (which were spiked-in) that can be obtained from [here](https://tinyurl.com/mvr3d263). Let's copy them into our working directory:
@@ -109,16 +109,16 @@ fastp -i SRR14297772_cpe107_1.fastq.gz -I SRR14297772_cpe107_2.fastq.gz -o SRR14
 > When you are running this pipeline on multiple samples, and you don't want to build this commands one by one for each sample, it's possible to package it within a single loop, just like below.
 > Do not run it.
 ```
-# Create output directory for fastp output
-#clean_reads=/home/data/data/cp10/clean_reads
-#mkdir -p $clean_reads
+## Create output directory for fastp output
+##clean_reads=/home/data/data/cp10/clean_reads
+##mkdir -p $clean_reads
 
-# Provide path to the raw reads directory
-#raw_reads=/home/data/data/cp10/raw_reads
+## Provide path to the raw reads directory
+##raw_reads=/home/data/data/cp10/raw_reads
 
-# We will skip the FastQC step
+## We will skip the FastQC step
 
-# Execute the for loop to perform QC on all samples in the raw_reads directory
+## Execute the for loop to perform QC on all samples in the raw_reads directory
 #for fq in $(find $raw_reads -name "*1.f*q.gz"); do \
 #	sampleid=$(basename -s "_1.fastq.gz" $fq) \ 
 #	read1=$(find $raw_reads -name "${sampleid}*1*f*q.gz") \
@@ -129,7 +129,7 @@ fastp -i SRR14297772_cpe107_1.fastq.gz -I SRR14297772_cpe107_2.fastq.gz -o SRR14
 #	-R "$sampleid" -j $clean_reads/${sampleid}.fastp.json \
 #	-h $clean_reads/${sampleid}.fastp.html \
 #	--correction --dedup --overrepresentation_analysis --thread 4 \
-	-o $clean_reads/${sampleid}.1.fq.gz -O $clean_reads/${sampleid}.2.fq.gz \
+#	-o $clean_reads/${sampleid}.1.fq.gz -O $clean_reads/${sampleid}.2.fq.gz \
 #done >> $clean_reads/qc_step1.log 2>&1
 ```
 
@@ -175,21 +175,21 @@ For the decontamination step, we will use a tool called [`hostile`](https://gith
 > However, in the practical applications, please ensure that you have removed the host reads to ensure your downstream analyses is on microbial reads only.
 
 ```
-# Create and activate a conda env 
-conda create -y -n hostile -c conda-forge -c bioconda hostile 
-conda activate hostile
-conda activate --stack amr # to access packages from the amr env 
- # Run Hostile on paired short reads 
-hostile clean --fastq1 SRR14297772_cpe107_1_ds_filtered.fastq.gz --fastq2 SRR14297772_cpe107_2_ds_filtered.fastq.gz -o - > SRR14297772_cpe107.interleaved.fastq
+## Create and activate a conda env 
+#conda create -y -n hostile -c conda-forge -c bioconda hostile 
+#conda activate hostile
+#conda activate --stack amr # to access packages from the amr env 
+## Run Hostile on paired short reads 
+#hostile clean --fastq1 SRR14297772_cpe107_1_ds_filtered.fastq.gz --fastq2 SRR14297772_cpe107_2_ds_filtered.fastq.gz -o - > SRR14297772_cpe107.interleaved.fastq
 
-# Bin interleaved fastq files into clean.fastq1 and clean.fastq2 using seqtk
-seqtk seq -1 SRR14297772_cpe107.interleaved.fastq > clean.SRR14297772_cpe107_1.fastq
-seqtk seq -2 SRR14297772_cpe107.interleaved.fastq > clean.SRR14297772_cpe107_2.fastq
+## Bin interleaved fastq files into clean.fastq1 and clean.fastq2 using seqtk
+#seqtk seq -1 SRR14297772_cpe107.interleaved.fastq > clean.SRR14297772_cpe107_1.fastq
+#seqtk seq -2 SRR14297772_cpe107.interleaved.fastq > clean.SRR14297772_cpe107_2.fastq
 
-#Compress all fastq files (pigz offers fast compression. You can also use gzip)
-pigz SRR14297772_cpe107.interleaved.fastq
-pigz clean.SRR14297772_cpe107_1.fastq
-pigz clean.SRR14297772_cpe107_2.fastq
+## Compress all fastq files (pigz offers fast compression. You can also use gzip)
+#pigz SRR14297772_cpe107.interleaved.fastq
+#pigz clean.SRR14297772_cpe107_1.fastq
+#pigz clean.SRR14297772_cpe107_2.fastq
 ```
 
 ## **Downsample Reads (Optional)**
@@ -197,7 +197,7 @@ Sometimes this step is done -- but it is not mandatory. For this tutorial, we wi
 
 Reduce the number of reads in the dataset while preserving the diversity of the sample. Use `seqtk` sample for random subsampling of reads to a desired percentage or absolute number.
 ```bash
-seqtk sample -s100 input.fastq 0.1 > downsampled.fastq
+#seqtk sample -s100 input.fastq 0.1 > downsampled.fastq
 
 #-s100 specifies a random seed for reproducibility.
 #0.1 specifies 10% of the total reads (adjust according to needs).
@@ -206,7 +206,7 @@ seqtk sample -s100 input.fastq 0.1 > downsampled.fastq
 Use [`bbnorm.sh`](http://bbnorm.sh/) in [`BBMap`](https://sourceforge.net/projects/bbmap/) for read normalization, which reduces redundancy while keeping unique reads.
 
 ```bash
-bbnorm.sh in=input.fastq out=downsampled.fastq target=20 min=2
+#bbnorm.sh in=input.fastq out=downsampled.fastq target=20 min=2
 
 # target=20 controls coverage normalization depth (can be adjusted based on data).
 ```
