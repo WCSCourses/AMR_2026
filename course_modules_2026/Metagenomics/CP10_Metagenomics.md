@@ -18,7 +18,7 @@ Modified by: Dr. Stanford Kwenda, Augusto Messa Jr., Miriam Mwamba
 11. [Visualization of Taxonomy with Pavian or Krona](#metavisualization)
 
 # **Learning objectives** <a name="objectives"></a>
-This tutorial provides a step by step command line workflow for analyzing bacterial genomes from Illumina short-read metagenomica data. By following the steps, you will be able to:
+This tutorial provides a step by step command line workflow for analyzing bacterial genomes from Illumina short-read metagenomic data. By following the steps, you will be able to:
 
 1. Conduct quality control on Illumina reads
 2. Assemble short reads into contigs using metaSPAdes.
@@ -48,7 +48,7 @@ In this tutorial we will be focusing on shotgun metagenomic sequencing.
 
 For this process will need two things: 
 * Metagenomic sequencing reads: for this tutorial, raw files from [Guo et al. 2021 - doi: 10.3389/fmicb.2021.709051](https://doi.org/10.3389/fmicb.2021.709051) will be used
-* Tools to perform different taks: `FastQC`, `MultiQC` `Fastp`, `seqtk`, `Bbmap`, `metaSPAdes`, `MetaBAT2`, `Kraken2`, `CheckM`, `Prokka`, `ABRicate` (for AMR prediction) and `Pavian` and `Krona` for visualization.
+* Tools to perform different tasks: `FastQC`, `MultiQC` `Fastp`, `seqtk`, `Bbmap`, `metaSPAdes`, `MetaBAT2`, `Kraken2`, `CheckM`, `Prokka`, `ABRicate` (for AMR prediction) and `Pavian` or `Krona` for visualization.
 
 # **Set-up and Dataset** <a name="setup"></a>
 Go to the `/home/data/data/` directory and create a directory called `cp10` by running:
@@ -63,8 +63,8 @@ To download the raw read files, you would run the following commands. However, t
 
 ```
 # Raw
-#wget <ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR142/072/SRR14297772/SRR14297772_1_ds.fastq.gz>
-#wget <ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR142/072/SRR14297772/SRR14297772_2.fastq.gz>
+#wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR142/072/SRR14297772/SRR14297772_1.fastq.gz
+#wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR142/072/SRR14297772/SRR14297772_2.fastq.gz
 ```
 
 For this tutorail, we will be using a custom set of sequences (which were spiked-in) that can be obtained from [here](https://tinyurl.com/mvr3d263). Let's copy them into our working directory:
@@ -90,7 +90,7 @@ QC of raw reads is often a standard first step used to assess the quality of rea
 4. Low base quality.
 
 > [!NOTE]
-> Its IMPORTANT to monitor key metrics at different steps of the data analysis workflow.
+> It is IMPORTANT to monitor key metrics at different steps of the data analysis workflow.
 > Always remember one of the golden rules in Computational Biology: Garbage in :arrow_right: Garbage out
 
 Since we are performing read filtering and QC of metagenomic data, it might be beneficial to perform read deduplication during the initial QC step. This will be done in a single step as we perform our standard QC step. We will perform read QC and filtering based on the steps below:
@@ -99,7 +99,7 @@ Since we are performing read filtering and QC of metagenomic data, it might be b
 fastp -i raw_reads/SRR14297772_cpe107_1.fastq.gz -I raw_reads/SRR14297772_cpe107_2.fastq.gz -o clean_reads/SRR14297772_cpe107_1_ds_filtered.fastq.gz -O clean_reads/SRR14297772_cpe107_2_ds_filtered.fastq.gz -h qc_reports/cpe107_fastp_report.html -j qc_reports/cpe107_fastp_report.json --length_required 50 --correction --dedup --overrepresentation_analysis --thread 4
 fastp -i raw_reads/SRR14297772_cpe110_1.fastq.gz -I raw_reads/SRR14297772_cpe110_2.fastq.gz -o clean_reads/SRR14297772_cpe110_1_ds_filtered.fastq.gz -O clean_reads/SRR14297772_cpe110_2_ds_filtered.fastq.gz -h qc_reports/cpe110_fastp_report.html -j qc_reports/cpe110_fastp_report.json --length_required 50 --correction --dedup --overrepresentation_analysis --thread 4 
 ```
-- **What It Does**: Fastp removes adapters, trims low-quality bases, and discards reads shorter than 50 bp. Hostile gets rid of host (mainly) human reads.
+- **What It Does**: Fastp removes adapters, trims low-quality bases, and discards reads shorter than 50 bp.
 - **Key Options for Fastp**:
     - `-h` and `-j`: Generate HTML and JSON reports with trimming metrics.
     - `-length_required`: Discards reads shorter than 50 bp.
@@ -144,7 +144,7 @@ Including a read deduplication step can potentially:
 4. Decrease the maximum memory requirement and time consumption during the computationally intensive meta-assembly step.
 5. Enhance the coverage abundance profiles of contigs.
 
-## Read QC visualization (Optional)
+## Read QC visualization
 For read QC visualization, we can use `multiqc`, which we used in previous practicals.
 
 ```
@@ -170,7 +170,7 @@ Navigate to the `multiqc` output directory/folder and open the report in your br
 	- Data protection or unintended data sharing e.g. in the case of a human host
 * Positive vs negative filtering
 
-For the decontamination step, we will use a tool called [`hostile`](https://github.com/bede/hostile) (developed by Constantinides et al. 2023 - doi: [10.1093/bioinformatics/btad728](https://doi.org/10.1093/bioinformatics/btad728)).
+For the decontamination step, we will use a tool called [`hostile`](https://github.com/bede/hostile) (developed by Constantinides et al. 2023 - doi: [10.1093/bioinformatics/btad728](https://doi.org/10.1093/bioinformatics/btad728)). Hostile gets rid of host (mainly) human reads.
 
 > [!IMPORTANT]
 > In this tutorial, we will be using the cleaned files from `fastp`. So, DO NOT run the code bellow.
