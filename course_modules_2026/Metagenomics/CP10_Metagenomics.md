@@ -46,8 +46,8 @@ Functional profiling | No\* | Yes
 
 In this tutorial we will be focusing on shotgun metagenomic sequencing.
 
-For this process will need two things: 
-* Metagenomic sequencing reads: for this tutorial, raw files from [Guo et al. 2021 - doi: 10.3389/fmicb.2021.709051](https://doi.org/10.3389/fmicb.2021.709051) will be used
+For this process we will need: 
+* Metagenomic sequencing reads: for this tutorial, downsampled raw files from [Guo et al. 2021 - doi: 10.3389/fmicb.2021.709051](https://doi.org/10.3389/fmicb.2021.709051) will be used.
 * Tools to perform different tasks: `FastQC`, `MultiQC` `Fastp`, `seqtk`, `Bbmap`, `metaSPAdes`, `MetaBAT2`, `Kraken2`, `CheckM`, `Prokka`, `ABRicate` (for AMR prediction) and `Pavian` or `Krona` for visualization.
 
 # **Set-up and Dataset** <a name="setup"></a>
