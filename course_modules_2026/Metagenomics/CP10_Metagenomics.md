@@ -121,17 +121,17 @@ fastp -i raw_reads/SRR14297772_cpe110_1.fastq.gz -I raw_reads/SRR14297772_cpe110
 ## We will skip the FastQC step
 
 ## Execute the for loop to perform QC on all samples in the raw_reads directory
-#for fq in $(find $raw_reads -name "*1.f*q.gz"); do \
-#	sampleid=$(basename -s "_1.fastq.gz" $fq) \ 
-#	read1=$(find $raw_reads -name "${sampleid}*1*f*q.gz") \
-#	read2=$(find $raw_reads -name "${sampleid}*2*f*q.gz") \
+#for fq in $(find $raw_reads -name "*1.f*q.gz"); do
+#	sampleid=$(basename -s "_1.fastq.gz" $fq)
+#	read1=$(find $raw_reads -name "${sampleid}*1*f*q.gz")
+#	read2=$(find $raw_reads -name "${sampleid}*2*f*q.gz")
 #	
 #	fastp -i "$read1" -I "$read2" \
 #	-q 20 -l 36 --cut_front -M 10 -W 4 \
 #	-R "$sampleid" -j $clean_reads/${sampleid}.fastp.json \
 #	-h $clean_reads/${sampleid}.fastp.html \
 #	--correction --dedup --overrepresentation_analysis --thread 4 \
-#	-o $clean_reads/${sampleid}.1.fq.gz -O $clean_reads/${sampleid}.2.fq.gz \
+#	-o $clean_reads/${sampleid}.1.fq.gz -O $clean_reads/${sampleid}.2.fq.gz
 #done >> $clean_reads/qc_step1.log 2>&1
 ```
 
