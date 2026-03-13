@@ -21,7 +21,7 @@ snp-sites -c -m -o Kpn_ST78.cpe058.strain_ids.snps.fas Kpn_ST78.cpe058.strain_id
 pairsnp -c Kpn_ST78.cpe058.strain_ids.snps.fas > Kpn_ST78.cpe058.pairsnp.csv
 ```
 
-Replace the outgroup with XXX
+Replace the outgroup with ERR360526
 
 ```bash
 conda activate gubbins
