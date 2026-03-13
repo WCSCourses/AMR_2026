@@ -19,6 +19,7 @@ fastp -i ERR4095885_1.fastq.gz -I ERR4095885_2.fastq.gz -o out.ERR4095885_1.fast
 ```
 
 ```
+conda activate snippy
 snippy --cpus 4 --outdir ERR4095885_snippy --reference cpe058_Kpn-ST78-NDM1.chr.fasta --R1 out.ERR4095885_1.fastq.gz --R2 out.ERR4095885_2.fastq.gz
 ```
 
