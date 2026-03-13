@@ -6,14 +6,14 @@ mkdir snippy
 cd snippy
 ```
 
+Replace sample Id ERR4095885 with your assigned sample Id
+Replace the reference file below (cpe058_Kpn-ST78-NDM1.chr.fasta) with the following one: 22420_1_10_Pak60006_2016.LT882486.1.fasta
+
 ```
 cp ../assembly/ERR4095885_1.fastq.gz .
 cp ../assembly/ERR4095885_2.fastq.gz .
 ```
 
-
-Replace sample Id ERR4095885 with your assigned sample Id
-Replace the reference file below (cpe058_Kpn-ST78-NDM1.chr.fasta) with the following one: 22420_1_10_Pak60006_2016.LT882486.1.fasta
 ```
 fastp -i ERR4095885_1.fastq.gz -I ERR4095885_2.fastq.gz -o out.ERR4095885_1.fastq.gz -O out.ERR4095885_2.fastq.gz
 ```
