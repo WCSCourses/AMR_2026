@@ -106,6 +106,12 @@ If you encounter any issues while using Docker or working with related tools, do
 | [PairSNP](https://github.com/gtonkinhill/pairsnp) | | Phylogenetics | |
 | [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/index.html) | | Phylogenetics | |
 | [Screen](https://www.gnu.org/software/screen/) | | General Use | |
+| [MultiQC](https://github.com/MultiQC/MultiQC) | | Data QC | |
+| [mlst_check](https://github.com/sanger-pathogens/mlst_check) | | MLST | |
+| [chewBBACA](https://github.com/B-UMMI/chewBBACA) | | MLST | |
+| [GrapeTree](https://github.com/achtman-lab/GrapeTree) | | MLST | |
+| [nanoQC](https://github.com/wdecoster/nanoQC) | | Data QC | |
+| [filtlong](https://github.com/rrwick/Filtlong) | | Data QC | |
 
 ## Citing and Re-using Course Material
 
